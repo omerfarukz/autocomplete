@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="AutoComplete.Clients.ConsoleClient/AutoComplete.Clients.ConsoleClient.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoComplete.Clients.ConsoleClient/Program.cs">
+    <Files>
+      <File FileName="AutoComplete.Clients.ConsoleClient/Program.cs" Line="84" Column="61" />
+      <File FileName="AutoComplete.Core/IndexSearcher.cs" Line="54" Column="1" />
+      <File FileName="AutoComplete.Core/TrieNodeHelper.cs" Line="352" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

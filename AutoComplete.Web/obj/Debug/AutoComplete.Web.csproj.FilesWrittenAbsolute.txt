@@ -1,0 +1,14 @@
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/bin/Debug/AutoComplete.Web.dll.mdb
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/bin/Debug/AutoComplete.Web.dll
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/obj/Debug/AutoComplete.Web.dll
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/obj/Debug/AutoComplete.Web.dll.mdb
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/bin/Debug/AutoComplete.Core.dll
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Web/bin/Debug/AutoComplete.Core.dll.mdb
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/bin/Debug/AutoComplete.Web.dll.mdb
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/bin/Debug/AutoComplete.Web.dll
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/obj/Debug/AutoComplete.Web.dll
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/obj/Debug/AutoComplete.Web.dll.mdb
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/bin/Debug/AutoComplete.Core.dll
+/Users/omr/Desktop/autocomplete/AutoComplete.Web/bin/Debug/AutoComplete.Core.dll.mdb

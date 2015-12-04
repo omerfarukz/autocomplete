@@ -1,0 +1,10 @@
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Core/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Core/bin/Debug/AutoComplete.Core.dll.mdb
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Core/bin/Debug/AutoComplete.Core.dll
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Core/obj/Debug/AutoComplete.Core.dll
+/Users/omr/Downloads/AutoComplete_tureng_yayinindan_sonra_inmemory_uygulanmis_hali/AutoComplete.Core/obj/Debug/AutoComplete.Core.dll.mdb
+/Users/omr/Desktop/autocomplete/AutoComplete.Core/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
+/Users/omr/Desktop/autocomplete/AutoComplete.Core/bin/Debug/AutoComplete.Core.dll.mdb
+/Users/omr/Desktop/autocomplete/AutoComplete.Core/bin/Debug/AutoComplete.Core.dll
+/Users/omr/Desktop/autocomplete/AutoComplete.Core/obj/Debug/AutoComplete.Core.dll
+/Users/omr/Desktop/autocomplete/AutoComplete.Core/obj/Debug/AutoComplete.Core.dll.mdb
