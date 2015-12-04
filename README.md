@@ -8,7 +8,7 @@ http://tureng.com - Live on best dictionary site of Turkey!
 
 ##Index Builder Sample
 ```csharp
-var builder = new IndexBuilder([Stream], [Stream]);
+var builder = new IndexBuilder(headerStream, indexStream);
 builder.Add("keyword");
 //builder.AddRange([IEnumerable<string>]);
 //builder.WithDataSource(source);
