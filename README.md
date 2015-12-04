@@ -1,4 +1,4 @@
-# Auto Complete Library *free
+# Auto Complete Library
 - Ultra lightweight and powerful
 - Ready to use in web and desktop
 - Portable Class Library
