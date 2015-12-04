@@ -2,6 +2,7 @@
 using AutoComplete.Desktop;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace AutoComplete.Clients.ConsoleClient
 {

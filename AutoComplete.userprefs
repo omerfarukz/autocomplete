@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="AutoComplete.Clients.ConsoleClient/AutoComplete.Clients.ConsoleClient.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoComplete.Clients.ConsoleClient/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoComplete.Core/TrieNodeHelper.cs">
     <Files>
-      <File FileName="AutoComplete.Clients.ConsoleClient/Program.cs" Line="84" Column="61" />
-      <File FileName="AutoComplete.Core/IndexSearcher.cs" Line="54" Column="1" />
-      <File FileName="AutoComplete.Core/TrieNodeHelper.cs" Line="352" Column="1" />
+      <File FileName="AutoComplete.Clients.ConsoleClient/Program.cs" Line="19" Column="50" />
+      <File FileName="AutoComplete.Core/DataStructure/TrieNode.cs" Line="151" Column="1" />
+      <File FileName="AutoComplete.Core/DataStructure/Trie.cs" Line="87" Column="1" />
+      <File FileName="AutoComplete.Core/TrieNodeHelper.cs" Line="407" Column="110" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

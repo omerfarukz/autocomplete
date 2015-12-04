@@ -148,7 +148,6 @@ namespace AutoComplete.Core.DataStructure
         /// <param name="setLastCharAsTerminal">If set to <c>true</c> set last char as terminal.</param>/
         public static TrieNode CreateFromKeyword(string keyword, bool setLastCharAsTerminal)
         {
-            //TODO checks
             if (string.IsNullOrWhiteSpace(keyword) || keyword.Length == 0)
                 throw new ArgumentException("keyword");
 

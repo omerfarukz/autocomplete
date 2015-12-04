@@ -84,7 +84,6 @@ namespace AutoComplete.Core.DataStructure
                 result.Status == TrieNodeSearchResultType.Unkown ||
                 result.Status == TrieNodeSearchResultType.NotFound)
             {
-                //TODO: log?dfd
                 return false;
             }
             else if (result.Status == TrieNodeSearchResultType.FoundStartsWith)
