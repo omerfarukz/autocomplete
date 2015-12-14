@@ -1,4 +1,5 @@
 # Auto Complete Library
+- Fully Persistent and Memory support
 - Ultra lightweight and powerful
 - Ready to use in web and desktop
 - Portable Class Library
