@@ -47,7 +47,7 @@
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
-    <Compile Include="Helpers\TrieSerializer.cs" />
+    <Compile Include="TrieSerializer.cs" />
     <Compile Include="IIndexBuilder.cs" />
     <Compile Include="IIndexSearcher.cs" />
     <Compile Include="ManagedInMemoryStream.cs" />

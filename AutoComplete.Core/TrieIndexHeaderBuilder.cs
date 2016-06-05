@@ -70,17 +70,15 @@ namespace AutoComplete.Core
             header.COUNT_OF_CHILDREN_FLAGS_IN_BYTES = header.COUNT_OF_CHARSET / 32 + (header.COUNT_OF_CHARSET % 32 == 0 ? 0 : 1);
             header.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES = header.COUNT_OF_CHILDREN_FLAGS_IN_BYTES * 4;
 
-            header.LENGTH_OF_STRUCT = header.COUNT_OF_CHARACTER_IN_BYTES +
-                                header.COUNT_TERMINAL_SIZE_IN_BYTES +
-                                header.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES +
-                                header.COUNT_OF_CHILDREN_OFFSET_IN_BYTES;
-
             header.LENGTH_OF_CHILDREN_FLAGS = header.COUNT_OF_CHARACTER_IN_BYTES + // 2
-                                                header.COUNT_TERMINAL_SIZE_IN_BYTES;
+                                                header.COUNT_TERMINAL_SIZE_IN_BYTES; // 1;
 
-            header.LENGTH_OF_CHILDREN_OFFSET = header.COUNT_OF_CHARACTER_IN_BYTES + // 2
-                                        header.COUNT_TERMINAL_SIZE_IN_BYTES + // 1
+            header.LENGTH_OF_CHILDREN_OFFSET = header.LENGTH_OF_CHILDREN_FLAGS + // 2
                                         header.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES;
+
+            header.LENGTH_OF_STRUCT = header.LENGTH_OF_CHILDREN_OFFSET +
+                                header.COUNT_OF_CHILDREN_OFFSET_IN_BYTES;
+                                     
         }
     }
 }

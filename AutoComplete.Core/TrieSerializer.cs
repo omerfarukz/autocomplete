@@ -1,12 +1,12 @@
 ﻿using AutoComplete.Core.DataStructure;
-
+using AutoComplete.Core.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace AutoComplete.Core.Helpers
+namespace AutoComplete.Core
 {
     internal class TrieSerializer
     {
@@ -14,6 +14,11 @@ namespace AutoComplete.Core.Helpers
         {
             XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
             serializer.Serialize(header, trieIndexHeader);
+        }
+
+        public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header)
+        {
+            return DeserializeHeaderWithXmlSerializer(header, false);
         }
 
         public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header, bool dontAutoInitializeCache)
@@ -74,7 +79,7 @@ namespace AutoComplete.Core.Helpers
                 }
 
                 int[] childrenFlags = new int[trieIndexHeader.COUNT_OF_CHILDREN_FLAGS_IN_BYTES];
-                baChildren.CopyToInt32Array(childrenFlags, 0);
+                BitArrayHelper.CopyToInt32Array(baChildren, childrenFlags, 0);
 
                 for (int i = 0; i < childrenFlags.Length; i++)
                 {

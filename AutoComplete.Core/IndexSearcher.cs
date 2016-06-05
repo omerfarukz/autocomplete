@@ -92,7 +92,7 @@ namespace AutoComplete.Core
 
         internal virtual TrieIndexHeader GetHeader()
         {
-            var header = TrieSerializer.DeserializeHeaderWithXmlSerializer(_headerStream, false);
+            var header = TrieSerializer.DeserializeHeaderWithXmlSerializer(_headerStream);
             _headerStream.Dispose(); // TODO: breakpoint
 
             return header;
