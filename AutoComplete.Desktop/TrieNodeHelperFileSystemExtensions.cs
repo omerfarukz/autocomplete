@@ -1,12 +1,13 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.DataStructure;
+using AutoComplete.Core.Helpers;
 using System.IO;
 
 namespace AutoComplete.Desktop
 {
     internal static class TrieNodeHelperFileSystemExtensions
     {
-        public static TrieIndexHeader ReadHeaderFile(this TrieNodeHelper instance, string path, bool autoInitCache)
+        public static TrieIndexHeader ReadHeaderFile(string path)
         {
             Stream stream = new FileStream(
                                 path,
@@ -15,10 +16,10 @@ namespace AutoComplete.Desktop
                                 FileShare.Read
                             );
 
-            return instance.ReadHeader(stream, autoInitCache);
+            return TrieSerializer.DeserializeHeaderWithXmlSerializer(stream, false);
         }
 
-        public static void CreateHeaderFile(this TrieNodeHelper instance, string path)
+        public static void CreateHeaderFile(this TrieIndexHeader header, string path)
         {
             Stream stream = new FileStream(
                                 path,
@@ -27,14 +28,14 @@ namespace AutoComplete.Desktop
                                 FileShare.None
                             );
 
-            instance.CreateHeader(stream);
+            TrieSerializer.SerializeHeaderWithXmlSerializer(stream, header);
 
             stream.Close();
             stream.Dispose();
             stream = null;
         }
 
-        public static int CreateIndexFile(this TrieNodeHelper instance, TrieNode node, string path, int readBufferSizeInBytes)
+        public static int CreateIndexFile(this TrieBinaryReader instance, TrieIndexHeader header, TrieNode node, string path, int readBufferSizeInBytes)
         {
             Stream stream = new FileStream(
                                 path,
@@ -45,7 +46,7 @@ namespace AutoComplete.Desktop
                                 FileOptions.RandomAccess
                             );
 
-            return instance.CreateIndex(node, stream);
+            return TrieSerializer.SerializeIndexWithBinaryWriter(node, header, stream);
         }
     }
 }

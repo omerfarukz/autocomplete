@@ -1,0 +1,16 @@
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.UnitTests.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.UnitTests.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Clients.Web.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Core.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Desktop.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Web.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Clients.Web.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Core.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Desktop.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\AutoComplete.Web.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\obj\Release\AutoComplete.UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\obj\Release\AutoComplete.UnitTests.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\obj\Release\AutoComplete.UnitTests.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\Resource\20k.txt
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\Resource\20k_header.bin
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.UnitTests\bin\Release\Resource\20k_index.bin

@@ -1,0 +1,7 @@
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\bin\Release\AutoComplete.Desktop.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\bin\Release\AutoComplete.Desktop.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\bin\Release\AutoComplete.Core.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\bin\Release\AutoComplete.Core.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\obj\Release\AutoComplete.Desktop.csprojResolveAssemblyReference.cache
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\obj\Release\AutoComplete.Desktop.dll
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Desktop\obj\Release\AutoComplete.Desktop.pdb

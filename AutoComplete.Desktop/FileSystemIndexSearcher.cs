@@ -12,15 +12,12 @@ namespace AutoComplete.Desktop
 
         private string _headerFileName;
         private string _indexFileName;
-        private TrieNodeHelper _helper;
 
         public FileSystemIndexSearcher(string headerFileName, string indexFileName)
             : base()
         {
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
-
-            _helper = new TrieNodeHelper();
         }
 
         internal override TrieIndexHeader GetHeader()
@@ -29,8 +26,8 @@ namespace AutoComplete.Desktop
 
             if (!_headerDictionary.ContainsKey(_headerFileName))
             {
-                header = _helper.ReadHeaderFile(_headerFileName, true);
-                
+                header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
+
                 lock (_lockObject)
                 {
                     _headerDictionary.Add(_headerFileName, header);
@@ -59,7 +56,5 @@ namespace AutoComplete.Desktop
 
             return indexStream;
         }
-
-
     }
 }

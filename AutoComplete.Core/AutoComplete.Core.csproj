@@ -47,14 +47,15 @@
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
-    <Compile Include="Helpers\InvokeHelper.cs" />
+    <Compile Include="Helpers\TrieSerializer.cs" />
     <Compile Include="IIndexBuilder.cs" />
     <Compile Include="IIndexSearcher.cs" />
     <Compile Include="ManagedInMemoryStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchOptions.cs" />
     <Compile Include="SearchResult.cs" />
-    <Compile Include="TrieNodeHelper.cs" />
+    <Compile Include="TrieIndexHeaderBuilder.cs" />
+    <Compile Include="TrieBinaryReader.cs" />
     <Compile Include="IndexBuilder.cs" />
     <Compile Include="IndexSearcher.cs" />
   </ItemGroup>

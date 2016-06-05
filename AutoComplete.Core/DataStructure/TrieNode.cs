@@ -25,31 +25,31 @@ namespace AutoComplete.Core.DataStructure
         /// Gets or sets the children offset.
         /// </summary>
         /// <value>The children count.</value>
-        public int ChildrenCount { get; set; }
+        internal int ChildrenCount { get; set; }
 
         /// <summary>
         /// Gets or sets the indexed character.
         /// </summary>
         /// <value>The character.</value>
-        public char Character { get ; set; }
+        public char Character { get; set; }
 
         /// <summary>
         /// Gets or sets the parent.
         /// </summary>
         /// <value>The parent.</value>
-        public TrieNode Parent { get ; set; }
+        public TrieNode Parent { get; set; }
 
         /// <summary>
         /// Gets or sets the children.
         /// </summary>
         /// <value>The children not initialized in constuctor.</value>
-        public  IDictionary<char, TrieNode> Children { get; set; }
+        public IDictionary<char, TrieNode> Children { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is terminal.
         /// </summary>
         /// <value><c>true</c> if this instance is terminal; otherwise, <c>false</c>.</value>
-        public bool IsTerminal { get ; set; }
+        public bool IsTerminal { get; set; }
 
         /// <summary>
         /// Gets or sets the index of the child.
@@ -117,7 +117,6 @@ namespace AutoComplete.Core.DataStructure
         public string GetString()
         {
             StringBuilder sb = new StringBuilder();
-            
             TrieNode currentNode = this;
 
             while (currentNode != null && currentNode.Parent != null)
@@ -128,7 +127,6 @@ namespace AutoComplete.Core.DataStructure
 
             return sb.ToString();
         }
-
 
         /// <summary>
         /// Create TrieNode from the keyword and set last char as terminal.
@@ -162,7 +160,7 @@ namespace AutoComplete.Core.DataStructure
 
             //warning: i starts with one(1) because zero(0) indexed character used/checked before(previous lines)
             for (int i = 1; i < keyword.Length; i++)
-            {   
+            {
                 TrieNode newNode = new TrieNode(keyword[i]);
 
                 currentNode.AddChild(newNode);
@@ -178,7 +176,5 @@ namespace AutoComplete.Core.DataStructure
 
             return returnValue;
         }
-
     }
 }
-

@@ -95,6 +95,5 @@ namespace AutoComplete.Web
 
             return stringBuilder.ToString();
         }
-
     }
 }

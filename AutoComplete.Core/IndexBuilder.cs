@@ -1,5 +1,7 @@
 ﻿using AutoComplete.Core.DataSource;
+
 using AutoComplete.Core.DataStructure;
+using AutoComplete.Core.Helpers;
 using System.Collections.Generic;
 using System.IO;
 
@@ -7,7 +9,7 @@ namespace AutoComplete.Core
 {
     public class IndexBuilder : IIndexBuilder
     {
-        private TrieNodeHelper _helper;
+        private TrieIndexHeader _header;
         private Trie _trie;
         private Stream _headerStream;
         private Stream _indexStream;
@@ -17,7 +19,7 @@ namespace AutoComplete.Core
             _headerStream = headerStream;
             _indexStream = indexStream;
 
-            _helper = new TrieNodeHelper();
+            _header = new TrieIndexHeader();
             _trie = new Trie();
         }
 
@@ -51,22 +53,61 @@ namespace AutoComplete.Core
         /// </summary>
         /// <param name="headerStream"></param>
         /// <param name="indexStream"></param>
-        /// <returns></returns>
+        /// <returns>Processed node count</returns>
         public int Build()
         {
             PrepareForBuild();
 
-            _helper.CreateHeader(_headerStream);
+            TrieSerializer.SerializeHeaderWithXmlSerializer(_headerStream, _header);
+            var processedNodeCount = TrieSerializer.SerializeIndexWithBinaryWriter(_trie.Root, _header, _indexStream);
 
-            int _processedNodeCount = _helper.CreateIndex(_trie.Root, _indexStream);
-
-            return _processedNodeCount;
+            return processedNodeCount;
         }
 
         private void PrepareForBuild()
         {
-            _helper.ReorderTrieAndLoadHeader(_trie.Root);
+            ReorderTrieAndLoadHeader(_trie.Root);
         }
 
+        private void ReorderTrieAndLoadHeader(TrieNode node)
+        {
+            TrieIndexHeader header = new TrieIndexHeader();
+            Queue<TrieNode> indexerQueue = new Queue<TrieNode>();
+
+            int order = 0;
+            var builder = new TrieIndexHeaderBuilder();
+            while (node != null)
+            {
+                node.Order = order;
+                builder.AddChar(node.Character);
+
+                // set parent's children index when current node's child
+                // index not equal to zero and current index is not the root
+                if (node.Parent != null && node.ChildIndex == 0)
+                {
+                    node.Parent.ChildrenCount = (node.Order - node.Parent.Order);
+                }
+
+                if (node.Children != null)
+                {
+                    int childIndex = 0;
+
+                    foreach (var childNode in node.Children)
+                    {
+                        childNode.Value.ChildIndex = childIndex++;
+                        indexerQueue.Enqueue(childNode.Value);
+                    }
+                }
+
+                ++order;
+
+                if (indexerQueue.Count == 0)
+                    break;
+
+                node = indexerQueue.Dequeue();
+            }
+
+            _header = builder.Build();
+        }
     }
 }

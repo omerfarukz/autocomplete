@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace AutoComplete.Core
+﻿namespace AutoComplete.Core
 {
     public interface IIndexSearcher
     {
         SearchResult Search(string term, int maxItemCount, bool suggestWhenNotFound);
+
         SearchResult Search(SearchOptions options);
     }
 }

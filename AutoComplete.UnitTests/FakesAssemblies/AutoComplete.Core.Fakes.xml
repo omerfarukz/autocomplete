@@ -1,0 +1,860 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoComplete.Core.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource">
+            <summary>Stub type of AutoComplete.Core.DataSource.IKeywordDataSource</summary>
+        </member>
+        <member name="M:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource.#ctor">
+            <summary>Initializes a new instance of type StubIKeywordDataSource</summary>
+        </member>
+        <member name="M:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource.acc::AutoComplete#Core#DataSource#IKeywordDataSource#GetKeywords">
+            <summary>Sets the stub of IKeywordDataSource.GetKeywords()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource.GetKeywords">
+            <summary>Sets the stub of IKeywordDataSource.GetKeywords()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource.NameGet">
+            <summary>Sets the stub of IKeywordDataSource.get_Name()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.DataSource.Fakes.StubIKeywordDataSource.acc::AutoComplete#Core#DataSource#IKeywordDataSource#Name">
+            <summary>Sets the stub of IKeywordDataSource.get_Name()</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimIndexBuilder">
+            <summary>Shim type of AutoComplete.Core.IndexBuilder</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexBuilder.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexBuilder.#ctor(AutoComplete.Core.IndexBuilder)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexBuilder.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexBuilder.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexBuilder.Bind(AutoComplete.Core.IIndexBuilder)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AddRangeIEnumerableOfString">
+            <summary>Sets the shim of IndexBuilder.AddRange(IEnumerable`1&lt;String&gt; keywords)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AddString">
+            <summary>Sets the shim of IndexBuilder.Add(String keyword)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.Build">
+            <summary>Sets the shim of IndexBuilder.Build()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.ConstructorStreamStream">
+            <summary>Sets the shim of IndexBuilder.IndexBuilder(Stream headerStream, Stream indexStream)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.PrepareForBuild">
+            <summary>Sets the shim of IndexBuilder.PrepareForBuild()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.WithDataSourceIKeywordDataSource">
+            <summary>Sets the shim of IndexBuilder.WithDataSource(IKeywordDataSource keywordDataSource)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances.AddRangeIEnumerableOfString">
+            <summary>Sets the shim of IndexBuilder.AddRange(IEnumerable`1&lt;String&gt; keywords)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances.AddString">
+            <summary>Sets the shim of IndexBuilder.Add(String keyword)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances.Build">
+            <summary>Sets the shim of IndexBuilder.Build()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances.PrepareForBuild">
+            <summary>Sets the shim of IndexBuilder.PrepareForBuild()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexBuilder.AllInstances.WithDataSourceIKeywordDataSource">
+            <summary>Sets the shim of IndexBuilder.WithDataSource(IKeywordDataSource keywordDataSource)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimIndexSearcher">
+            <summary>Shim type of AutoComplete.Core.IndexSearcher</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexSearcher.#ctor(AutoComplete.Core.IndexSearcher)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexSearcher.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexSearcher.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimIndexSearcher.Bind(AutoComplete.Core.IIndexSearcher)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.Constructor">
+            <summary>Sets the shim of IndexSearcher.IndexSearcher()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.ConstructorStreamStream">
+            <summary>Sets the shim of IndexSearcher.IndexSearcher(Stream headerStream, Stream indexStream)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.GetHeader">
+            <summary>Sets the shim of IndexSearcher.GetHeader()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.GetIndexStream">
+            <summary>Sets the shim of IndexSearcher.GetIndexStream()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.SearchSearchOptions">
+            <summary>Sets the shim of IndexSearcher.Search(SearchOptions options)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.SearchStringInt32Boolean">
+            <summary>Sets the shim of IndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimIndexSearcher.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.AllInstances.GetHeader">
+            <summary>Sets the shim of IndexSearcher.GetHeader()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.AllInstances.GetIndexStream">
+            <summary>Sets the shim of IndexSearcher.GetIndexStream()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.AllInstances.SearchSearchOptions">
+            <summary>Sets the shim of IndexSearcher.Search(SearchOptions options)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimIndexSearcher.AllInstances.SearchStringInt32Boolean">
+            <summary>Sets the shim of IndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimManagedInMemoryStream">
+            <summary>Shim type of AutoComplete.Core.ManagedInMemoryStream</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.#ctor(AutoComplete.Core.ManagedInMemoryStream)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.CanWriteGet">
+            <summary>Sets the shim of ManagedInMemoryStream.get_CanWrite()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.ConstructorByteArray">
+            <summary>Sets the shim of ManagedInMemoryStream.ManagedInMemoryStream(Byte[] buffer)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimManagedInMemoryStream.AllInstances.CanWriteGet">
+            <summary>Sets the shim of ManagedInMemoryStream.get_CanWrite()</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimSearchOptions">
+            <summary>Shim type of AutoComplete.Core.SearchOptions</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchOptions.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchOptions.#ctor(AutoComplete.Core.SearchOptions)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchOptions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchOptions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.Constructor">
+            <summary>Sets the shim of SearchOptions.SearchOptions()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.MaxItemCountGet">
+            <summary>Sets the shim of SearchOptions.get_MaxItemCount()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.MaxItemCountSetInt32">
+            <summary>Sets the shim of SearchOptions.set_MaxItemCount(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.SuggestWhenFoundStartsWithGet">
+            <summary>Sets the shim of SearchOptions.get_SuggestWhenFoundStartsWith()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.SuggestWhenFoundStartsWithSetBoolean">
+            <summary>Sets the shim of SearchOptions.set_SuggestWhenFoundStartsWith(Boolean value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.TermGet">
+            <summary>Sets the shim of SearchOptions.get_Term()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.TermSetString">
+            <summary>Sets the shim of SearchOptions.set_Term(String value)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.MaxItemCountGet">
+            <summary>Sets the shim of SearchOptions.get_MaxItemCount()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.MaxItemCountSetInt32">
+            <summary>Sets the shim of SearchOptions.set_MaxItemCount(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.SuggestWhenFoundStartsWithGet">
+            <summary>Sets the shim of SearchOptions.get_SuggestWhenFoundStartsWith()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.SuggestWhenFoundStartsWithSetBoolean">
+            <summary>Sets the shim of SearchOptions.set_SuggestWhenFoundStartsWith(Boolean value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.TermGet">
+            <summary>Sets the shim of SearchOptions.get_Term()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchOptions.AllInstances.TermSetString">
+            <summary>Sets the shim of SearchOptions.set_Term(String value)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimSearchResult">
+            <summary>Shim type of AutoComplete.Core.SearchResult</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchResult.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchResult.#ctor(AutoComplete.Core.SearchResult)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchResult.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimSearchResult.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.Constructor">
+            <summary>Sets the shim of SearchResult.SearchResult()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.ItemsGet">
+            <summary>Sets the shim of SearchResult.get_Items()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.ItemsSetStringArray">
+            <summary>Sets the shim of SearchResult.set_Items(String[] value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.ResultTypeGet">
+            <summary>Sets the shim of SearchResult.get_ResultType()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.ResultTypeSetTrieNodeSearchResultType">
+            <summary>Sets the shim of SearchResult.set_ResultType(TrieNodeSearchResultType value)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimSearchResult.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.AllInstances.ItemsGet">
+            <summary>Sets the shim of SearchResult.get_Items()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.AllInstances.ItemsSetStringArray">
+            <summary>Sets the shim of SearchResult.set_Items(String[] value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.AllInstances.ResultTypeGet">
+            <summary>Sets the shim of SearchResult.get_ResultType()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimSearchResult.AllInstances.ResultTypeSetTrieNodeSearchResultType">
+            <summary>Sets the shim of SearchResult.set_ResultType(TrieNodeSearchResultType value)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimTrieIndexHeader">
+            <summary>Shim type of AutoComplete.Core.TrieIndexHeader</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimTrieIndexHeader.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimTrieIndexHeader.#ctor(AutoComplete.Core.TrieIndexHeader)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimTrieIndexHeader.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.ShimTrieIndexHeader.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AddCharChar">
+            <summary>Sets the shim of TrieIndexHeader.AddChar(Char c)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AddStringString">
+            <summary>Sets the shim of TrieIndexHeader.AddString(String value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHARACTER_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHARACTER_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHARACTER_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHARACTER_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHARSETGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHARSET()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHARSETSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHARSET(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGSGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGSSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGS_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_FLAGS_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_OFFSET_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_OFFSET_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_OF_CHILDREN_OFFSET_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_OFFSET_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_TERMINAL_SIZE_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_TERMINAL_SIZE_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.COUNT_TERMINAL_SIZE_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_TERMINAL_SIZE_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.CalculateMetrics">
+            <summary>Sets the shim of TrieIndexHeader.CalculateMetrics()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.CharacterListGet">
+            <summary>Sets the shim of TrieIndexHeader.get_CharacterList()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.CharacterListSetListOfChar">
+            <summary>Sets the shim of TrieIndexHeader.set_CharacterList(List`1&lt;Char&gt; value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.Constructor">
+            <summary>Sets the shim of TrieIndexHeader.TrieIndexHeader()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.GetCharacterAtIndexUInt16">
+            <summary>Sets the shim of TrieIndexHeader.GetCharacterAtIndex(UInt16 index)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.GetCharacterIndexChar">
+            <summary>Sets the shim of TrieIndexHeader.GetCharacterIndex(Char c)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.InitCharacterCache">
+            <summary>Sets the shim of TrieIndexHeader.InitCharacterCache()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_CHILDREN_FLAGSGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_CHILDREN_FLAGS()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_CHILDREN_FLAGSSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_CHILDREN_FLAGS(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_CHILDREN_OFFSETGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_CHILDREN_OFFSET()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_CHILDREN_OFFSETSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_CHILDREN_OFFSET(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_STRUCTGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_STRUCT()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.LENGTH_OF_STRUCTSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_STRUCT(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.Sort">
+            <summary>Sets the shim of TrieIndexHeader.Sort()</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.AddCharChar">
+            <summary>Sets the shim of TrieIndexHeader.AddChar(Char c)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.AddStringString">
+            <summary>Sets the shim of TrieIndexHeader.AddString(String value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHARACTER_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHARACTER_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHARACTER_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHARACTER_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHARSETGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHARSET()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHARSETSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHARSET(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGSGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGSSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGS_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_FLAGS_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_FLAGS_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_FLAGS_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_OFFSET_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_OF_CHILDREN_OFFSET_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_OF_CHILDREN_OFFSET_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_OF_CHILDREN_OFFSET_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_TERMINAL_SIZE_IN_BYTESGet">
+            <summary>Sets the shim of TrieIndexHeader.get_COUNT_TERMINAL_SIZE_IN_BYTES()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.COUNT_TERMINAL_SIZE_IN_BYTESSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_COUNT_TERMINAL_SIZE_IN_BYTES(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.CalculateMetrics">
+            <summary>Sets the shim of TrieIndexHeader.CalculateMetrics()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.CharacterListGet">
+            <summary>Sets the shim of TrieIndexHeader.get_CharacterList()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.CharacterListSetListOfChar">
+            <summary>Sets the shim of TrieIndexHeader.set_CharacterList(List`1&lt;Char&gt; value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.GetCharacterAtIndexUInt16">
+            <summary>Sets the shim of TrieIndexHeader.GetCharacterAtIndex(UInt16 index)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.GetCharacterIndexChar">
+            <summary>Sets the shim of TrieIndexHeader.GetCharacterIndex(Char c)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.InitCharacterCache">
+            <summary>Sets the shim of TrieIndexHeader.InitCharacterCache()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_CHILDREN_FLAGSGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_CHILDREN_FLAGS()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_CHILDREN_FLAGSSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_CHILDREN_FLAGS(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_CHILDREN_OFFSETGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_CHILDREN_OFFSET()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_CHILDREN_OFFSETSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_CHILDREN_OFFSET(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_STRUCTGet">
+            <summary>Sets the shim of TrieIndexHeader.get_LENGTH_OF_STRUCT()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.LENGTH_OF_STRUCTSetInt32">
+            <summary>Sets the shim of TrieIndexHeader.set_LENGTH_OF_STRUCT(Int32 value)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.ShimTrieIndexHeader.AllInstances.Sort">
+            <summary>Sets the shim of TrieIndexHeader.Sort()</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubIIndexBuilder">
+            <summary>Stub type of AutoComplete.Core.IIndexBuilder</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexBuilder.#ctor">
+            <summary>Initializes a new instance of type StubIIndexBuilder</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexBuilder.AddRangeIEnumerableOfString">
+            <summary>Sets the stub of IIndexBuilder.AddRange(IEnumerable`1&lt;String&gt; keywords)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexBuilder.AddString">
+            <summary>Sets the stub of IIndexBuilder.Add(String keyword)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexBuilder.acc::AutoComplete#Core#IIndexBuilder#Add(System.String)">
+            <summary>Sets the stub of IIndexBuilder.Add(String keyword)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexBuilder.acc::AutoComplete#Core#IIndexBuilder#AddRange(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Sets the stub of IIndexBuilder.AddRange(IEnumerable`1&lt;String&gt; keywords)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexBuilder.acc::AutoComplete#Core#IIndexBuilder#Build">
+            <summary>Sets the stub of IIndexBuilder.Build()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexBuilder.acc::AutoComplete#Core#IIndexBuilder#WithDataSource(AutoComplete.Core.DataSource.IKeywordDataSource)">
+            <summary>Sets the stub of IIndexBuilder.WithDataSource(IKeywordDataSource keywordDataSource)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexBuilder.Build">
+            <summary>Sets the stub of IIndexBuilder.Build()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexBuilder.WithDataSourceIKeywordDataSource">
+            <summary>Sets the stub of IIndexBuilder.WithDataSource(IKeywordDataSource keywordDataSource)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubIIndexSearcher">
+            <summary>Stub type of AutoComplete.Core.IIndexSearcher</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexSearcher.#ctor">
+            <summary>Initializes a new instance of type StubIIndexSearcher</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexSearcher.acc::AutoComplete#Core#IIndexSearcher#Search(AutoComplete.Core.SearchOptions)">
+            <summary>Sets the stub of IIndexSearcher.Search(SearchOptions options)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIIndexSearcher.acc::AutoComplete#Core#IIndexSearcher#Search(System.String,System.Int32,System.Boolean)">
+            <summary>Sets the stub of IIndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexSearcher.SearchSearchOptions">
+            <summary>Sets the stub of IIndexSearcher.Search(SearchOptions options)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIIndexSearcher.SearchStringInt32Boolean">
+            <summary>Sets the stub of IIndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubIndexBuilder">
+            <summary>Stub type of AutoComplete.Core.IndexBuilder</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexBuilder.#ctor(System.IO.Stream,System.IO.Stream)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexBuilder.InitializeStub">
+            <summary>Initializes a new instance of type StubIndexBuilder</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexBuilder.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexBuilder.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexBuilder.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubIndexSearcher">
+            <summary>Stub type of AutoComplete.Core.IndexSearcher</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexSearcher.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexSearcher.#ctor(System.IO.Stream,System.IO.Stream)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexSearcher.InitializeStub">
+            <summary>Initializes a new instance of type StubIndexSearcher</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubIndexSearcher.Search(System.String,System.Int32,System.Boolean)">
+            <summary>Sets the stub of IndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubIndexSearcher.SearchStringInt32Boolean">
+            <summary>Sets the stub of IndexSearcher.Search(String term, Int32 maxItemCount, Boolean suggestWhenNotFound)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexSearcher.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexSearcher.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubIndexSearcher.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubManagedInMemoryStream">
+            <summary>Stub type of AutoComplete.Core.ManagedInMemoryStream</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.#ctor(System.Byte[])">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.AttachBackingFieldToCapacity">
+            <summary>Attaches delegates to emulate StubManagedInMemoryStream.Capacity as a property with a backing field.</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.AttachBackingFieldToPosition">
+            <summary>Attaches delegates to emulate StubManagedInMemoryStream.Position as a property with a backing field.</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.AttachBackingFieldToReadTimeout">
+            <summary>Attaches delegates to emulate StubManagedInMemoryStream.ReadTimeout as a property with a backing field.</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.AttachBackingFieldToWriteTimeout">
+            <summary>Attaches delegates to emulate StubManagedInMemoryStream.WriteTimeout as a property with a backing field.</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>Sets the stub of Stream.BeginRead(Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback, Object state)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.BeginReadByteArrayInt32Int32AsyncCallbackObject">
+            <summary>Sets the stub of Stream.BeginRead(Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback, Object state)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>Sets the stub of Stream.BeginWrite(Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback, Object state)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.BeginWriteByteArrayInt32Int32AsyncCallbackObject">
+            <summary>Sets the stub of Stream.BeginWrite(Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback, Object state)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanReadGet">
+            <summary>Sets the stub of MemoryStream.get_CanRead()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanSeekGet">
+            <summary>Sets the stub of MemoryStream.get_CanSeek()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanTimeoutGet">
+            <summary>Sets the stub of Stream.get_CanTimeout()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanWriteGet">
+            <summary>Sets the stub of ManagedInMemoryStream.get_CanWrite()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CapacityGet">
+            <summary>Sets the stub of MemoryStream.get_Capacity()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CapacitySetInt32">
+            <summary>Sets the stub of MemoryStream.set_Capacity(Int32 value)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Close">
+            <summary>Sets the stub of Stream.Close()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Close01">
+            <summary>Sets the stub of Stream.Close()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CreateWaitHandle">
+            <summary>Sets the stub of Stream.CreateWaitHandle()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CreateWaitHandle01">
+            <summary>Sets the stub of Stream.CreateWaitHandle()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Dispose(System.Boolean)">
+            <summary>Sets the stub of MemoryStream.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.DisposeBoolean">
+            <summary>Sets the stub of MemoryStream.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.EndRead(System.IAsyncResult)">
+            <summary>Sets the stub of Stream.EndRead(IAsyncResult asyncResult)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.EndReadIAsyncResult">
+            <summary>Sets the stub of Stream.EndRead(IAsyncResult asyncResult)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.EndWrite(System.IAsyncResult)">
+            <summary>Sets the stub of Stream.EndWrite(IAsyncResult asyncResult)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.EndWriteIAsyncResult">
+            <summary>Sets the stub of Stream.EndWrite(IAsyncResult asyncResult)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Flush">
+            <summary>Sets the stub of MemoryStream.Flush()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Flush01">
+            <summary>Sets the stub of MemoryStream.Flush()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.GetBuffer">
+            <summary>Sets the stub of MemoryStream.GetBuffer()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.GetBuffer01">
+            <summary>Sets the stub of MemoryStream.GetBuffer()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.InitializeStub">
+            <summary>Initializes a new instance of type StubManagedInMemoryStream</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.LengthGet">
+            <summary>Sets the stub of MemoryStream.get_Length()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ObjectInvariant">
+            <summary>Sets the stub of Stream.ObjectInvariant()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ObjectInvariant01">
+            <summary>Sets the stub of Stream.ObjectInvariant()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.PositionGet">
+            <summary>Sets the stub of MemoryStream.get_Position()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.PositionSetInt64">
+            <summary>Sets the stub of MemoryStream.set_Position(Int64 value)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>Sets the stub of MemoryStream.Read(Byte[] buffer, Int32 offset, Int32 count)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadByte">
+            <summary>Sets the stub of MemoryStream.ReadByte()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadByte01">
+            <summary>Sets the stub of MemoryStream.ReadByte()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadByteArrayInt32Int32">
+            <summary>Sets the stub of MemoryStream.Read(Byte[] buffer, Int32 offset, Int32 count)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadTimeoutGet">
+            <summary>Sets the stub of Stream.get_ReadTimeout()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadTimeoutSetInt32">
+            <summary>Sets the stub of Stream.set_ReadTimeout(Int32 value)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>Sets the stub of MemoryStream.Seek(Int64 offset, SeekOrigin loc)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.SeekInt64SeekOrigin">
+            <summary>Sets the stub of MemoryStream.Seek(Int64 offset, SeekOrigin loc)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.SetLength(System.Int64)">
+            <summary>Sets the stub of MemoryStream.SetLength(Int64 value)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.SetLengthInt64">
+            <summary>Sets the stub of MemoryStream.SetLength(Int64 value)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ToArray">
+            <summary>Sets the stub of MemoryStream.ToArray()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ToArray01">
+            <summary>Sets the stub of MemoryStream.ToArray()</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>Sets the stub of MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteByte(System.Byte)">
+            <summary>Sets the stub of MemoryStream.WriteByte(Byte value)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteByteArrayInt32Int32">
+            <summary>Sets the stub of MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteByteByte">
+            <summary>Sets the stub of MemoryStream.WriteByte(Byte value)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteTimeoutGet">
+            <summary>Sets the stub of Stream.get_WriteTimeout()</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteTimeoutSetInt32">
+            <summary>Sets the stub of Stream.set_WriteTimeout(Int32 value)</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteTo(System.IO.Stream)">
+            <summary>Sets the stub of MemoryStream.WriteTo(Stream stream)</summary>
+        </member>
+        <member name="F:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteToStream">
+            <summary>Sets the stub of MemoryStream.WriteTo(Stream stream)</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanRead">
+            <summary>Sets the stub of MemoryStream.get_CanRead()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanSeek">
+            <summary>Sets the stub of MemoryStream.get_CanSeek()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanTimeout">
+            <summary>Sets the stub of Stream.get_CanTimeout()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.CanWrite">
+            <summary>Sets the stub of ManagedInMemoryStream.get_CanWrite()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Capacity">
+            <summary>Sets the stub of MemoryStream.get_Capacity()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Length">
+            <summary>Sets the stub of MemoryStream.get_Length()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.Position">
+            <summary>Sets the stub of MemoryStream.get_Position()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.ReadTimeout">
+            <summary>Sets the stub of Stream.get_ReadTimeout()</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubManagedInMemoryStream.WriteTimeout">
+            <summary>Sets the stub of Stream.get_WriteTimeout()</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubSearchOptions">
+            <summary>Stub type of AutoComplete.Core.SearchOptions</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubSearchOptions.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubSearchOptions.InitializeStub">
+            <summary>Initializes a new instance of type StubSearchOptions</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchOptions.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchOptions.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchOptions.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubSearchResult">
+            <summary>Stub type of AutoComplete.Core.SearchResult</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubSearchResult.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubSearchResult.InitializeStub">
+            <summary>Initializes a new instance of type StubSearchResult</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchResult.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchResult.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubSearchResult.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Fakes.StubTrieIndexHeader">
+            <summary>Stub type of AutoComplete.Core.TrieIndexHeader</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubTrieIndexHeader.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Fakes.StubTrieIndexHeader.InitializeStub">
+            <summary>Initializes a new instance of type StubTrieIndexHeader</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubTrieIndexHeader.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubTrieIndexHeader.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Fakes.StubTrieIndexHeader.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper">
+            <summary>Shim type of AutoComplete.Core.Helpers.BitArrayHelper</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Helpers.Fakes.ShimBitArrayHelper.CopyToInt32ArrayBitArrayInt32ArrayInt32">
+            <summary>Sets the shim of BitArrayHelper.CopyToInt32Array(BitArray bitArray, Int32[] array, Int32 index)</summary>
+        </member>
+        <member name="T:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper">
+            <summary>Shim type of AutoComplete.Core.Helpers.InvokeHelper</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:AutoComplete.Core.Helpers.Fakes.ShimInvokeHelper.InvokeWithLockBooleanObjectAction">
+            <summary>Sets the shim of InvokeHelper.InvokeWithLock(Boolean lock, Object lockObject, Action action)</summary>
+        </member>
+    </members>
+</doc>

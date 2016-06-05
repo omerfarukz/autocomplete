@@ -60,7 +60,7 @@
             if (typeConverter == null || !typeConverter.IsValid(objValue))
                 return defaultValue;
 
-            #endregion
+            #endregion Checks
 
             try
             {

@@ -15,7 +15,7 @@ namespace AutoComplete.Desktop
 
         private string _headerFileName;
         private string _indexFileName;
-        private TrieNodeHelper _helper;
+        private TrieBinaryReader _trieBinaryReader;
 
         public InMemoryIndexSearcher(string headerFileName, string indexFileName)
             : base()
@@ -23,7 +23,7 @@ namespace AutoComplete.Desktop
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
 
-            _helper = new TrieNodeHelper();
+            _trieBinaryReader = new TrieBinaryReader();
         }
 
         internal override TrieIndexHeader GetHeader()
@@ -35,7 +35,7 @@ namespace AutoComplete.Desktop
                 {
                     if (!_headerDictionary.ContainsKey(_headerFileName))
                     {
-                        var currentHeader = _helper.ReadHeaderFile(_headerFileName, true);
+                        var currentHeader = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
 
                         _headerDictionary.Add(_headerFileName, currentHeader);
                     }
@@ -82,7 +82,5 @@ namespace AutoComplete.Desktop
 
             return actualStream;
         }
-
-
     }
 }
