@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace AutoComplete.Core
@@ -42,15 +43,22 @@ namespace AutoComplete.Core
         /// <returns></returns>
         public static int SerializeIndexWithBinaryWriter(TrieNode node, TrieIndexHeader trieIndexHeader, Stream index)
         {
+            if (node == null)
+                throw new ArgumentNullException("node");
+
+            int processedNodeCount = 0;
+
             BinaryWriter binaryWriter = new BinaryWriter(index);
             Queue<TrieNode> serializerQueue = new Queue<TrieNode>();
 
-            // used for unit testing
-            int processedNodeCount = 0;
+            serializerQueue.Enqueue(node);
 
-            while (node != null)
+            while (serializerQueue.Count > 0)
             {
-                ++processedNodeCount;
+                node = serializerQueue.Dequeue();
+                
+                if (node == null)
+                    throw new SerializationException(string.Format("Value cannot be null ", processedNodeCount));
 
                 long currentPositionOfStream = binaryWriter.BaseStream.Position;
 
@@ -97,10 +105,7 @@ namespace AutoComplete.Core
                     }
                 }
 
-                if (serializerQueue.Count == 0)
-                    break;
-
-                node = serializerQueue.Dequeue();
+                ++processedNodeCount;
             }
 
             return processedNodeCount;

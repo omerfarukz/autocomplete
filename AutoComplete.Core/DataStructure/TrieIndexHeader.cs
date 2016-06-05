@@ -76,10 +76,8 @@ namespace AutoComplete.Core
                 {
                     for (UInt16 i = 0; i < CharacterList.Count; i++)
                     {
-                        if (CharacterList[i] == '\0')
-                            continue;
-
-                        _characterIndexDictionary.Add(CharacterList[i], i);
+                        if (CharacterList[i] != '\0')
+                            _characterIndexDictionary.Add(CharacterList[i], i);
                     }
 
                     _isCharacterIndexCacheInitialized = true;

@@ -2,3 +2,4 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\bin\Release\Auto
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\bin\Release\AutoComplete.Core.pdb
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.pdb
+C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.csprojResolveAssemblyReference.cache
