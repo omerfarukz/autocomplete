@@ -8,7 +8,16 @@ namespace AutoComplete.Core
 {
     internal class TrieBinaryReader
     {
-        public List<string> GetAutoCompleteNodes(BinaryReader binaryReader, TrieIndexHeader Header, long position, string prefix, int maxItemsCount, List<string> result)
+        private BinaryReader _binaryReader;
+        private TrieIndexHeader _header;
+
+        public TrieBinaryReader(BinaryReader binaryReader, TrieIndexHeader header)
+        {
+            _binaryReader = binaryReader;
+            _header = header;
+        }
+
+        public List<string> GetAutoCompleteNodes(long position, string prefix, int maxItemsCount, List<string> result)
         {
             if (result == null)
                 throw new ArgumentNullException("result");
@@ -16,8 +25,8 @@ namespace AutoComplete.Core
             if (result.Count >= maxItemsCount)
                 return result;
 
-            char character = ReadCharacter(binaryReader, Header, position);
-            bool isTerminal = ReadIsTerminal(binaryReader, Header, position);
+            char character = ReadCharacter(position);
+            bool isTerminal = ReadIsTerminal(position);
 
             string newPrefix = string.Concat(prefix, character);
 
@@ -26,7 +35,7 @@ namespace AutoComplete.Core
                 result.Add(newPrefix);
             }
 
-            long[] children = GetChildrenPositionsFromNode(binaryReader, Header, position);
+            long[] children = GetChildrenPositionsFromNode(_binaryReader, _header, position);
 
             if (children != null)
             {
@@ -34,7 +43,7 @@ namespace AutoComplete.Core
                 {
                     if (result.Count < maxItemsCount)
                     {
-                        GetAutoCompleteNodes(binaryReader, Header, children[i], newPrefix, maxItemsCount, result);
+                        GetAutoCompleteNodes(children[i], newPrefix, maxItemsCount, result);
                     }
                 }
             }
@@ -42,32 +51,32 @@ namespace AutoComplete.Core
             return result;
         }
 
-        internal char ReadCharacter(BinaryReader binaryReader, TrieIndexHeader Header, long position)
+        internal char ReadCharacter(long position)
         {
-            binaryReader.BaseStream.Seek(position, SeekOrigin.Begin);
-            UInt16 bytes = binaryReader.ReadUInt16();
+            _binaryReader.BaseStream.Seek(position, SeekOrigin.Begin);
+            UInt16 bytes = _binaryReader.ReadUInt16();
 
-            return Header.GetCharacterAtIndex(bytes);
+            return _header.GetCharacterAtIndex(bytes);
         }
 
-        internal bool ReadIsTerminal(BinaryReader binaryReader, TrieIndexHeader Header, long position)
+        internal bool ReadIsTerminal(long position)
         {
-            long targetPosition = position + Header.COUNT_OF_CHARACTER_IN_BYTES; // TODO: constant
-            binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+            long targetPosition = position + _header.COUNT_OF_CHARACTER_IN_BYTES; // TODO: constant
+           _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
 
-            return binaryReader.ReadBoolean();
+            return _binaryReader.ReadBoolean();
         }
 
-        internal bool[] ReadChildrenFlags(BinaryReader binaryReader, TrieIndexHeader Header, long position)
+        internal bool[] ReadChildrenFlags(long position)
         {
-            long targetPosition = Header.LENGTH_OF_CHILDREN_FLAGS + position;
-            binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+            long targetPosition = _header.LENGTH_OF_CHILDREN_FLAGS + position;
+            _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
 
-            byte[] bitwisedChildren = binaryReader.ReadBytes(Header.COUNT_OF_CHILDREN_FLAGS);
+            byte[] bitwisedChildren = _binaryReader.ReadBytes(_header.COUNT_OF_CHILDREN_FLAGS);
 
             BitArray bitArray = new BitArray(bitwisedChildren);
 
-            bool[] childrenFlags = new bool[Header.COUNT_OF_CHARSET];
+            bool[] childrenFlags = new bool[_header.COUNT_OF_CHARSET];
             for (int i = 0; i < childrenFlags.Length; i++)
             {
                 childrenFlags[i] = bitArray.Get(i);
@@ -76,12 +85,12 @@ namespace AutoComplete.Core
             return childrenFlags;
         }
 
-        internal int ReadChildrenOffset(BinaryReader binaryReader, TrieIndexHeader Header, long position)
+        internal int ReadChildrenOffset(long position)
         {
-            long targetPosition = Header.LENGTH_OF_CHILDREN_OFFSET + position;
-            binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+            long targetPosition = _header.LENGTH_OF_CHILDREN_OFFSET + position;
+            _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
 
-            return binaryReader.ReadInt32();
+            return _binaryReader.ReadInt32();
         }
 
         /// <summary>
@@ -90,9 +99,9 @@ namespace AutoComplete.Core
         /// <returns>The node from children.</returns>
         /// <param name="character">Character.</param>
         [Obsolete]
-        internal long? GetNodePositionFromChildren(BinaryReader binaryReader, TrieIndexHeader Header, long parentPosition, char character)
+        internal long? GetNodePositionFromChildren(long parentPosition, char character)
         {
-            long? offset = GetNodeOffsetFromChildren(binaryReader, Header, parentPosition, character);
+            long? offset = GetNodeOffsetFromChildren(parentPosition, character);
 
             if (offset != null && offset.HasValue)
             {
@@ -106,18 +115,18 @@ namespace AutoComplete.Core
         /// Gets the node position from children.
         /// </summary>
         /// <returns>The node position from children.</returns>
-        /// <param name="binaryReader">Binary reader.</param>
+        /// <param name="_binaryReader">Binary reader.</param>
         /// <param name="parentStartPosition">Parent start position.</param>
         /// <param name="character">Character.</param>
-        internal long? GetNodeOffsetFromChildren(BinaryReader binaryReader, TrieIndexHeader Header, long parentPosition, char character)
+        internal long? GetNodeOffsetFromChildren(long parentPosition, char character)
         {
-            int childrenOffset = ReadChildrenOffset(binaryReader, Header, parentPosition);
+            int childrenOffset = ReadChildrenOffset(parentPosition);
             if (childrenOffset == 0) // -1 equals to non-childed parent
                 return null;
 
-            bool[] childrenFlags = ReadChildrenFlags(binaryReader, Header, parentPosition);
+            bool[] childrenFlags = ReadChildrenFlags(parentPosition);
             BitArray bitArray = new BitArray(childrenFlags);
-            ICollection<char> children = GetFlagedChars(bitArray, Header, true);
+            ICollection<char> children = GetFlagedChars(bitArray, _header, true);
 
             IEnumerator<char> iEnumerator = children.GetEnumerator();
             int childIndex = 0;
@@ -125,7 +134,7 @@ namespace AutoComplete.Core
             {
                 if (iEnumerator.Current == character)
                 {
-                    long targetPosition = childrenOffset + (childIndex * Header.LENGTH_OF_STRUCT);
+                    long targetPosition = childrenOffset + (childIndex * _header.LENGTH_OF_STRUCT);
                     return targetPosition;
                 }
 
@@ -138,21 +147,21 @@ namespace AutoComplete.Core
         /// <summary>
         /// Its like a GetNodeOffsetFromChildren but faster then 4 times
         /// </summary>
-        /// <param name="binaryReader"></param>
+        /// <param name="_binaryReader"></param>
         /// <param name="position"></param>
         /// <param name="character"></param>
         /// <returns></returns>
-        internal long? GetChildPositionFromNode(BinaryReader binaryReader, TrieIndexHeader Header, long position, char character)
+        internal long? GetChildPositionFromNode(long position, char character)
         {
-            UInt16? childIndex = Header.GetCharacterIndex(character);
+            UInt16? childIndex = _header.GetCharacterIndex(character);
 
             if (childIndex != null && childIndex.HasValue)
             {
-                long targetPosition = Header.LENGTH_OF_CHILDREN_FLAGS + position;
-                binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+                long targetPosition = _header.LENGTH_OF_CHILDREN_FLAGS + position;
+                _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
 
                 int bytesCount = (childIndex.Value / 8) + 1;
-                byte[] bitwisedChildren = binaryReader.ReadBytes(bytesCount);
+                byte[] bitwisedChildren = _binaryReader.ReadBytes(bytesCount);
                 BitArray bitArray = new BitArray(bitwisedChildren);
 
                 if (bitArray.Get(childIndex.Value) == true)
@@ -164,10 +173,10 @@ namespace AutoComplete.Core
                             ++childOrder;
                     }
 
-                    int childrenOffset = ReadChildrenOffset(binaryReader, Header, position);
+                    int childrenOffset = ReadChildrenOffset(position);
 
                     // todo: change variable name targetPosition_2 to x
-                    long targetPosition_2 = position + childrenOffset + (childOrder * Header.LENGTH_OF_STRUCT);
+                    long targetPosition_2 = position + childrenOffset + (childOrder * _header.LENGTH_OF_STRUCT);
                     return targetPosition_2;
                 }
             }
@@ -177,11 +186,11 @@ namespace AutoComplete.Core
 
         internal long[] GetChildrenPositionsFromNode(BinaryReader binaryReader, TrieIndexHeader Header, long parentPosition)
         {
-            int childrenOffset = ReadChildrenOffset(binaryReader, Header, parentPosition);
+            int childrenOffset = ReadChildrenOffset(parentPosition);
             if (childrenOffset == 0) // -1 equals to non-childed parent
                 return null;
 
-            bool[] childrenFlags = ReadChildrenFlags(binaryReader, Header, parentPosition);
+            bool[] childrenFlags = ReadChildrenFlags(parentPosition);
             int childrenCount = GetFlaggedCount(childrenFlags, true);
             long[] childrenPositions = new long[childrenCount];
 
@@ -197,13 +206,13 @@ namespace AutoComplete.Core
             return childrenPositions;
         }
 
-        internal TrieNodeStructSearchResult GetLastNode(BinaryReader binaryReader, TrieIndexHeader Header, long parentPosition, TrieNodeInput input)
+        internal TrieNodeStructSearchResult GetLastNode(long parentPosition, TrieNodeInput input)
         {
             long currentPosition = parentPosition;
 
             for (int i = 0; i < input.Keyword.Length; i++)
             {
-                long? childPosition = GetChildPositionFromNode(binaryReader, Header, currentPosition, input.Keyword[i]);
+                long? childPosition = GetChildPositionFromNode(currentPosition, input.Keyword[i]);
 
                 if (childPosition != null)
                 {

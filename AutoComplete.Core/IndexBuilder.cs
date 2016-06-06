@@ -1,7 +1,7 @@
 ﻿using AutoComplete.Core.DataSource;
-
 using AutoComplete.Core.DataStructure;
 using AutoComplete.Core.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -69,30 +69,38 @@ namespace AutoComplete.Core
             ReorderTrieAndLoadHeader(_trie.Root);
         }
 
-        private void ReorderTrieAndLoadHeader(TrieNode node)
+        private void ReorderTrieAndLoadHeader(TrieNode rootNode)
         {
             TrieIndexHeader header = new TrieIndexHeader();
             Queue<TrieNode> indexerQueue = new Queue<TrieNode>();
+            indexerQueue.Enqueue(rootNode);
 
             int order = 0;
             var builder = new TrieIndexHeaderBuilder();
-            while (node != null)
+            
+            TrieNode currentNode = null;
+            while (indexerQueue.Count > 0)
             {
-                node.Order = order;
-                builder.AddChar(node.Character);
+                currentNode = indexerQueue.Dequeue();
+                
+                if (currentNode == null)
+                    throw new ArgumentNullException("Root node is null");
+
+                currentNode.Order = order;
+                builder.AddChar(currentNode.Character);
 
                 // set parent's children index when current node's child
                 // index not equal to zero and current index is not the root
-                if (node.Parent != null && node.ChildIndex == 0)
+                if (currentNode.Parent != null && currentNode.ChildIndex == 0)
                 {
-                    node.Parent.ChildrenCount = (node.Order - node.Parent.Order);
+                    currentNode.Parent.ChildrenCount = (currentNode.Order - currentNode.Parent.Order);
                 }
 
-                if (node.Children != null)
+                if (currentNode.Children != null)
                 {
                     int childIndex = 0;
 
-                    foreach (var childNode in node.Children)
+                    foreach (var childNode in currentNode.Children)
                     {
                         childNode.Value.ChildIndex = childIndex++;
                         indexerQueue.Enqueue(childNode.Value);
@@ -100,11 +108,6 @@ namespace AutoComplete.Core
                 }
 
                 ++order;
-
-                if (indexerQueue.Count == 0)
-                    break;
-
-                node = indexerQueue.Dequeue();
             }
 
             _header = builder.Build();

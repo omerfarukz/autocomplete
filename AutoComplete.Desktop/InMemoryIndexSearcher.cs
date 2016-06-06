@@ -15,15 +15,12 @@ namespace AutoComplete.Desktop
 
         private string _headerFileName;
         private string _indexFileName;
-        private TrieBinaryReader _trieBinaryReader;
 
         public InMemoryIndexSearcher(string headerFileName, string indexFileName)
             : base()
         {
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
-
-            _trieBinaryReader = new TrieBinaryReader();
         }
 
         internal override TrieIndexHeader GetHeader()

@@ -36,52 +36,49 @@ namespace AutoComplete.Core
         /// <summary>
         ///
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="currentNode"></param>
         /// <param name="trieIndexHeader"></param>
         /// <param name="index"></param>
         /// <remarks>Don't forget to dispose stream</remarks>
         /// <returns></returns>
-        public static int SerializeIndexWithBinaryWriter(TrieNode node, TrieIndexHeader trieIndexHeader, Stream index)
+        public static int SerializeIndexWithBinaryWriter(TrieNode rootNode, TrieIndexHeader trieIndexHeader, Stream index)
         {
-            if (node == null)
-                throw new ArgumentNullException("node");
-
             int processedNodeCount = 0;
 
             BinaryWriter binaryWriter = new BinaryWriter(index);
             Queue<TrieNode> serializerQueue = new Queue<TrieNode>();
 
-            serializerQueue.Enqueue(node);
-
+            serializerQueue.Enqueue(rootNode);
+            
+            TrieNode currentNode = null;
             while (serializerQueue.Count > 0)
             {
-                node = serializerQueue.Dequeue();
+                currentNode = serializerQueue.Dequeue();
                 
-                if (node == null)
+                if (currentNode == null)
                     throw new SerializationException(string.Format("Value cannot be null ", processedNodeCount));
 
                 long currentPositionOfStream = binaryWriter.BaseStream.Position;
 
                 // write character
                 //bw.Write(Encoding.Unicode.GetBytes(node.Character.ToString()));
-                UInt16? characterIndex = trieIndexHeader.GetCharacterIndex(node.Character);
+                UInt16? characterIndex = trieIndexHeader.GetCharacterIndex(currentNode.Character);
                 if (characterIndex != null && characterIndex.HasValue)
                     binaryWriter.Write(characterIndex.Value);
                 else
                     binaryWriter.Write(Convert.ToUInt16(0)); // Its root
 
-                binaryWriter.Write(node.IsTerminal);
+                binaryWriter.Write(currentNode.IsTerminal);
 
                 // write children flags
                 // convert 512 bool value to 64 byte value for efficient storage
                 BitArray baChildren = new BitArray(trieIndexHeader.COUNT_OF_CHARSET);
 
-                if (node.Children != null)
+                if (currentNode.Children != null)
                 {
-                    foreach (var item in node.Children)
+                    foreach (var item in currentNode.Children)
                     {
                         UInt16? itemIndex = trieIndexHeader.GetCharacterIndex(item.Key);
-
                         baChildren.Set(itemIndex.Value, true);
                     }
                 }
@@ -95,11 +92,11 @@ namespace AutoComplete.Core
                 }
 
                 // write children offset
-                binaryWriter.Write(node.ChildrenCount * trieIndexHeader.LENGTH_OF_STRUCT);
+                binaryWriter.Write(currentNode.ChildrenCount * trieIndexHeader.LENGTH_OF_STRUCT);
 
-                if (node.Children != null)
+                if (currentNode.Children != null)
                 {
-                    foreach (var childNode in node.Children)
+                    foreach (var childNode in currentNode.Children)
                     {
                         serializerQueue.Enqueue(childNode.Value);
                     }

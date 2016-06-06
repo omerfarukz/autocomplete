@@ -13,11 +13,9 @@ namespace AutoComplete.Core
         private Stream _headerStream;
 
         private TrieIndexHeader _header;
-        private TrieBinaryReader _trieBinaryReader;
 
         public IndexSearcher()
         {
-            _trieBinaryReader = new TrieBinaryReader();
         }
 
         /// <summary>
@@ -52,10 +50,12 @@ namespace AutoComplete.Core
             SearchResult searchResult = new SearchResult();
 
             Stream indexStreamInstance = GetIndexStream();
-            BinaryReader binaryReader = new BinaryReader(indexStreamInstance);
-
             var input = TrieNodeInput.Create(options.Term);
-            var lastNode = _trieBinaryReader.GetLastNode(binaryReader, _header, 0, input);
+
+            BinaryReader binaryReader = new BinaryReader(indexStreamInstance);
+            var trieBinaryReader = new TrieBinaryReader(binaryReader, _header);
+
+            var lastNode = trieBinaryReader.GetLastNode(0, input);
 
             List<string> foundItems = new List<string>();
 
@@ -82,7 +82,7 @@ namespace AutoComplete.Core
                 prefix = input.Keyword.Substring(0, input.Keyword.Length - 1);
             }
 
-            foundItems = _trieBinaryReader.GetAutoCompleteNodes(binaryReader, _header, lastNode.LastFoundNodePosition, prefix, options.MaxItemCount, new List<string>());
+            foundItems = trieBinaryReader.GetAutoCompleteNodes(lastNode.LastFoundNodePosition, prefix, options.MaxItemCount, new List<string>());
 
             searchResult.ResultType = lastNode.Status;
             searchResult.Items = foundItems.ToArray();
