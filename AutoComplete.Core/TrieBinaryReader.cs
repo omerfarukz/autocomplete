@@ -56,7 +56,7 @@ namespace AutoComplete.Core
             _binaryReader.BaseStream.Seek(position, SeekOrigin.Begin);
             UInt16 bytes = _binaryReader.ReadUInt16();
 
-            return _header.GetCharacterAtIndex(bytes);
+            return TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(_header, bytes);
         }
 
         internal bool ReadIsTerminal(long position)
@@ -153,7 +153,7 @@ namespace AutoComplete.Core
         /// <returns></returns>
         internal long? GetChildPositionFromNode(long position, char character)
         {
-            UInt16? childIndex = _header.GetCharacterIndex(character);
+            UInt16? childIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(_header, character);
 
             if (childIndex != null && childIndex.HasValue)
             {
@@ -275,7 +275,7 @@ namespace AutoComplete.Core
             {
                 foreach (UInt16 item in charCodes)
                 {
-                    char currentCharacter = Header.GetCharacterAtIndex(item);
+                    char currentCharacter = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(Header, item);
                     charList.Add(currentCharacter);
                 }
             }

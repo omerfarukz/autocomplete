@@ -5,7 +5,6 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoC
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Desktop.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Web.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Core.pdb
-C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Desktop.pdb
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Web.pdb
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\obj\Release\AutoComplete.Clients.Web.csprojResolveAssemblyReference.cache
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\obj\Release\AutoComplete.Clients.Web.dll

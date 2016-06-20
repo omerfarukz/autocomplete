@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoComplete.Core\AutoComplete.Core.csproj">
-      <Project>{C7F59E04-E85A-4F8E-AD63-03B661316493}</Project>
+      <Project>{c7f59e04-e85a-4f8e-ad63-03b661316493}</Project>
       <Name>AutoComplete.Core</Name>
     </ProjectReference>
   </ItemGroup>

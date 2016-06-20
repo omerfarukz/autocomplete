@@ -103,7 +103,7 @@ namespace AutoComplete.UnitTests
         public void get_character_index_must_be_null()
         {
             var header = new TrieIndexHeader();
-            var characterIndex = header.GetCharacterIndex('a');
+            var characterIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(header, 'a');
 
             Assert.AreEqual(null, characterIndex);
         }
@@ -113,7 +113,7 @@ namespace AutoComplete.UnitTests
         {
             var header = new TrieIndexHeaderBuilder().AddChar('a').Build();
 
-            var characterIndex = header.GetCharacterIndex('a');
+            var characterIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(header, 'a');
 
             Assert.AreEqual((ushort)0, characterIndex);
         }
@@ -126,8 +126,8 @@ namespace AutoComplete.UnitTests
                 .AddChar('b')
                 .Build();
 
-            var characterIndex_a = header.GetCharacterIndex('a');
-            var characterIndex_b = header.GetCharacterIndex('b');
+            var characterIndex_a = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(header, 'a');
+            var characterIndex_b = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(header, 'b');
 
             Assert.AreEqual((ushort)0, characterIndex_a);
             Assert.AreEqual((ushort)1, characterIndex_b);
@@ -141,8 +141,8 @@ namespace AutoComplete.UnitTests
                 .AddChar('b')
                 .Build();
 
-            var character_a = header.GetCharacterAtIndex(0);
-            var character_b = header.GetCharacterAtIndex(1);
+            var character_a = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(header, 0);
+            var character_b = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(header, 1);
 
             Assert.AreEqual(character_a, 'a');
             Assert.AreEqual(character_b, 'b');
@@ -157,9 +157,9 @@ namespace AutoComplete.UnitTests
                  .AddChar('a')
                  .Build();
 
-            var character_a = header.GetCharacterAtIndex(0);
-            var character_b = header.GetCharacterAtIndex(1);
-            var character_c = header.GetCharacterAtIndex(2);
+            var character_a = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(header, 0);
+            var character_b = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(header, 1);
+            var character_c = TrieIndexHeaderCharacterReader.Instance.GetCharacterAtIndex(header, 2);
 
             Assert.AreEqual(character_a, 'a');
             Assert.AreEqual(character_b, 'b');

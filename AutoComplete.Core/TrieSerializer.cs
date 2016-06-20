@@ -28,7 +28,7 @@ namespace AutoComplete.Core
             var trieIndexHeader = (TrieIndexHeader)serializer.Deserialize(header);
 
             if (!dontAutoInitializeCache)
-                trieIndexHeader.InitCharacterCache();
+                TrieIndexHeaderCharacterReader.Instance.InitCharacterCache(trieIndexHeader);
 
             return trieIndexHeader;
         }
@@ -62,7 +62,7 @@ namespace AutoComplete.Core
 
                 // write character
                 //bw.Write(Encoding.Unicode.GetBytes(node.Character.ToString()));
-                UInt16? characterIndex = trieIndexHeader.GetCharacterIndex(currentNode.Character);
+                UInt16? characterIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(trieIndexHeader, currentNode.Character);
                 if (characterIndex != null && characterIndex.HasValue)
                     binaryWriter.Write(characterIndex.Value);
                 else
@@ -78,7 +78,7 @@ namespace AutoComplete.Core
                 {
                     foreach (var item in currentNode.Children)
                     {
-                        UInt16? itemIndex = trieIndexHeader.GetCharacterIndex(item.Key);
+                        UInt16? itemIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(trieIndexHeader, item.Key);
                         baChildren.Set(itemIndex.Value, true);
                     }
                 }

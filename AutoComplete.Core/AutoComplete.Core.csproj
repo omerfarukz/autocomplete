@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="DataSource\IKeywordDataSource.cs" />
     <Compile Include="DataStructure\Trie.cs" />
     <Compile Include="DataStructure\TrieCharacterComparer.cs" />
@@ -47,6 +44,7 @@
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
+    <Compile Include="TrieIndexHeaderCharacterReader.cs" />
     <Compile Include="TrieSerializer.cs" />
     <Compile Include="IIndexBuilder.cs" />
     <Compile Include="IIndexSearcher.cs" />

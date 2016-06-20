@@ -3,7 +3,6 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Release\AutoComplete.Core.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Release\AutoComplete.Desktop.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Release\AutoComplete.Core.pdb
-C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Release\AutoComplete.Desktop.pdb
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.csprojResolveAssemblyReference.cache
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.exe
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.pdb
