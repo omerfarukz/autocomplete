@@ -1,4 +1,5 @@
 ﻿using AutoComplete.Core;
+using AutoComplete.Core.Domain;
 using System.Text;
 using System.Web;
 

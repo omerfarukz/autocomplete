@@ -12,7 +12,6 @@ namespace AutoComplete.Core
 
         public TrieIndexHeaderCharacterReader()
         {
-            //_headerCache = new Dictionary<TrieIndexHeader, object>();
             _isCharacterIndexCacheInitialized = new Dictionary<TrieIndexHeader, bool>();
             _characterIndexDictionary = new Dictionary<TrieIndexHeader, IDictionary<char, UInt16>>();
         }
@@ -57,8 +56,8 @@ namespace AutoComplete.Core
                                 _characterIndexDictionary[header].Add(header.CharacterList[i], i);
                         }
                     }
-                } // lock
-            } // if
+                }
+            }
         }
 
     }

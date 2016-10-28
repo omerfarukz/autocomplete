@@ -7,3 +7,12 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.csprojResolveAssemblyReference.cache
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.exe
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Clients.ConsoleClient.exe
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Clients.ConsoleClient.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Core.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Desktop.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Core.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Debug\AutoComplete.Desktop.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.csprojResolveAssemblyReference.cache
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.exe
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Debug\AutoComplete.Clients.ConsoleClient.pdb

@@ -43,20 +43,21 @@
     <Compile Include="DataStructure\TrieNodeSearchResult.cs" />
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
+    <Compile Include="Domain\ManagedInMemoryStream.cs" />
+    <Compile Include="Domain\SearchOptions.cs" />
+    <Compile Include="Domain\SearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
     <Compile Include="TrieIndexHeaderCharacterReader.cs" />
     <Compile Include="TrieSerializer.cs" />
     <Compile Include="IIndexBuilder.cs" />
     <Compile Include="IIndexSearcher.cs" />
-    <Compile Include="ManagedInMemoryStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchOptions.cs" />
-    <Compile Include="SearchResult.cs" />
     <Compile Include="TrieIndexHeaderBuilder.cs" />
     <Compile Include="TrieBinaryReader.cs" />
     <Compile Include="IndexBuilder.cs" />
     <Compile Include="IndexSearcher.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,5 @@
 ﻿using AutoComplete.Core;
+using AutoComplete.Core.Domain;
 using AutoComplete.Desktop;
 using System.Diagnostics;
 
@@ -26,6 +27,7 @@ namespace AutoComplete.Clients.ConsoleClient
                 string term = System.Console.ReadLine();
 
                 sw.Restart();
+
                 SearchResult searchResult = searcher.Search(term, 5, false);
                 sw.Stop();
 

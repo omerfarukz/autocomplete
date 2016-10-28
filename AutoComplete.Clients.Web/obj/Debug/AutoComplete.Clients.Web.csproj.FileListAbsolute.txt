@@ -10,3 +10,15 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\bin\AutoC
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.csprojResolveAssemblyReference.cache
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Clients.Web.dll.config
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Clients.Web.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Clients.Web.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Core.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Desktop.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Web.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Core.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Desktop.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete.Web.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.csprojResolveAssemblyReference.cache
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.pdb

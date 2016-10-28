@@ -59,8 +59,8 @@ namespace AutoComplete.Core
             PrepareForBuild();
 
             TrieSerializer.SerializeHeaderWithXmlSerializer(_headerStream, _header);
-            var processedNodeCount = TrieSerializer.SerializeIndexWithBinaryWriter(_trie.Root, _header, _indexStream);
 
+            var processedNodeCount = TrieSerializer.SerializeIndexWithBinaryWriter(_trie.Root, _header, _indexStream);
             return processedNodeCount;
         }
 

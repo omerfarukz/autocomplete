@@ -1,5 +1,5 @@
 ﻿using AutoComplete.Core;
-
+using AutoComplete.Core.Domain;
 using System.Collections.Generic;
 using System.IO;
 

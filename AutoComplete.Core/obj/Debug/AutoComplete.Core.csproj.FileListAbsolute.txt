@@ -3,3 +3,8 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\bin\Debug\AutoCo
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.dll
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.pdb
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.csprojResolveAssemblyReference.cache
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.csprojResolveAssemblyReference.cache
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Debug\AutoComplete.Core.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\bin\Debug\AutoComplete.Core.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\bin\Debug\AutoComplete.Core.pdb

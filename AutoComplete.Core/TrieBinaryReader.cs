@@ -1,4 +1,5 @@
 ﻿using AutoComplete.Core.DataStructure;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -208,6 +209,8 @@ namespace AutoComplete.Core
 
         internal TrieNodeStructSearchResult GetLastNode(long parentPosition, TrieNodeInput input)
         {
+            var result = TrieNodeStructSearchResult.CreateNotFound();
+
             long currentPosition = parentPosition;
 
             for (int i = 0; i < input.Keyword.Length; i++)
@@ -218,7 +221,8 @@ namespace AutoComplete.Core
                 {
                     if (i == input.Keyword.Length - 1)
                     {
-                        return TrieNodeStructSearchResult.CreateFoundEquals(childPosition.Value);
+                        result = TrieNodeStructSearchResult.CreateFoundEquals(childPosition.Value);
+                        break;
                     }
 
                     currentPosition = childPosition.Value;
@@ -226,14 +230,16 @@ namespace AutoComplete.Core
                 }
                 else
                 {
-                    if (i == 0)
-                        return TrieNodeStructSearchResult.CreateNotFound();
+                    if (i != 0)
+                    {
+                        result = TrieNodeStructSearchResult.CreateFoundStartsWith(currentPosition, i, currentPosition);
+                    }
 
-                    return TrieNodeStructSearchResult.CreateFoundStartsWith(currentPosition, i, currentPosition);
+                    break;
                 }
             }
 
-            throw new Exception();
+            return result;
         }
 
         internal ICollection<UInt16> GetFlagedCharCodes(BitArray bitArray, TrieIndexHeader Header, bool flag)

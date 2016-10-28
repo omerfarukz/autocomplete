@@ -1,4 +1,6 @@
-﻿namespace AutoComplete.Core
+﻿using AutoComplete.Core.Domain;
+
+namespace AutoComplete.Core
 {
     public interface IIndexSearcher
     {

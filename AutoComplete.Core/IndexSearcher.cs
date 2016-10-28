@@ -1,6 +1,5 @@
 ﻿using AutoComplete.Core.DataStructure;
-
-using AutoComplete.Core.Helpers;
+using AutoComplete.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,8 +14,7 @@ namespace AutoComplete.Core
         private TrieIndexHeader _header;
 
         public IndexSearcher()
-        {
-        }
+        {}
 
         /// <summary>
         /// Don't forget the close stream(s) after search
@@ -47,45 +45,46 @@ namespace AutoComplete.Core
             if (_header == null)
                 _header = GetHeader();
 
-            SearchResult searchResult = new SearchResult();
+            var trieBinaryReader = CreateTrieBinaryReader();
 
-            Stream indexStreamInstance = GetIndexStream();
             var input = TrieNodeInput.Create(options.Term);
+            var node = trieBinaryReader.GetLastNode(0, input);
 
-            BinaryReader binaryReader = new BinaryReader(indexStreamInstance);
-            var trieBinaryReader = new TrieBinaryReader(binaryReader, _header);
+            return CreateResultFromNode(trieBinaryReader, node, input, options);
+        }
 
-            var lastNode = trieBinaryReader.GetLastNode(0, input);
-
-            List<string> foundItems = new List<string>();
-
-            if (lastNode.Status == TrieNodeSearchResultType.NotFound || lastNode.Status == TrieNodeSearchResultType.Unkown)
+        private SearchResult CreateResultFromNode(TrieBinaryReader trieBinaryReader, TrieNodeStructSearchResult node, TrieNodeInput input, SearchOptions options)
+        {
+            var searchResult = new SearchResult();
+            if (node.Status == TrieNodeSearchResultType.NotFound || node.Status == TrieNodeSearchResultType.Unkown)
             {
-                searchResult.ResultType = lastNode.Status;
+                searchResult.ResultType = node.Status;
                 return searchResult;
             }
 
             string prefix = null;
-
-            if (lastNode.Status == TrieNodeSearchResultType.FoundStartsWith)
+            if (node.Status == TrieNodeSearchResultType.FoundStartsWith)
             {
                 if (!options.SuggestWhenFoundStartsWith)
                 {
-                    searchResult.ResultType = lastNode.Status;
+                    searchResult.ResultType = node.Status;
                     return searchResult;
                 }
 
-                prefix = input.Keyword.Substring(0, lastNode.LastFoundCharacterIndex - 1);
+                prefix = input.Keyword.Substring(0, node.LastFoundCharacterIndex - 1);
             }
-            else if (lastNode.Status == TrieNodeSearchResultType.FoundEquals)
+            else if (node.Status == TrieNodeSearchResultType.FoundEquals)
             {
                 prefix = input.Keyword.Substring(0, input.Keyword.Length - 1);
             }
 
-            foundItems = trieBinaryReader.GetAutoCompleteNodes(lastNode.LastFoundNodePosition, prefix, options.MaxItemCount, new List<string>());
-
-            searchResult.ResultType = lastNode.Status;
-            searchResult.Items = foundItems.ToArray();
+            searchResult.ResultType = node.Status;
+            searchResult.Items = trieBinaryReader.GetAutoCompleteNodes(
+                                                                    node.LastFoundNodePosition,
+                                                                    prefix,
+                                                                    options.MaxItemCount,
+                                                                    new List<string>()
+                                                                ).ToArray();
 
             return searchResult;
         }
@@ -93,7 +92,7 @@ namespace AutoComplete.Core
         internal virtual TrieIndexHeader GetHeader()
         {
             var header = TrieSerializer.DeserializeHeaderWithXmlSerializer(_headerStream);
-            _headerStream.Dispose(); // TODO: breakpoint
+            _headerStream.Dispose(); // TODO: 
 
             return header;
         }
@@ -101,6 +100,15 @@ namespace AutoComplete.Core
         internal virtual Stream GetIndexStream()
         {
             return _indexStream;
+        }
+
+        private TrieBinaryReader CreateTrieBinaryReader()
+        {
+            Stream stream = GetIndexStream();
+            BinaryReader binaryReader = new BinaryReader(stream);
+            var trieBinaryReader = new TrieBinaryReader(binaryReader, _header);
+
+            return trieBinaryReader;
         }
     }
 }

@@ -11,26 +11,12 @@ namespace AutoComplete.Core
 {
     internal class TrieSerializer
     {
+        #region Serialzie
+
         public static void SerializeHeaderWithXmlSerializer(Stream header, TrieIndexHeader trieIndexHeader)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
             serializer.Serialize(header, trieIndexHeader);
-        }
-
-        public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header)
-        {
-            return DeserializeHeaderWithXmlSerializer(header, false);
-        }
-
-        public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header, bool dontAutoInitializeCache)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
-            var trieIndexHeader = (TrieIndexHeader)serializer.Deserialize(header);
-
-            if (!dontAutoInitializeCache)
-                TrieIndexHeaderCharacterReader.Instance.InitCharacterCache(trieIndexHeader);
-
-            return trieIndexHeader;
         }
 
         /// <summary>
@@ -45,16 +31,16 @@ namespace AutoComplete.Core
         {
             int processedNodeCount = 0;
 
-            BinaryWriter binaryWriter = new BinaryWriter(index);
             Queue<TrieNode> serializerQueue = new Queue<TrieNode>();
-
             serializerQueue.Enqueue(rootNode);
-            
+
             TrieNode currentNode = null;
+            BinaryWriter binaryWriter = new BinaryWriter(index);
+
             while (serializerQueue.Count > 0)
             {
                 currentNode = serializerQueue.Dequeue();
-                
+
                 if (currentNode == null)
                     throw new SerializationException(string.Format("Value cannot be null ", processedNodeCount));
 
@@ -64,16 +50,19 @@ namespace AutoComplete.Core
                 //bw.Write(Encoding.Unicode.GetBytes(node.Character.ToString()));
                 UInt16? characterIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(trieIndexHeader, currentNode.Character);
                 if (characterIndex != null && characterIndex.HasValue)
+                {
                     binaryWriter.Write(characterIndex.Value);
+                }
                 else
+                {
                     binaryWriter.Write(Convert.ToUInt16(0)); // Its root
+                }
 
                 binaryWriter.Write(currentNode.IsTerminal);
 
                 // write children flags
                 // convert 512 bool value to 64 byte value for efficient storage
                 BitArray baChildren = new BitArray(trieIndexHeader.COUNT_OF_CHARSET);
-
                 if (currentNode.Children != null)
                 {
                     foreach (var item in currentNode.Children)
@@ -107,5 +96,27 @@ namespace AutoComplete.Core
 
             return processedNodeCount;
         }
+
+        #endregion
+
+        #region Deserialize
+
+        public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header)
+        {
+            return DeserializeHeaderWithXmlSerializer(header, false);
+        }
+
+        public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header, bool dontAutoInitializeCache)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
+            var trieIndexHeader = (TrieIndexHeader)serializer.Deserialize(header);
+
+            if (!dontAutoInitializeCache)
+                TrieIndexHeaderCharacterReader.Instance.InitCharacterCache(trieIndexHeader);
+
+            return trieIndexHeader;
+        }
+
+        #endregion
     }
 }
