@@ -1345,7 +1345,9 @@
       "Autocomplete.Client/1.0.0": {
         "dependencies": {
           "AutoComplete.Core": "1.0.0",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "System.ComponentModel.TypeConverter": "4.1.0"
         },
         "runtime": {
           "Autocomplete.Client.dll": {}
