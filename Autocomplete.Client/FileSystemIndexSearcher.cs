@@ -7,6 +7,7 @@ namespace AutoComplete.Client
 {
     public class FileSystemIndexSearcher : IndexSearcher
     {
+        //check
         private static object _lockObject = new object();
         private static Dictionary<string, TrieIndexHeader> _headerDictionary = new Dictionary<string, TrieIndexHeader>();
 
