@@ -1,11 +1,11 @@
 ﻿using AutoComplete.Core.DataStructure;
 using AutoComplete.Core.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
+using System.Text;
 
 namespace AutoComplete.Core
 {
@@ -15,8 +15,23 @@ namespace AutoComplete.Core
 
         public static void SerializeHeaderWithXmlSerializer(Stream header, TrieIndexHeader trieIndexHeader)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
-            serializer.Serialize(header, trieIndexHeader);
+            using (StreamWriter streamWriter = new StreamWriter(header, Encoding.UTF8, 1024, true)) // TODO: buffer size
+            {
+                using (JsonTextWriter jsonWriter = new JsonTextWriter(streamWriter))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jsonWriter, trieIndexHeader);
+                    jsonWriter.Flush();
+                }
+            }
+        }
+
+        private static JsonSerializerSettings GetSettings()
+        {
+            return new JsonSerializerSettings()
+            {
+                MaxDepth = Int32.MaxValue
+            };
         }
 
         /// <summary>
@@ -42,7 +57,7 @@ namespace AutoComplete.Core
                 currentNode = serializerQueue.Dequeue();
 
                 if (currentNode == null)
-                    throw new SerializationException(string.Format("Value cannot be null ", processedNodeCount));
+                    throw new InvalidDataException(string.Format("Value cannot be null ", processedNodeCount));
 
                 long currentPositionOfStream = binaryWriter.BaseStream.Position;
 
@@ -108,13 +123,19 @@ namespace AutoComplete.Core
 
         public static TrieIndexHeader DeserializeHeaderWithXmlSerializer(Stream header, bool dontAutoInitializeCache)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TrieIndexHeader));
-            var trieIndexHeader = (TrieIndexHeader)serializer.Deserialize(header);
+            using (StreamReader streamReader = new StreamReader(header))
+            {
+                using (JsonTextReader jsonReader = new JsonTextReader(streamReader))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    var trieIndexHeader = serializer.Deserialize<TrieIndexHeader>(jsonReader);
 
-            if (!dontAutoInitializeCache)
-                TrieIndexHeaderCharacterReader.Instance.InitCharacterCache(trieIndexHeader);
+                    if (!dontAutoInitializeCache)
+                        TrieIndexHeaderCharacterReader.Instance.InitCharacterCache(trieIndexHeader);
 
-            return trieIndexHeader;
+                    return trieIndexHeader;
+                }
+            }
         }
 
         #endregion

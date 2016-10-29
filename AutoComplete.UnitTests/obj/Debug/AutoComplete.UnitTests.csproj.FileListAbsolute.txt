@@ -32,3 +32,7 @@ C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\AutoComp
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.dll
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Resource\20k_header.json
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Resource\20k_index.json

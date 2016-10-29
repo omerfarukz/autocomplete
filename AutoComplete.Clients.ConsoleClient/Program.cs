@@ -9,7 +9,8 @@ namespace AutoComplete.Clients.ConsoleClient
     {
         private static void Main(string[] args)
         {
-            Search();
+            //Search();
+            //var builder = new TrieIndexBuilder
         }
 
         private static void Search()

@@ -92,8 +92,6 @@ namespace AutoComplete.Core
         internal virtual TrieIndexHeader GetHeader()
         {
             var header = TrieSerializer.DeserializeHeaderWithXmlSerializer(_headerStream);
-            _headerStream.Dispose(); // TODO: 
-
             return header;
         }
 

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "AutoComplete.Core/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.0",
+      "compile": {
+        "bin/Debug/AutoComplete.Core.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/AutoComplete.Core.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/AutoComplete.Core.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

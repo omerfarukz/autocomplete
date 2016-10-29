@@ -88,5 +88,22 @@ namespace AutoComplete.UnitTests
                 }
             }
         }
+
+        [TestMethod]
+        public void load_json_20k_keyword_with_data_source()
+        {
+            using (var headerStream = new FileStream("c:\\tests\\header20k.json", FileMode.OpenOrCreate))
+            {
+                using (var indexStream = new FileStream("c:\\tests\\index20k.json", FileMode.OpenOrCreate))
+                {
+                    var builder = new IndexBuilder(headerStream, indexStream);
+                    builder.WithDataSource(new FakeKeywordDataSource());
+
+                    var processedNodeCount = builder.Build();
+
+                    Assert.AreEqual(50757, processedNodeCount);
+                }
+            }
+        }
     }
 }
