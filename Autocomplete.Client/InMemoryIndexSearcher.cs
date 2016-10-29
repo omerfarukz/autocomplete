@@ -1,6 +1,5 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.Domain;
-using System.Collections.Generic;
 using System.IO;
 
 namespace AutoComplete.Client
@@ -10,8 +9,8 @@ namespace AutoComplete.Client
         private const int FirstReadBufferSize = 10 * 1024;
 
         private static object _lockObject = new object();
-        private static Dictionary<string, TrieIndexHeader> _headerDictionary = new Dictionary<string, TrieIndexHeader>();
-        private static Dictionary<string, byte[]> _indexData = new Dictionary<string, byte[]>();
+        private static TrieIndexHeader _header;
+        private static byte[] _index;
 
         private string _headerFileName;
         private string _indexFileName;
@@ -26,31 +25,28 @@ namespace AutoComplete.Client
         internal override TrieIndexHeader GetHeader()
         {
             // double checked initialization
-            if (!_headerDictionary.ContainsKey(_headerFileName))
+            if (_header == null)
             {
                 lock (_lockObject)
                 {
-                    if (!_headerDictionary.ContainsKey(_headerFileName))
+                    if (_header == null)
                     {
-                        var currentHeader = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
-
-                        _headerDictionary.Add(_headerFileName, currentHeader);
+                        _header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
                     }
                 }
             }
 
-            TrieIndexHeader header = _headerDictionary[_headerFileName];
-            return header;
+            return _header;
         }
 
         internal override Stream GetIndexStream()
         {
             // double checked initialization
-            if (!_indexData.ContainsKey(_indexFileName))
+            if (_index == null)
             {
                 lock (_lockObject)
                 {
-                    if (!_indexData.ContainsKey(_indexFileName))
+                    if (_index == null)
                     {
                         Stream temporaryStream = new FileStream(
                                                 _indexFileName,
@@ -70,14 +66,12 @@ namespace AutoComplete.Client
                         temporaryStream.Dispose();
                         temporaryStream = null;
 
-                        _indexData.Add(_indexFileName, streamBytes);
+                        _index = streamBytes;
                     }
                 }
             }
 
-            Stream actualStream = new ManagedInMemoryStream(_indexData[_indexFileName]);
-
-            return actualStream;
+            return new ManagedInMemoryStream(_index);
         }
     }
 }

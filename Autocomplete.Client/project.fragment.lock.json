@@ -5,13 +5,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.0",
       "compile": {
-        "bin/Debug/AutoComplete.Core.dll": {}
+        "bin/Release/AutoComplete.Core.dll": {}
       },
       "runtime": {
-        "bin/Debug/AutoComplete.Core.dll": {}
+        "bin/Release/AutoComplete.Core.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/AutoComplete.Core.pdb": {
+        "bin/Release/AutoComplete.Core.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

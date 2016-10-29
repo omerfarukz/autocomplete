@@ -12,8 +12,8 @@ namespace AutoComplete.Clients.Web
     {
         public override IIndexSearcher GetSearcher()
         {
-            string headerPath = HostingEnvironment.MapPath("~/App_Data/fs_header.xml");
-            string indexPath = HostingEnvironment.MapPath("~/App_Data/fs_index.bin");
+            string headerPath = HostingEnvironment.MapPath("~/App_Data/20k_header.json");
+            string indexPath = HostingEnvironment.MapPath("~/App_Data/20k_index.bin");
 
             IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 

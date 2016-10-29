@@ -22,3 +22,5 @@ C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\AutoComplete
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.csprojResolveAssemblyReference.cache
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.dll
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\obj\Debug\AutoComplete.Clients.Web.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\Newtonsoft.Json.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.Web\bin\Newtonsoft.Json.xml

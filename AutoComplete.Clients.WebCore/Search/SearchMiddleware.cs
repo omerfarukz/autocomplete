@@ -1,6 +1,7 @@
 ﻿using AutoComplete.Client;
 using AutoComplete.Core;
 using AutoComplete.Core.Domain;
+using AutoComplete.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -41,7 +42,7 @@ namespace AutoComplete.Clients.WebCore.Search
                 await context.Response.WriteAsync(formattedResult);
             }
 
-            await _next.Invoke(context);
+            //await _next.Invoke(context);
         }
 
         private bool IsValidContext(HttpContext context)
@@ -67,7 +68,7 @@ namespace AutoComplete.Clients.WebCore.Search
         private IIndexSearcher GetSearcher()
         {
             string headerPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_header.json");
-            string indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.json");
+            string indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.bin");
 
             IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
             return searcher;
@@ -76,19 +77,9 @@ namespace AutoComplete.Clients.WebCore.Search
         private SearchOptions GetSearchOptions(HttpContext context)
         {
             SearchOptions searchOptions = new SearchOptions();
-            searchOptions.MaxItemCount = 5;
-            if (_settings.MaxItemCountName != null && context.Request.Query.ContainsKey(_settings.MaxItemCountName))
-            {
-                int tmp = 0;
-                if (int.TryParse(context.Request.Query[_settings.MaxItemCountName], out tmp))
-                    searchOptions.MaxItemCount = tmp;
-            }
-
-            if (_settings.KeywordName != null && context.Request.Query.ContainsKey(_settings.KeywordName))
-            {
-                searchOptions.Term = context.Request.Query[_settings.KeywordName];
-            }
-
+            searchOptions.MaxItemCount = RequestHelper.ExtractValue<int>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.MaxItemCountName, 5);
+            searchOptions.Term = RequestHelper.ExtractValue<string>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.KeywordName, null);
+            
             return searchOptions;
         }
 

@@ -19,7 +19,7 @@
     "AutoComplete.Clients.WebCore": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/k=test",
+      "launchUrl": "http://localhost:5000/?k=test",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
