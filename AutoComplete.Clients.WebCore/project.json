@@ -5,8 +5,6 @@
       "type": "platform"
     },
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
-    "Microsoft.AspNetCore.Mvc": "1.0.1",
-    "Microsoft.AspNetCore.Routing": "1.0.1",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
@@ -29,7 +27,6 @@
         "AutoComplete.Core": {
           "target": "project"
         }
-
       },
       "imports": [
         "dotnet5.6",

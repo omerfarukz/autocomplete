@@ -16,7 +16,11 @@ namespace AutoComplete.Clients.WebCore.Search
         private readonly SearchMiddlewareSetting _settings;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public SearchMiddleware(RequestDelegate next, IOptions<SearchMiddlewareSetting> settings, IHostingEnvironment hostingEnvironment)
+        public SearchMiddleware(
+                RequestDelegate next,
+                IOptions<SearchMiddlewareSetting> settings,
+                IHostingEnvironment hostingEnvironment
+            )
         {
             _next = next;
             _settings = settings?.Value;
@@ -25,23 +29,20 @@ namespace AutoComplete.Clients.WebCore.Search
 
         public async Task Invoke(HttpContext context)
         {
-            if (!IsValidContext(context))
+            if (IsValidContext(context))
             {
-                context.Response.StatusCode = 400; // HttpStatusCode.BadRequest;
-                return;
+                SearchOptions searchOptions = GetSearchOptions(context);
+                IIndexSearcher searcher = GetSearcher();
+
+                SearchResult searchResult = searcher.Search(searchOptions);
+                string formattedResult = FormatSearchResult(searchResult);
+
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync(formattedResult);
             }
-            SearchOptions searchOptions = GetSearchOptions(context);
-            IIndexSearcher searcher = GetSearcher();
-
-            SearchResult searchResult = searcher.Search(searchOptions);
-            string formattedResult = FormatSearchResult(searchResult);
-
-            context.Response.ContentType = "text/plain";
-            await context.Response.WriteAsync(formattedResult);
 
             await _next.Invoke(context);
         }
-
 
         private bool IsValidContext(HttpContext context)
         {
@@ -69,7 +70,6 @@ namespace AutoComplete.Clients.WebCore.Search
             string indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.json");
 
             IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
-
             return searcher;
         }
 
