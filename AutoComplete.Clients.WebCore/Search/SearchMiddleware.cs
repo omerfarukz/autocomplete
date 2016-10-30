@@ -30,8 +30,8 @@ namespace AutoComplete.Clients.WebCore.Search
             _settings = settings?.Value;
             _hostingEnvironment = hostingEnvironment;
 
-            _headerFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, _settings.DbDirectory, "\\header.json");
-            _indexFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, _settings.DbDirectory, "\\index.bin");
+            _headerFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, $"{_settings.DbDirectory}\\header.json");
+            _indexFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, $"{_settings.DbDirectory}\\index.bin");
         }
 
         public async Task Invoke(HttpContext context)
@@ -85,9 +85,10 @@ namespace AutoComplete.Clients.WebCore.Search
         private SearchOptions GetSearchOptions(HttpContext context)
         {
             var searchOptions = new SearchOptions();
+            searchOptions.SuggestWhenFoundStartsWith = _settings.SuggestWhenFoundStartsWith;
+
             searchOptions.MaxItemCount = RequestHelper.ExtractValue<int>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.MaxItemCountName, 5);
             searchOptions.Term = RequestHelper.ExtractValue<string>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.KeywordName, null);
-            searchOptions.SuggestWhenFoundStartsWith = _settings.SuggestWhenFoundStartsWith;
 
             return searchOptions;
         }
