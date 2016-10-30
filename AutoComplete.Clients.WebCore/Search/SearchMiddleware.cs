@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System;
 
 namespace AutoComplete.Clients.WebCore.Search
 {
@@ -16,7 +17,9 @@ namespace AutoComplete.Clients.WebCore.Search
         private readonly RequestDelegate _next;
         private readonly SearchMiddlewareSetting _settings;
         private readonly IHostingEnvironment _hostingEnvironment;
-
+        private readonly string _headerFilePath;
+        private readonly string _indexFilePath;
+        
         public SearchMiddleware(
                 RequestDelegate next,
                 IOptions<SearchMiddlewareSetting> settings,
@@ -26,6 +29,9 @@ namespace AutoComplete.Clients.WebCore.Search
             _next = next;
             _settings = settings?.Value;
             _hostingEnvironment = hostingEnvironment;
+
+            _headerFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, _settings.DbDirectory, "\\header.json");
+            _indexFilePath = Path.Combine(_hostingEnvironment.ContentRootPath, _settings.DbDirectory, "\\index.bin");
         }
 
         public async Task Invoke(HttpContext context)
@@ -59,27 +65,18 @@ namespace AutoComplete.Clients.WebCore.Search
             return true;
         }
 
-        #region GetSearcher
-
-        private string _headerPath = null;
-        private string _indexPath = null;
+        #region GetSearcher;
 
         private IIndexSearcher GetSearcher()
         {
-            if(_headerPath==null)
-                _headerPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_header.json");
-
-            if(_indexPath == null)
-                _indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.bin");
-
             IIndexSearcher searcher = null;
             if (_settings.UseMemorySearcher)
             {
-                searcher = new InMemoryIndexSearcher(_headerPath, _indexPath);
+                searcher = new InMemoryIndexSearcher(_headerFilePath, _indexFilePath);
             }
             else
             {
-                searcher = new FileSystemIndexSearcher(_headerPath, _indexPath);
+                searcher = new FileSystemIndexSearcher(_headerFilePath, _indexFilePath);
             }
 
             return searcher;
@@ -90,7 +87,8 @@ namespace AutoComplete.Clients.WebCore.Search
             var searchOptions = new SearchOptions();
             searchOptions.MaxItemCount = RequestHelper.ExtractValue<int>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.MaxItemCountName, 5);
             searchOptions.Term = RequestHelper.ExtractValue<string>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.KeywordName, null);
-            
+            searchOptions.SuggestWhenFoundStartsWith = _settings.SuggestWhenFoundStartsWith;
+
             return searchOptions;
         }
 

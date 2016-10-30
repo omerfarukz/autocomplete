@@ -13,5 +13,7 @@
         public bool UseMemorySearcher { get; set; }
 
         public string ResponseContentType { get; set; }
+
+        public bool SuggestWhenFoundStartsWith { get; set; }
     }
 }
