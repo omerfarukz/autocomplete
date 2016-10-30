@@ -4,5 +4,6 @@ C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Release\Auto
 C:\Users\ozorlu\Documents\GitHub\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.pdb
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\bin\Release\AutoComplete.Core.dll
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\bin\Release\AutoComplete.Core.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.csprojResolveAssemblyReference.cache
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.dll
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Core\obj\Release\AutoComplete.Core.pdb

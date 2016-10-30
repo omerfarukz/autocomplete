@@ -38,7 +38,7 @@ namespace AutoComplete.Clients.WebCore.Search
                 SearchResult searchResult = searcher.Search(searchOptions);
                 string formattedResult = FormatSearchResult(searchResult);
 
-                context.Response.ContentType = "text/plain";
+                context.Response.ContentType = _settings.ResponseContentType;
                 await context.Response.WriteAsync(formattedResult);
             }
 
@@ -47,36 +47,47 @@ namespace AutoComplete.Clients.WebCore.Search
 
         private bool IsValidContext(HttpContext context)
         {
-            if (context == null)
-                return false;
-
-            if (context.Request == null || context.Request.Method != _settings.Method)
+            if (
+                    context == null ||
+                    context.Request == null ||
+                    context.Request.Method != _settings.Method ||
+                    !context.Request.Query.ContainsKey(_settings.KeywordName)
+                )
             {
                 return false;
             }
-
-            if (!context.Request.Query.ContainsKey(_settings.KeywordName))
-            {
-                return false;
-            }
-
             return true;
         }
 
         #region GetSearcher
 
+        private string _headerPath = null;
+        private string _indexPath = null;
+
         private IIndexSearcher GetSearcher()
         {
-            string headerPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_header.json");
-            string indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.bin");
+            if(_headerPath==null)
+                _headerPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_header.json");
 
-            IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
+            if(_indexPath == null)
+                _indexPath = Path.Combine(_hostingEnvironment.ContentRootPath, "db\\20k_index.bin");
+
+            IIndexSearcher searcher = null;
+            if (_settings.UseMemorySearcher)
+            {
+                searcher = new InMemoryIndexSearcher(_headerPath, _indexPath);
+            }
+            else
+            {
+                searcher = new FileSystemIndexSearcher(_headerPath, _indexPath);
+            }
+
             return searcher;
         }
 
         private SearchOptions GetSearchOptions(HttpContext context)
         {
-            SearchOptions searchOptions = new SearchOptions();
+            var searchOptions = new SearchOptions();
             searchOptions.MaxItemCount = RequestHelper.ExtractValue<int>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.MaxItemCountName, 5);
             searchOptions.Term = RequestHelper.ExtractValue<string>(context.Request, RequestHelper.RequestCollectionType.Query, _settings.KeywordName, null);
             
@@ -84,6 +95,7 @@ namespace AutoComplete.Clients.WebCore.Search
         }
 
         #endregion
+
         #region FormatResult
 
         private string FormatSearchResult(SearchResult searchResult)

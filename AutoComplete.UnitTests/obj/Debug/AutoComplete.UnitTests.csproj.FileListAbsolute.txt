@@ -36,3 +36,7 @@ C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\AutoComp
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.dll
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\obj\Debug\AutoComplete.UnitTests.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\WebTest1.webtest
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.WebTestFramework.dll
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.WebTestFramework.xml
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.UnitTests\bin\Debug\LoadTest1.loadtest

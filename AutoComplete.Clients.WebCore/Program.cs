@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using Microsoft.AspNetCore.Server.Kestrel;
-using System;
+using System.IO;
 
 namespace AutoComplete.Clients.WebCore
 {
@@ -17,7 +16,6 @@ namespace AutoComplete.Clients.WebCore
                 .UseStartup<Startup>()
                 .Build();
 
-            
             host.Run();
         }
 

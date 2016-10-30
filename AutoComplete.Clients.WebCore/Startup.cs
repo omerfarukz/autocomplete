@@ -28,16 +28,9 @@ namespace AutoComplete.Clients.WebCore
             services.Configure<SearchMiddlewareSetting>(Configuration.GetSection("SearchMiddlewareSetting"));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseMiddleware<SearchMiddleware>();
-
-
         }
     }
 

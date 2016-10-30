@@ -9,5 +9,9 @@
         public string MaxItemCountName { get; set; }
 
         public string DbDirectory { get; set; }
+
+        public bool UseMemorySearcher { get; set; }
+
+        public string ResponseContentType { get; set; }
     }
 }
