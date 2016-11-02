@@ -103,7 +103,7 @@ namespace AutoComplete.Clients.WebCore.Search
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(partA);
 
-            if (searchResult != null && searchResult != null)
+            if (searchResult != null && searchResult.Items != null)
             {
                 for (int i = 0; i < searchResult.Items.Length; i++)
                 {
