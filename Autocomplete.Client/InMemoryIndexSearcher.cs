@@ -1,5 +1,6 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.Domain;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AutoComplete.Client
@@ -9,8 +10,8 @@ namespace AutoComplete.Client
         private const int FirstReadBufferSize = 10 * 1024;
 
         private static object _lockObject = new object();
-        private static TrieIndexHeader _header;
-        private static byte[] _index;
+        private static Dictionary<string, TrieIndexHeader> _headers;
+        private static Dictionary<string, byte[]> _indexes;
 
         private string _headerFileName;
         private string _indexFileName;
@@ -20,35 +21,38 @@ namespace AutoComplete.Client
         {
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
+
+            _headers = new Dictionary<string, TrieIndexHeader>();
+            _indexes = new Dictionary<string, byte[]>();
         }
 
         internal override TrieIndexHeader GetHeader()
         {
             // double checked initialization
-            if (_header == null)
+            if (!_headers.ContainsKey(_headerFileName))
             {
                 lock (_lockObject)
                 {
-                    if (_header == null)
+                    if (!_headers.ContainsKey(_headerFileName))
                     {
-                        _header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
+                        _headers.Add(_headerFileName, TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName));
                     }
                 }
             }
 
-            return _header;
+            return _headers[_headerFileName];
         }
 
         internal override Stream GetIndexStream()
         {
             // double checked initialization
-            if (_index == null)
+            if (!_indexes.ContainsKey(_indexFileName))
             {
                 lock (_lockObject)
                 {
-                    if (_index == null)
+                    if (!_indexes.ContainsKey(_indexFileName))
                     {
-                        Stream temporaryStream = new FileStream(
+                        Stream stream = new FileStream(
                                                 _indexFileName,
                                                 FileMode.Open,
                                                 FileAccess.Read,
@@ -57,21 +61,19 @@ namespace AutoComplete.Client
                                                 FileOptions.RandomAccess
                                            );
 
-                        temporaryStream.Position = 0;
+                        stream.Position = 0;
+                        byte[] streamBytes = new byte[stream.Length];
+                        stream.Read(streamBytes, 0, streamBytes.Length);
 
-                        byte[] streamBytes = new byte[temporaryStream.Length];
-                        temporaryStream.Read(streamBytes, 0, streamBytes.Length);
+                        stream.Dispose();
+                        stream = null;
 
-                        //temporaryStream.Close();
-                        temporaryStream.Dispose();
-                        temporaryStream = null;
-
-                        _index = streamBytes;
+                        _indexes.Add(_indexFileName, streamBytes);
                     }
                 }
             }
 
-            return new ManagedInMemoryStream(_index);
+            return new ManagedInMemoryStream(_indexes[_indexFileName]);
         }
     }
 }

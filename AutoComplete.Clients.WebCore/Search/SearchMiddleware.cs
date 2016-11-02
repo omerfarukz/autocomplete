@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 
 namespace AutoComplete.Clients.WebCore.Search
 {
@@ -47,8 +46,6 @@ namespace AutoComplete.Clients.WebCore.Search
                 context.Response.ContentType = _settings.ResponseContentType;
                 await context.Response.WriteAsync(formattedResult);
             }
-
-            //await _next.Invoke(context);
         }
 
         private bool IsValidContext(HttpContext context)
@@ -97,51 +94,52 @@ namespace AutoComplete.Clients.WebCore.Search
 
         #region FormatResult
 
-        private string FormatSearchResult(SearchResult searchResult)
+        const string partA = "{\"items\":[";
+        const string partB = "\"{0}\"";
+        const string partC = "],\"status\":\"{0}\"}}";
+        const char partD = ',';
+        private static string FormatSearchResult(SearchResult searchResult)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("{\"items\":[");
+            stringBuilder.Append(partA);
 
-            if (searchResult != null && searchResult.Items != null)
+            if (searchResult != null && searchResult != null)
             {
                 for (int i = 0; i < searchResult.Items.Length; i++)
                 {
                     string escaped = EscapeJsonCharacters(searchResult.Items[i]);
-                    stringBuilder.AppendFormat("\"{0}\"", escaped);
+                    stringBuilder.AppendFormat(partB, escaped);
 
                     if (i != searchResult.Items.Length - 1)
                     {
-                        stringBuilder.Append(',');
+                        stringBuilder.Append(partD);
                     }
                 }
             }
 
-            stringBuilder.AppendFormat("],\"status\":\"{0}\"}}", searchResult.ResultType);
-
+            stringBuilder.AppendFormat(partC, searchResult.ResultType);
             return stringBuilder.ToString();
         }
+
+        static readonly char[] escapeCharacters = new char[9] { '\"', '\'', '\\', '\b', '\f', '\n', '\r', '\t', '/' };
+        static readonly string[] unescapeStrings = new string[9] { "\\\"", "\\\'", "\\\\", "\\b", "\\f", "\\n", "\\r", "\\t", "\\/" };
 
         /// <summary>
         /// https://code.google.com/p/json-simple/source/browse/trunk/src/main/java/org/json/simple/JSONValue.java#270
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        private string EscapeJsonCharacters(string input)
+        private static string EscapeJsonCharacters(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return input;
 
-            string[] escapeCharacters = new string[9] { "\"", "\'", "\\", "\b", "\f", "\n", "\r", "\t", "/" };
-            string[] unescapeStrings = new string[9] { "\\\"", "\\\'", "\\\\", "\\b", "\\f", "\\n", "\\r", "\\t", "\\/" };
-
             StringBuilder stringBuilder = new StringBuilder();
-
+            char currentChar;
             for (int i = 0; i < input.Length; i++)
             {
                 bool characterAppended = false;
-
-                // i = current character index of input
-                char currentChar = input[i];
+                currentChar = input[i];
                 for (int j = 0; j < escapeCharacters.Length; j++)
                 {
                     if (currentChar.Equals(escapeCharacters[j]))
@@ -153,7 +151,7 @@ namespace AutoComplete.Clients.WebCore.Search
                 }
 
                 if (!characterAppended)
-                    stringBuilder.Append(input[i]);
+                    stringBuilder.Append(currentChar);
             }
 
             return stringBuilder.ToString();

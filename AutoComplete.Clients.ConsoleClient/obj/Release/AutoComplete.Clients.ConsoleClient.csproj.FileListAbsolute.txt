@@ -14,3 +14,4 @@ C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Re
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\bin\Release\AutoComplete.Desktop.pdb
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.exe
 C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.pdb
+C:\Users\omr\Source\Repos\autocomplete\AutoComplete.Clients.ConsoleClient\obj\Release\AutoComplete.Clients.ConsoleClient.csprojResolveAssemblyReference.cache
