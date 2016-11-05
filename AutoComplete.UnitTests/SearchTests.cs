@@ -24,7 +24,7 @@ namespace AutoComplete.UnitTests
                     headerStream.Position = 0;
                     indexStream.Position = 0;
 
-                    var searcher = new InMemoryIndexSearcher("Resource\\20k_header.json", "Resource\\20k_index.json");
+                    var searcher = new InMemoryIndexSearcher("Resource\\20k_header.json", "Resource\\20k_index.bin");
                     var searchResult = searcher.Search("found", 10, true);
 
                     Assert.IsNotNull(searchResult);

@@ -76,7 +76,10 @@ namespace AutoComplete.Core
             header.LENGTH_OF_CHILDREN_OFFSET = header.LENGTH_OF_CHILDREN_FLAGS + // 2
                                         header.COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES;
 
-            header.LENGTH_OF_STRUCT = header.LENGTH_OF_CHILDREN_OFFSET +
+            header.LENGHT_OF_TEXT_FILE_START_POSITION_IN_BYTES = header.LENGTH_OF_CHILDREN_OFFSET +
+                                                                    header.COUNT_OF_TEXT_FILE_START_POSITION_IN_BYTES;
+
+            header.LENGTH_OF_STRUCT = header.LENGHT_OF_TEXT_FILE_START_POSITION_IN_BYTES +
                                 header.COUNT_OF_CHILDREN_OFFSET_IN_BYTES;
                                      
         }

@@ -1,1 +1,15 @@
-﻿{"CharacterList":["\u0000","'","-",".","0","1","2","4","5","9","W","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],"COUNT_OF_CHARACTER_IN_BYTES":2,"COUNT_TERMINAL_SIZE_IN_BYTES":1,"COUNT_OF_CHILDREN_OFFSET_IN_BYTES":4,"COUNT_OF_CHARSET":37,"COUNT_OF_CHILDREN_FLAGS":5,"COUNT_OF_CHILDREN_FLAGS_IN_BYTES":2,"COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES":8,"LENGTH_OF_STRUCT":15,"LENGTH_OF_CHILDREN_FLAGS":3,"LENGTH_OF_CHILDREN_OFFSET":11}
+﻿{
+  "CharacterList": [ "\u0000", "'", "-", ".", "0", "1", "2", "4", "5", "9", "W", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ],
+  "COUNT_OF_CHARACTER_IN_BYTES": 2,
+  "COUNT_TERMINAL_SIZE_IN_BYTES": 1,
+  "COUNT_OF_CHILDREN_OFFSET_IN_BYTES": 4,
+  "COUNT_OF_CHARSET": 37,
+  "COUNT_OF_CHILDREN_FLAGS": 5,
+  "COUNT_OF_CHILDREN_FLAGS_IN_BYTES": 2,
+  "COUNT_OF_CHILDREN_FLAGS_BIT_ARRAY_IN_BYTES": 8,
+  "COUNT_OF_TEXT_FILE_START_POSITION_IN_BYTES": 4,
+  "LENGTH_OF_STRUCT": 19,
+  "LENGTH_OF_CHILDREN_FLAGS": 3,
+  "LENGTH_OF_CHILDREN_OFFSET": 11,
+  "LENGHT_OF_TEXT_FILE_START_POSITION_IN_BYTES": 15
+}

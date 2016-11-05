@@ -28,7 +28,7 @@ namespace AutoComplete.Desktop
                                 FileShare.None
                             );
 
-            TrieSerializer.SerializeHeaderWithXmlSerializer(stream, header);
+            TrieSerializer.SerializeHeaderWithJsonSerializer(stream, header);
 
             stream.Close();
             stream.Dispose();

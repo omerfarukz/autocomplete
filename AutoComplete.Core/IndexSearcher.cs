@@ -10,6 +10,7 @@ namespace AutoComplete.Core
     {
         private Stream _indexStream;
         private Stream _headerStream;
+        private Stream _tailStream;
 
         private TrieIndexHeader _header;
 
@@ -21,10 +22,11 @@ namespace AutoComplete.Core
         /// </summary>
         /// <param name="headerStream"></param>
         /// <param name="indexStream"></param>
-        public IndexSearcher(Stream headerStream, Stream indexStream)
+        public IndexSearcher(Stream headerStream, Stream indexStream, Stream tailStream)
         {
             _indexStream = indexStream;
             _headerStream = headerStream;
+            _tailStream = tailStream;
         }
 
         public virtual SearchResult Search(string term, int maxItemCount, bool suggestWhenNotFound)
@@ -83,7 +85,8 @@ namespace AutoComplete.Core
                                                                     node.LastFoundNodePosition,
                                                                     prefix,
                                                                     options.MaxItemCount,
-                                                                    new List<string>()
+                                                                    new List<string>(),
+                                                                    GetTailStream()
                                                                 ).ToArray();
 
             return searchResult;
@@ -98,6 +101,11 @@ namespace AutoComplete.Core
         internal virtual Stream GetIndexStream()
         {
             return _indexStream;
+        }
+
+        internal virtual Stream GetTailStream()
+        {
+            return _tailStream;
         }
 
         private TrieBinaryReader CreateTrieBinaryReader()

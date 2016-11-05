@@ -66,13 +66,16 @@ namespace AutoComplete.Core.DataStructure
             foreach (var keyword in dataSource.GetKeywords())
             {
                 var input = TrieNodeInput.Create(keyword);
-
                 Add(input);
-
                 ++countsOfWordsProcessed;
             }
 
             return countsOfWordsProcessed;
+        }
+
+        public bool Add(string keyword)
+        {
+            return Add(TrieNodeInput.Create(keyword));
         }
 
         public bool Add(TrieNodeInput input)

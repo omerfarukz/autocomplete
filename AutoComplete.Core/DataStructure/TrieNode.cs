@@ -58,6 +58,11 @@ namespace AutoComplete.Core.DataStructure
         public int ChildIndex { get; set; }
 
         /// <summary>
+        /// TODO: rename
+        /// </summary>
+        public uint? PositionOnTextFile { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref=<TrieNode"/> class.
         /// </summary>
         /// <remarks>Children object is not initialized</remarks>

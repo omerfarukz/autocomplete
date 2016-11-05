@@ -1,9 +1,10 @@
 ﻿using AutoComplete.Core.DataSource;
 using AutoComplete.Core.DataStructure;
-using AutoComplete.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace AutoComplete.Core
 {
@@ -14,18 +15,34 @@ namespace AutoComplete.Core
         private Stream _headerStream;
         private Stream _indexStream;
 
-        public IndexBuilder(Stream headerStream, Stream indexStream)
+        private Stream _tailStream;
+        private HashSet<string> _keywords;
+        private Dictionary<string, uint> _keywordDictionary;
+
+        public IndexBuilder(Stream headerStream, Stream indexStream) : this(headerStream, indexStream, null)
+        { }
+
+        public IndexBuilder(Stream headerStream, Stream indexStream, Stream tailStream)
         {
             _headerStream = headerStream;
             _indexStream = indexStream;
+            _tailStream = tailStream;
 
             _header = new TrieIndexHeader();
             _trie = new Trie();
+            _keywords = new HashSet<string>();
+            _keywordDictionary = new Dictionary<string, uint>();
         }
 
         public IndexBuilder Add(string keyword)
         {
             _trie.Add(TrieNodeInput.Create(keyword));
+
+            if (keyword != null && !_keywords.Contains(keyword))
+            {
+                _keywords.Add(keyword);
+            }
+
             return this;
         }
 
@@ -42,9 +59,18 @@ namespace AutoComplete.Core
             return this;
         }
 
-        public IndexBuilder WithDataSource(IKeywordDataSource keywordDataSource)
+        public IndexBuilder Add(IKeywordDataSource keywordDataSource)
         {
             _trie.Load(keywordDataSource);
+
+            if (_tailStream != null && keywordDataSource != null)
+            {
+                foreach (var item in keywordDataSource.GetKeywords())
+                {
+                    Add(item);
+                }
+            }
+
             return this;
         }
 
@@ -58,7 +84,7 @@ namespace AutoComplete.Core
         {
             PrepareForBuild();
 
-            TrieSerializer.SerializeHeaderWithXmlSerializer(_headerStream, _header);
+            TrieSerializer.SerializeHeaderWithJsonSerializer(_headerStream, _header);
 
             var processedNodeCount = TrieSerializer.SerializeIndexWithBinaryWriter(_trie.Root, _header, _indexStream);
             return processedNodeCount;
@@ -67,6 +93,11 @@ namespace AutoComplete.Core
         private void PrepareForBuild()
         {
             ReorderTrieAndLoadHeader(_trie.Root);
+
+            if (_tailStream != null)
+            {
+                CreateTailAndModifyNodes(_trie.Root);
+            }
         }
 
         private void ReorderTrieAndLoadHeader(TrieNode rootNode)
@@ -77,12 +108,12 @@ namespace AutoComplete.Core
 
             int order = 0;
             var builder = new TrieIndexHeaderBuilder();
-            
+
             TrieNode currentNode = null;
             while (indexerQueue.Count > 0)
             {
                 currentNode = indexerQueue.Dequeue();
-                
+
                 if (currentNode == null)
                     throw new ArgumentNullException("Root node is null");
 
@@ -111,6 +142,85 @@ namespace AutoComplete.Core
             }
 
             _header = builder.Build();
+        }
+
+        private void CreateTailAndModifyNodes(TrieNode root)
+        {
+            SerializeKeywords(_tailStream);
+
+            Queue<TrieNode> serializerQueue = new Queue<TrieNode>();
+            serializerQueue.Enqueue(root);
+
+            TrieNode currentNode = null;
+            while (serializerQueue.Count > 0)
+            {
+                currentNode = serializerQueue.Dequeue();
+
+                string currentNodeAsString = currentNode.GetString();
+
+                if (currentNode == root)
+                {
+                    currentNode.PositionOnTextFile = 0; //a
+                }
+                else
+                {
+                    // am i termina ?
+                    if (currentNode.IsTerminal)
+                    {
+                        if (!currentNode.PositionOnTextFile.HasValue)
+                        {
+                            currentNode.PositionOnTextFile = _keywordDictionary[currentNodeAsString];
+                        }
+                    }
+                    else
+                    {
+                        // who is my nearest terminal?
+                        var node = _trie.GetLastNode(TrieNodeInput.Create(currentNodeAsString));
+                        if (node.Node.IsTerminal && node.Status == TrieNodeSearchResultType.FoundEquals)
+                        {
+                            if (!node.Node.PositionOnTextFile.HasValue)
+                            {
+                                var positionOnTextFile = _keywordDictionary[node.Node.GetString()];
+                                node.Node.PositionOnTextFile = positionOnTextFile;
+                                currentNode.PositionOnTextFile = positionOnTextFile;
+                            }
+                        }
+                        else
+                        {
+                            // no one like me. i am alone. (i am root.)
+                            currentNode.PositionOnTextFile = 0; // b
+                        }
+                    }
+                }
+
+                if (currentNode.Children != null)
+                {
+                    foreach (var childNode in currentNode.Children)
+                    {
+                        serializerQueue.Enqueue(childNode.Value);
+                    }
+                }
+            }
+        }
+
+        private void SerializeKeywords(Stream stream)
+        {
+            stream.Position = 0;
+            int bufferSize = 1;
+
+            byte[] newLine = Encoding.UTF8.GetBytes("\n");
+            foreach (var item in _keywords.OrderBy(f => f, new TrieStringComparer()))
+            {
+                _keywordDictionary.Add(item, (uint)stream.Position);
+
+                var buffer = Encoding.UTF8.GetBytes(item);
+                stream.Write(buffer, 0, buffer.Length);
+                stream.Write(newLine, 0, newLine.Length);
+            }
+
+            _keywords.Clear();
+            _keywords = null;
+
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace AutoComplete.Core
 {
@@ -12,13 +13,20 @@ namespace AutoComplete.Core
         private BinaryReader _binaryReader;
         private TrieIndexHeader _header;
 
+
         public TrieBinaryReader(BinaryReader binaryReader, TrieIndexHeader header)
         {
             _binaryReader = binaryReader;
             _header = header;
         }
 
-        public List<string> GetAutoCompleteNodes(long position, string prefix, int maxItemsCount, List<string> result)
+        public List<string> GetAutoCompleteNodes(
+                long position, 
+                string prefix, 
+                int maxItemsCount,
+                List<string> result,
+                Stream tailStream = null
+            )
         {
             if (result == null)
                 throw new ArgumentNullException("result");
@@ -26,29 +34,51 @@ namespace AutoComplete.Core
             if (result.Count >= maxItemsCount)
                 return result;
 
-            char character = ReadCharacter(position);
-            bool isTerminal = ReadIsTerminal(position);
-
-            string newPrefix = string.Concat(prefix, character);
-
-            if (isTerminal)
+            if (tailStream != null)
             {
-                result.Add(newPrefix);
-            }
-
-            long[] children = GetChildrenPositionsFromNode(_binaryReader, _header, position);
-
-            if (children != null)
-            {
-                for (int i = 0; i < children.Length; i++)
+                var positionOnTextFile = ReadPositionOnTextFile(position);
+                if (positionOnTextFile > 0)
                 {
-                    if (result.Count < maxItemsCount)
+                    int bufferSize = 8;// 2 * prefix.Length; // magic?
+                    using (var sw = new StreamReader(tailStream, Encoding.UTF8, false, bufferSize, true))
                     {
-                        GetAutoCompleteNodes(children[i], newPrefix, maxItemsCount, result);
+                        var lng = sw.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
+                        for (int i = 0; i < maxItemsCount - result.Count; i++)
+                        {
+                            var line = sw.ReadLine();
+                            if (!line.StartsWith(prefix)) // TODO: optimize
+                                break;
+
+                            result.Add(line);
+                        }
                     }
                 }
             }
+            else
+            {
+                char character = ReadCharacter(position);
+                bool isTerminal = ReadIsTerminal(position);
 
+                string newPrefix = string.Concat(prefix, character);
+
+                if (isTerminal)
+                {
+                    result.Add(newPrefix);
+                }
+
+                long[] children = GetChildrenPositionsFromNode(_binaryReader, _header, position);
+
+                if (children != null)
+                {
+                    for (int i = 0; i < children.Length; i++)
+                    {
+                        if (result.Count < maxItemsCount)
+                        {
+                            GetAutoCompleteNodes(children[i], newPrefix, maxItemsCount, result);
+                        }
+                    }
+                }
+            }
             return result;
         }
 
@@ -63,9 +93,22 @@ namespace AutoComplete.Core
         internal bool ReadIsTerminal(long position)
         {
             long targetPosition = position + _header.COUNT_OF_CHARACTER_IN_BYTES; // TODO: constant
-           _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+            _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
 
             return _binaryReader.ReadBoolean();
+        }
+
+        /// <summary>
+        /// TODO: rename
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        internal UInt32 ReadPositionOnTextFile(long position)
+        {
+            long targetPosition = position + _header.LENGHT_OF_TEXT_FILE_START_POSITION_IN_BYTES; // TODO: constant
+            _binaryReader.BaseStream.Seek(targetPosition, SeekOrigin.Begin);
+
+            return _binaryReader.ReadUInt32();
         }
 
         internal bool[] ReadChildrenFlags(long position)

@@ -8,7 +8,7 @@ namespace AutoComplete.Client
     public class FileSystemIndexSearcher : IndexSearcher
     {
         private static object _lockObject = new object();
-        private static TrieIndexHeader _header;
+        private static Dictionary<string, TrieIndexHeader> _headers;
 
         private string _headerFileName;
         private string _indexFileName;
@@ -18,22 +18,24 @@ namespace AutoComplete.Client
         {
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
+
+            _headers = new Dictionary<string, TrieIndexHeader>();
         }
 
         internal override TrieIndexHeader GetHeader()
         {
-            if (_header == null)
+            if (!_headers.ContainsKey(_headerFileName))
             {
                 lock (_lockObject)
                 {
-                    if (_header == null)
+                    if (!_headers.ContainsKey(_headerFileName))
                     {
-                        _header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
+                        _headers.Add(_headerFileName, TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName));
                     }
                 }
             }
 
-            return _header;
+            return _headers[_headerFileName];
         }
 
         internal override Stream GetIndexStream()

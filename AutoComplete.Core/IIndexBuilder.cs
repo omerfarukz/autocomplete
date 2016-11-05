@@ -10,7 +10,7 @@ namespace AutoComplete.Core
 
         IndexBuilder AddRange(IEnumerable<string> keywords);
 
-        IndexBuilder WithDataSource(IKeywordDataSource keywordDataSource);
+        IndexBuilder Add(IKeywordDataSource keywordDataSource);
 
         int Build();
     }

@@ -13,7 +13,7 @@ namespace AutoComplete.Core
     {
         #region Serialzie
 
-        public static void SerializeHeaderWithXmlSerializer(Stream header, TrieIndexHeader trieIndexHeader)
+        public static void SerializeHeaderWithJsonSerializer(Stream header, TrieIndexHeader trieIndexHeader)
         {
             using (StreamWriter streamWriter = new StreamWriter(header, Encoding.UTF8, 1024, true)) // TODO: buffer size
             {
@@ -52,6 +52,9 @@ namespace AutoComplete.Core
             TrieNode currentNode = null;
             BinaryWriter binaryWriter = new BinaryWriter(index);
 
+            //uint position = 0;
+            //var sb = new StringBuilder();
+
             while (serializerQueue.Count > 0)
             {
                 currentNode = serializerQueue.Dequeue();
@@ -75,6 +78,11 @@ namespace AutoComplete.Core
 
                 binaryWriter.Write(currentNode.IsTerminal);
 
+                //if (currentNode.IsTerminal)
+                //{
+                //    //sb.AppendLine(currentNode.Character);
+                //}
+
                 // write children flags
                 // convert 512 bool value to 64 byte value for efficient storage
                 BitArray baChildren = new BitArray(trieIndexHeader.COUNT_OF_CHARSET);
@@ -97,6 +105,16 @@ namespace AutoComplete.Core
 
                 // write children offset
                 binaryWriter.Write(currentNode.ChildrenCount * trieIndexHeader.LENGTH_OF_STRUCT);
+
+                // todo:position of text file
+                if (currentNode.PositionOnTextFile.HasValue)
+                {
+                    binaryWriter.Write((uint)currentNode.PositionOnTextFile.Value);
+                }
+                else
+                {
+                    binaryWriter.Write((uint)0);
+                }
 
                 if (currentNode.Children != null)
                 {

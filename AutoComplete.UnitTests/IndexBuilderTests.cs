@@ -80,7 +80,7 @@ namespace AutoComplete.UnitTests
                 using (var indexStream = new MemoryStream())
                 {
                     var builder = new IndexBuilder(headerStream, indexStream);
-                    builder.WithDataSource(new FakeKeywordDataSource());
+                    builder.Add(new FakeKeywordDataSource());
 
                     var processedNodeCount = builder.Build();
 
@@ -97,7 +97,7 @@ namespace AutoComplete.UnitTests
                 using (var indexStream = new FileStream("c:\\tests\\index20k.json", FileMode.OpenOrCreate))
                 {
                     var builder = new IndexBuilder(headerStream, indexStream);
-                    builder.WithDataSource(new FakeKeywordDataSource());
+                    builder.Add(new FakeKeywordDataSource());
 
                     var processedNodeCount = builder.Build();
 
