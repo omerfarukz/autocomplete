@@ -46,7 +46,7 @@ namespace AutoComplete.Core
                         for (int i = 0; i < count; i++)
                         {
                             var line = streamReader.ReadLine();
-                            if (!line.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) // TODO: optimize
+                            if (!line.StartsWith(prefix)) // TODO: optimize
                                 break;
 
                             result.Add(line);

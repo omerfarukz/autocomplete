@@ -108,14 +108,13 @@ namespace AutoComplete.UnitTests
                     {
                         IndexBuilder ib = new IndexBuilder(header, index, tail);
                         ib.Add(new FakeKeywordDataSource());
-
                         ib.Build();
                     }
                 }
             }
-            
-            var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, null);
-            var result = searcher.Search("armor",10, true);
+
+            var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, tailFileName);
+            var result = searcher.Search("armo", 10, true);
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Items);

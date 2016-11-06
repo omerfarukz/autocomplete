@@ -77,7 +77,15 @@ namespace AutoComplete.Core
             }
             else if (node.Status == TrieNodeSearchResultType.FoundEquals)
             {
-                prefix = input.Keyword.Substring(0, input.Keyword.Length - 1);
+                //prefix = input.Keyword.Substring(0, input.Keyword.Length - 1);
+                if (GetTailStream() == null)
+                {
+                    prefix = input.Keyword.Substring(0, input.Keyword.Length - 1);
+                }
+                else
+                {
+                    prefix = input.Keyword;
+                }
             }
 
             searchResult.ResultType = node.Status;

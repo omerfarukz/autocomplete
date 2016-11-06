@@ -165,7 +165,7 @@ namespace AutoComplete.Core
                 }
                 else
                 {
-                    // am i termina ?
+                    // am i terminaL ?
                     if (currentNode.IsTerminal)
                     {
                         if (!currentNode.PositionOnTextFile.HasValue)
@@ -176,8 +176,13 @@ namespace AutoComplete.Core
                     else
                     {
                         // who is my nearest terminal?
-                        var nodeResult = _trie.GetLastNode(TrieNodeInput.Create(currentNodeAsString));
-                        if (nodeResult.Status == TrieNodeSearchResultType.FoundEquals && nodeResult.Node.IsTerminal)
+                        var nodeResult = GetNearestTerminalChildren(currentNode);
+                        if (
+                            (
+                                nodeResult.Status == TrieNodeSearchResultType.FoundEquals ||
+                                nodeResult.Status == TrieNodeSearchResultType.FoundStartsWith
+                            )
+                        )
                         {
                             if (!nodeResult.Node.PositionOnTextFile.HasValue)
                             {
@@ -202,6 +207,30 @@ namespace AutoComplete.Core
                     }
                 }
             }
+        }
+
+        private TrieNodeSearchResult GetNearestTerminalChildren(TrieNode currentNode)
+        {
+            Queue<TrieNode> serializerQueue = new Queue<TrieNode>();
+            serializerQueue.Enqueue(currentNode);
+
+            while (serializerQueue.Count > 0)
+            {
+                currentNode = serializerQueue.Dequeue();
+
+                if (currentNode.IsTerminal)
+                    return TrieNodeSearchResult.CreateFoundEquals(currentNode);
+
+                if (currentNode.Children != null)
+                {
+                    foreach (var childNode in currentNode.Children)
+                    {
+                        serializerQueue.Enqueue(childNode.Value);
+                    }
+                }
+            }
+
+                return TrieNodeSearchResult.CreateNotFound();
         }
 
         private void SerializeKeywords(Stream stream)
