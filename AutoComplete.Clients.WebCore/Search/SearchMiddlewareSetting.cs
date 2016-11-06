@@ -12,8 +12,12 @@
 
         public bool UseMemorySearcher { get; set; }
 
+        public bool UseTailFile { get; set; }
+
         public string ResponseContentType { get; set; }
 
         public bool SuggestWhenFoundStartsWith { get; set; }
+
+        public int DefaultMaxItemCount { get; set; }
     }
 }

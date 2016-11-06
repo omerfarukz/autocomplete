@@ -18,6 +18,7 @@ namespace AutoComplete.Core
         private Stream _tailStream;
         private HashSet<string> _keywords;
         private Dictionary<string, uint> _keywordDictionary;
+        static readonly byte[] newLine = Encoding.UTF8.GetBytes("\n");
 
         public IndexBuilder(Stream headerStream, Stream indexStream) : this(headerStream, indexStream, null)
         { }
@@ -160,7 +161,7 @@ namespace AutoComplete.Core
 
                 if (currentNode == root)
                 {
-                    currentNode.PositionOnTextFile = 0; //a
+                    currentNode.PositionOnTextFile = 0;
                 }
                 else
                 {
@@ -175,19 +176,19 @@ namespace AutoComplete.Core
                     else
                     {
                         // who is my nearest terminal?
-                        var node = _trie.GetLastNode(TrieNodeInput.Create(currentNodeAsString));
-                        if (node.Node.IsTerminal && node.Status == TrieNodeSearchResultType.FoundEquals)
+                        var nodeResult = _trie.GetLastNode(TrieNodeInput.Create(currentNodeAsString));
+                        if (nodeResult.Status == TrieNodeSearchResultType.FoundEquals && nodeResult.Node.IsTerminal)
                         {
-                            if (!node.Node.PositionOnTextFile.HasValue)
+                            if (!nodeResult.Node.PositionOnTextFile.HasValue)
                             {
-                                var positionOnTextFile = _keywordDictionary[node.Node.GetString()];
-                                node.Node.PositionOnTextFile = positionOnTextFile;
+                                var positionOnTextFile = _keywordDictionary[nodeResult.Node.GetString()];
+                                nodeResult.Node.PositionOnTextFile = positionOnTextFile;
                                 currentNode.PositionOnTextFile = positionOnTextFile;
                             }
                         }
                         else
                         {
-                            // no one like me. i am alone. (i am root.)
+                            // no one like me. i am alone. (it's root.)
                             currentNode.PositionOnTextFile = 0; // b
                         }
                     }
@@ -206,9 +207,6 @@ namespace AutoComplete.Core
         private void SerializeKeywords(Stream stream)
         {
             stream.Position = 0;
-            int bufferSize = 1;
-
-            byte[] newLine = Encoding.UTF8.GetBytes("\n");
             foreach (var item in _keywords.OrderBy(f => f, new TrieStringComparer()))
             {
                 _keywordDictionary.Add(item, (uint)stream.Position);

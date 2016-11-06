@@ -94,7 +94,7 @@ namespace AutoComplete.UnitTests
         }
 
         [TestMethod]
-        public void create_index_and_header_files__search_one_term_and_remove_both()
+        public void create_index_and_header_files__search_one_term_and_remove_both_in_memory()
         {
             var indexFileName = $"index_{Guid.NewGuid()}.bin";
             var headerFileName = $"header_{Guid.NewGuid()}.json";
@@ -116,6 +116,46 @@ namespace AutoComplete.UnitTests
             
             var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, null);
             var result = searcher.Search("armor",10, true);
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Items);
+            Assert.AreEqual(result.ResultType, TrieNodeSearchResultType.FoundEquals);
+            Assert.IsTrue(result.Items.Length >= 2);
+            Assert.AreEqual(result.Items[0], "armor");
+            Assert.AreEqual(result.Items[1], "armory");
+
+            File.Delete(indexFileName);
+            File.Delete(headerFileName);
+            File.Delete(tailFileName);
+
+            Assert.IsFalse(File.Exists(indexFileName));
+            Assert.IsFalse(File.Exists(headerFileName));
+            Assert.IsFalse(File.Exists(tailFileName));
+        }
+
+        [TestMethod]
+        public void create_index_and_header_files__search_one_term_and_remove_both_in_file_system()
+        {
+            var indexFileName = $"index_{Guid.NewGuid()}.bin";
+            var headerFileName = $"header_{Guid.NewGuid()}.json";
+            var tailFileName = $"text_{Guid.NewGuid()}.txt";
+
+            using (var index = new FileStream(indexFileName, FileMode.OpenOrCreate))
+            {
+                using (var header = new FileStream(headerFileName, FileMode.OpenOrCreate))
+                {
+                    using (var tail = new FileStream(tailFileName, FileMode.OpenOrCreate))
+                    {
+                        IndexBuilder ib = new IndexBuilder(header, index, tail);
+                        ib.Add(new FakeKeywordDataSource());
+
+                        ib.Build();
+                    }
+                }
+            }
+
+            var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, null);
+            var result = searcher.Search("armor", 10, true);
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Items);

@@ -13,7 +13,6 @@ namespace AutoComplete.Core
         private BinaryReader _binaryReader;
         private TrieIndexHeader _header;
 
-
         public TrieBinaryReader(BinaryReader binaryReader, TrieIndexHeader header)
         {
             _binaryReader = binaryReader;
@@ -40,13 +39,14 @@ namespace AutoComplete.Core
                 if (positionOnTextFile > 0)
                 {
                     int bufferSize = 8;// 2 * prefix.Length; // magic?
-                    using (var sw = new StreamReader(tailStream, Encoding.UTF8, false, bufferSize, true))
+                    using (var streamReader = new StreamReader(tailStream, Encoding.UTF8, false, bufferSize, true))
                     {
-                        var lng = sw.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
-                        for (int i = 0; i < maxItemsCount - result.Count; i++)
+                        streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
+                        int count = maxItemsCount - result.Count;
+                        for (int i = 0; i < count; i++)
                         {
-                            var line = sw.ReadLine();
-                            if (!line.StartsWith(prefix)) // TODO: optimize
+                            var line = streamReader.ReadLine();
+                            if (!line.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) // TODO: optimize
                                 break;
 
                             result.Add(line);

@@ -6,7 +6,7 @@
 
     public static class RequestHelper
     {
-        public static T ExtractValue<T>(this HttpRequest request, RequestCollectionType requestCollectionType, string key, T defaultValue)
+        public static T ExtractValue<T>(this HttpRequest request, string key, T defaultValue, RequestCollectionType requestCollectionType = RequestCollectionType.Query)
         {
             string stringValue = ExtractString(request, requestCollectionType, key);
             T value = defaultValue;

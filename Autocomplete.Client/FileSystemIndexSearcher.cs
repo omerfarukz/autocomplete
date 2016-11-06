@@ -1,6 +1,5 @@
 ﻿using AutoComplete.Core;
 using System.Collections.Generic;
-
 using System.IO;
 
 namespace AutoComplete.Client
@@ -12,12 +11,18 @@ namespace AutoComplete.Client
 
         private string _headerFileName;
         private string _indexFileName;
+        private string _tailFileName;
 
         public FileSystemIndexSearcher(string headerFileName, string indexFileName)
+            : this(headerFileName, indexFileName, null)
+        { }
+
+        public FileSystemIndexSearcher(string headerFileName, string indexFileName, string tailFileName)
             : base()
         {
             _headerFileName = headerFileName;
             _indexFileName = indexFileName;
+            _tailFileName = tailFileName;
 
             _headers = new Dictionary<string, TrieIndexHeader>();
         }
@@ -49,6 +54,23 @@ namespace AutoComplete.Client
                                         FileShare.Read,
                                         bufferSize,
                                         FileOptions.RandomAccess
+                                   );
+
+            return indexStream;
+        }
+
+        internal override Stream GetTailStream()
+        {
+            if (_tailFileName == null)
+                return null;
+
+            Stream indexStream = new FileStream(
+                                        _tailFileName,
+                                        FileMode.Open,
+                                        FileAccess.Read,
+                                        FileShare.Read,
+                                        8,
+                                        FileOptions.SequentialScan
                                    );
 
             return indexStream;
