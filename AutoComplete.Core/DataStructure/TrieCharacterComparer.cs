@@ -9,12 +9,4 @@ namespace AutoComplete.Core.DataStructure
             return left.CompareTo(right);
         }
     }
-
-    internal class TrieStringComparer : IComparer<string>
-    {
-        public int Compare(string left, string right)
-        {
-            return left.CompareTo(right);
-        }
-    }
 }
