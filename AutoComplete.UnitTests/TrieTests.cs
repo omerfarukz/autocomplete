@@ -119,7 +119,7 @@ namespace AutoComplete.UnitTests
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Items);
             Assert.AreEqual(result.ResultType, TrieNodeSearchResultType.FoundEquals);
-            Assert.IsTrue(result.Items.Length >= 2);
+            Assert.IsTrue(result.Items.Length == 3);
             Assert.AreEqual(result.Items[0], "armor");
             Assert.AreEqual(result.Items[1], "armory");
 

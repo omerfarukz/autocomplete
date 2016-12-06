@@ -44,6 +44,7 @@
     <Compile Include="DataStructure\TrieNodeSearchResult.cs" />
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
+    <Compile Include="DataStructure\TrieStringComparer.cs" />
     <Compile Include="Domain\ManagedInMemoryStream.cs" />
     <Compile Include="Domain\SearchOptions.cs" />
     <Compile Include="Domain\SearchResult.cs" />
