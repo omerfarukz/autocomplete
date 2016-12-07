@@ -28,8 +28,8 @@ namespace AutoComplete.Clients.Web.Search
 
             _headerFilePath = GetDbPath("header.json");
             _indexFilePath = GetDbPath("index.bin");
-
             _tailFilePath = GetDbPath("tail.txt");
+
             if (_settings.UseTailFile && !File.Exists(_tailFilePath))
                 _tailFilePath = null;
         }
