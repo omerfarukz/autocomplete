@@ -1,5 +1,4 @@
-﻿using AutoComplete.Core;
-using AutoComplete.UnitTests.Source;
+﻿using AutoComplete.Core.Builders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
@@ -72,38 +71,5 @@ namespace AutoComplete.UnitTests
             }
         }
 
-        [TestMethod]
-        public void load_20k_keyword_with_data_source()
-        {
-            using (var headerStream = new MemoryStream())
-            {
-                using (var indexStream = new MemoryStream())
-                {
-                    var builder = new IndexBuilder(headerStream, indexStream);
-                    builder.Add(new FakeKeywordDataSource());
-
-                    var processedNodeCount = builder.Build();
-
-                    Assert.AreEqual(50757, processedNodeCount);
-                }
-            }
-        }
-
-        [TestMethod]
-        public void load_json_20k_keyword_with_data_source()
-        {
-            using (var headerStream = new FileStream("c:\\tests\\header20k.json", FileMode.OpenOrCreate))
-            {
-                using (var indexStream = new FileStream("c:\\tests\\index20k.json", FileMode.OpenOrCreate))
-                {
-                    var builder = new IndexBuilder(headerStream, indexStream);
-                    builder.Add(new FakeKeywordDataSource());
-
-                    var processedNodeCount = builder.Build();
-
-                    Assert.AreEqual(50757, processedNodeCount);
-                }
-            }
-        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using AutoComplete.Core.DataSource;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AutoComplete.Core.DataStructure
@@ -23,17 +21,17 @@ namespace AutoComplete.Core.DataStructure
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public TrieNodeSearchResult GetLastNode(TrieNodeInput input)
+        public TrieNodeSearchResult SearchLastNodeFrom(string keyword)
         {
-            if (input == null)
-                throw new ArgumentNullException("input");
+            if (keyword == null)
+                throw new ArgumentNullException(nameof(keyword));
 
             TrieNode currentNode = this.Root;
 
-            for (int i = 0; i < input.Keyword.Length; i++)
+            for (int i = 0; i < keyword.Length; i++)
             {
                 // i = keyword index
-                var foundNode = currentNode.GetNodeFromChildren(input.Keyword[i]);
+                var foundNode = currentNode.GetNodeFromChildren(keyword[i]);
 
                 if (foundNode != null)
                 {
@@ -51,37 +49,14 @@ namespace AutoComplete.Core.DataStructure
             // equals
             return TrieNodeSearchResult.CreateFoundEquals(currentNode);
         }
-
-        /// <summary>
-        /// Load the specified dataSource and returns count of words processed.
-        /// </summary>
-        /// <param name="dataSource">Data source.</param>
-        public int Load(IKeywordDataSource dataSource)
-        {
-            if (dataSource == null)
-                throw new ArgumentException("dataSource");
-
-            int countsOfWordsProcessed = 0;
-
-            foreach (var keyword in dataSource.GetKeywords())
-            {
-                var input = TrieNodeInput.Create(keyword);
-                Add(input);
-                ++countsOfWordsProcessed;
-            }
-
-            return countsOfWordsProcessed;
-        }
-
+        
         public bool Add(string keyword)
         {
-            return Add(TrieNodeInput.Create(keyword));
-        }
+            if (string.IsNullOrWhiteSpace(keyword))
+                throw new ArgumentNullException(nameof(keyword));
 
-        public bool Add(TrieNodeInput input)
-        {
             // Get last node from given input. Next lines we merge keywords when result status is FoundStartWith
-            var result = GetLastNode(input);
+            var result = SearchLastNodeFrom(keyword);
 
             if (
                 result.Status == TrieNodeSearchResultType.Unkown ||
@@ -92,20 +67,20 @@ namespace AutoComplete.Core.DataStructure
             else if (result.Status == TrieNodeSearchResultType.FoundStartsWith)
             {
                 //result found
-                string keyword = input.Keyword;
+                string prefix = keyword;
 
                 // if last found node is start with? get 'word' from key|(word)
                 if (result.LastKeywordIndex != null && result.LastKeywordIndex.HasValue && result.LastKeywordIndex.Value > 0)
                 {
                     // input.substring ( last found character index of input.Keyword in Trie, length of remaining characters )
-                    keyword = input.Keyword.Substring(
+                    prefix = keyword.Substring(
                         result.LastKeywordIndex.Value,
-                        input.Keyword.Length - result.LastKeywordIndex.Value
+                        keyword.Length - result.LastKeywordIndex.Value
                     );
                 }
 
-                var newTrie = TrieNode.CreateFromKeyword(keyword);
-                result.Node.AddChild(newTrie);
+                var newTrie = TrieNode.CreateFrom(prefix);
+                result.Node.Add(newTrie);
 
                 return true;
             } //result found

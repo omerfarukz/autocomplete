@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AutoComplete.Core
+namespace AutoComplete.Core.Builders
 {
     internal class TrieIndexHeaderBuilder
     {

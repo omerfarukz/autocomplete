@@ -50,10 +50,6 @@
       <Project>{C7F59E04-E85A-4F8E-AD63-03B661316493}</Project>
       <Name>AutoComplete.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AutoComplete.Desktop\AutoComplete.Desktop.csproj">
-      <Project>{2B9D9128-C3C3-4923-BA82-C68C1DCB6CE7}</Project>
-      <Name>AutoComplete.Desktop</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

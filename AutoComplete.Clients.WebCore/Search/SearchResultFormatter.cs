@@ -41,19 +41,19 @@ namespace AutoComplete.Clients.WebCore.Search
         /// <summary>
         /// https://code.google.com/p/json-simple/source/browse/trunk/src/main/java/org/json/simple/JSONValue.java#270
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="keyword"></param>
         /// <returns></returns>
-        private static string EscapeJsonCharacters(string input)
+        private static string EscapeJsonCharacters(string keyword)
         {
-            if (string.IsNullOrWhiteSpace(input))
-                return input;
+            if (string.IsNullOrWhiteSpace(keyword))
+                return keyword;
 
             StringBuilder stringBuilder = new StringBuilder();
             char currentChar;
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < keyword.Length; i++)
             {
                 bool characterAppended = false;
-                currentChar = input[i];
+                currentChar = keyword[i];
                 for (int j = 0; j < escapeCharacters.Length; j++)
                 {
                     if (currentChar.Equals(escapeCharacters[j]))

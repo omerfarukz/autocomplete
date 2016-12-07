@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace AutoComplete.Core
+namespace AutoComplete.Core.Readers
 {
     internal class TrieBinaryReader
     {
@@ -250,19 +250,19 @@ namespace AutoComplete.Core
             return childrenPositions;
         }
 
-        internal TrieNodeStructSearchResult GetLastNode(long parentPosition, TrieNodeInput input)
+        internal TrieNodeStructSearchResult SearchLastNode(long parentPosition, string keyword)
         {
             var result = TrieNodeStructSearchResult.CreateNotFound();
 
             long currentPosition = parentPosition;
 
-            for (int i = 0; i < input.Keyword.Length; i++)
+            for (int i = 0; i < keyword.Length; i++)
             {
-                long? childPosition = GetChildPositionFromNode(currentPosition, input.Keyword[i]);
+                long? childPosition = GetChildPositionFromNode(currentPosition, keyword[i]);
 
                 if (childPosition != null)
                 {
-                    if (i == input.Keyword.Length - 1)
+                    if (i == keyword.Length - 1)
                     {
                         result = TrieNodeStructSearchResult.CreateFoundEquals(childPosition.Value);
                         break;

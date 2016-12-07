@@ -1,9 +1,10 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.Domain;
+using AutoComplete.Core.Searchers;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AutoComplete.Client
+namespace AutoComplete.Clients.IndexSearchers
 {
     public class InMemoryIndexSearcher : IndexSearcher
     {

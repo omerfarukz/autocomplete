@@ -1,8 +1,9 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.DataStructure;
+using AutoComplete.Core.Readers;
 using System.IO;
 
-namespace AutoComplete.Client
+namespace AutoComplete.Clients.IndexSearchers
 {
     internal static class TrieNodeHelperFileSystemExtensions
     {

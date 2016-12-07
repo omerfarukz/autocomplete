@@ -1,4 +1,4 @@
-﻿namespace AutoComplete.Web
+﻿namespace AutoComplete.Clients.Web
 {
     using Microsoft.AspNetCore.Http;
     using System;

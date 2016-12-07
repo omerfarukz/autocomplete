@@ -1,6 +1,5 @@
 ﻿using AutoComplete.Core;
 using AutoComplete.Core.Domain;
-using AutoComplete.Desktop;
 using System.Diagnostics;
 
 namespace AutoComplete.Clients.ConsoleClient

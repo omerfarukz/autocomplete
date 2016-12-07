@@ -1,8 +1,8 @@
-﻿using AutoComplete.Client;
+﻿using AutoComplete.Clients.IndexSearchers;
+using AutoComplete.Clients.Web;
 using AutoComplete.Core;
 using AutoComplete.Core.Domain;
-using AutoComplete.Web;
-
+using AutoComplete.Core.Searchers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;

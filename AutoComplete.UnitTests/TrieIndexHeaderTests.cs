@@ -1,4 +1,6 @@
 ﻿using AutoComplete.Core;
+using AutoComplete.Core.Builders;
+using AutoComplete.Core.Readers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoComplete.UnitTests

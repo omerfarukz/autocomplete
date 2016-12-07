@@ -1,5 +1,6 @@
 ﻿using AutoComplete.Core.DataStructure;
 using AutoComplete.Core.Helpers;
+using AutoComplete.Core.Readers;
 using Newtonsoft.Json;
 using System;
 using System.Collections;

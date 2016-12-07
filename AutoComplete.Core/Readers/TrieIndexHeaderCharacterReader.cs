@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoComplete.Core
+namespace AutoComplete.Core.Readers
 {
     public class TrieIndexHeaderCharacterReader
     {
