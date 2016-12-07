@@ -18,6 +18,10 @@ namespace AutoComplete.Core.Searchers
         public IndexSearcher()
         {}
 
+        public IndexSearcher(Stream headerStream, Stream indexStream)
+            :this(headerStream, indexStream, null)
+        {}
+
         /// <summary>
         /// Don't forget the close stream(s) after search
         /// </summary>
