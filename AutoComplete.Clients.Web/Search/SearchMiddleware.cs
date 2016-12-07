@@ -1,6 +1,4 @@
 ﻿using AutoComplete.Clients.IndexSearchers;
-using AutoComplete.Clients.Web;
-using AutoComplete.Core;
 using AutoComplete.Core.Domain;
 using AutoComplete.Core.Searchers;
 using Microsoft.AspNetCore.Hosting;
