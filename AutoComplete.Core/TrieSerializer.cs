@@ -12,7 +12,7 @@ namespace AutoComplete.Core
 {
     internal class TrieSerializer
     {
-        #region Serialzie
+        #region Serializer
 
         public static void SerializeHeaderWithJsonSerializer(Stream header, TrieIndexHeader trieIndexHeader)
         {
