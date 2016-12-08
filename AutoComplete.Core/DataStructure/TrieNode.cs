@@ -80,13 +80,13 @@ namespace AutoComplete.Core.DataStructure
         {
         }
 
-        public void AddChild(TrieNode child)
+        public void Add(TrieNode child)
         {
             if (child == null)
                 throw new ArgumentException("child");
 
             if (Children == null)
-                Children = new SortedDictionary<char, TrieNode>();
+                Children = new SortedDictionary<char, TrieNode>(new TrieCharacterComparer());
 
             // if child node character already exist on this node
             if (Children.ContainsKey(child.Character))
@@ -96,7 +96,7 @@ namespace AutoComplete.Core.DataStructure
                 {
                     foreach (var item in child.Children)
                     {
-                        existsNode.AddChild(item.Value);
+                        existsNode.Add(item.Value);
                     }
                 }
             }
@@ -133,23 +133,13 @@ namespace AutoComplete.Core.DataStructure
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Create TrieNode from the keyword and set last char as terminal.
-        /// </summary>
-        /// <returns>The keyword.</returns>
-        /// <param name="keyword">Keyword.</param>
-        public static TrieNode CreateFromKeyword(string keyword)
-        {
-            return CreateFromKeyword(keyword, true);
-        }
-
         // <summary>
         /// Froms the keyword.
         /// </summary>
         /// <returns>The keyword.</returns>
         /// <param name="keyword">Keyword.</param>
         /// <param name="setLastCharAsTerminal">If set to <c>true</c> set last char as terminal.</param>/
-        public static TrieNode CreateFromKeyword(string keyword, bool setLastCharAsTerminal)
+        public static TrieNode CreateFrom(string keyword)
         {
             if (string.IsNullOrWhiteSpace(keyword) || keyword.Length == 0)
                 throw new ArgumentException("keyword");
@@ -168,10 +158,10 @@ namespace AutoComplete.Core.DataStructure
             {
                 TrieNode newNode = new TrieNode(keyword[i]);
 
-                currentNode.AddChild(newNode);
+                currentNode.Add(newNode);
 
                 // set is terminal to true when i is last index number of keyword
-                if (i == keyword.Length - 1 && setLastCharAsTerminal)
+                if (i == keyword.Length - 1)
                 {
                     newNode.IsTerminal = true;
                 }

@@ -14,8 +14,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: InternalsVisibleTo("AutoComplete.Desktop")]
-[assembly: InternalsVisibleTo("AutoComplete.Client")]
+[assembly: InternalsVisibleTo("AutoComplete.Clients")]
 [assembly: InternalsVisibleTo("AutoComplete.UnitTests")]
 // Version information for an assembly consists of the following four values:
 //

@@ -35,12 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataSource\IKeywordDataSource.cs" />
     <Compile Include="DataStructure\Trie.cs" />
     <Compile Include="DataStructure\TrieCharacterComparer.cs" />
     <Compile Include="DataStructure\TrieIndexHeader.cs" />
     <Compile Include="DataStructure\TrieNode.cs" />
-    <Compile Include="DataStructure\TrieNodeInput.cs" />
     <Compile Include="DataStructure\TrieNodeSearchResult.cs" />
     <Compile Include="DataStructure\TrieNodeSearchResultType.cs" />
     <Compile Include="DataStructure\TrieNodeStructSearchResult.cs" />
@@ -49,15 +47,15 @@
     <Compile Include="Domain\SearchOptions.cs" />
     <Compile Include="Domain\SearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
-    <Compile Include="TrieIndexHeaderCharacterReader.cs" />
+    <Compile Include="Readers\TrieIndexHeaderCharacterReader.cs" />
     <Compile Include="TrieSerializer.cs" />
-    <Compile Include="IIndexBuilder.cs" />
-    <Compile Include="IIndexSearcher.cs" />
+    <Compile Include="Builders\IIndexBuilder.cs" />
+    <Compile Include="Searchers\IIndexSearcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrieIndexHeaderBuilder.cs" />
-    <Compile Include="TrieBinaryReader.cs" />
-    <Compile Include="IndexBuilder.cs" />
-    <Compile Include="IndexSearcher.cs" />
+    <Compile Include="Builders\TrieIndexHeaderBuilder.cs" />
+    <Compile Include="Readers\TrieBinaryReader.cs" />
+    <Compile Include="Builders\IndexBuilder.cs" />
+    <Compile Include="Searchers\IndexSearcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
