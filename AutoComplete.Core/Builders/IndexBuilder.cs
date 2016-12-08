@@ -219,6 +219,7 @@ namespace AutoComplete.Core.Builders
 
         private void SerializeKeywords(Stream stream)
         {
+            //test
             stream.Position = 0;
             foreach (var item in _keywords.OrderBy(f => f, new TrieStringComparer()))
             {
