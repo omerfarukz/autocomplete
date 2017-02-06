@@ -1,4 +1,4 @@
-# Auto Complete Library for Dotnet-Core
+# Auto Complete Library for DotNetCore
 - Fully Persistent and Memory support
 - Ultra lightweight and powerful
 - Ready to use in web and desktop
