@@ -4,7 +4,7 @@
 - Ready to use in web and desktop
 - Portable Class Library
 - Free commercial usage (apache 2.0 licence)
-- Super faster autocomplete algorithm. 
+- Fastest autocomplete algorithm. 
 - O(n) complexity for searching (n is length of input)
 
 http://tureng.com - Live on best dictionary site of Turkey!
