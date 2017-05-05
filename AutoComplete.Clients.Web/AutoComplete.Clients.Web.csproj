@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Autocomplete.Clients\Autocomplete.Clients.csproj" />
+    <ProjectReference Include="..\AutoComplete.Clients\Autocomplete.Clients.csproj" />
     <ProjectReference Include="..\AutoComplete.Core\AutoComplete.Core.csproj" />
   </ItemGroup>
 
