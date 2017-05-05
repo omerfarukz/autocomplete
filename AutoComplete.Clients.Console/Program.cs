@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AutoComplete.Clients.Console
 {
@@ -16,8 +17,36 @@ namespace AutoComplete.Clients.Console
         {
             string headerPath = "header.json";
             string indexPath = "index.bin";
-            
-            IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
+            string tailPath = "tail.bin";
+
+            if (File.Exists(headerPath))
+                File.Delete(headerPath);
+
+            if (File.Exists(indexPath))
+                File.Delete(indexPath);
+
+            if (File.Exists(tailPath))
+                File.Delete(tailPath);
+
+            using (var header = new FileStream(headerPath, FileMode.Create))
+            {
+                using (var index = new FileStream(indexPath, FileMode.Create))
+                {
+                    using (var tail = new FileStream(tailPath, FileMode.Create))
+                    {
+                        var builder = new IndexBuilder(header, index, tail);
+
+                        builder.Add("airplane");
+                        builder.Add("bus");
+                        builder.Add("car");
+
+                        builder.Build();
+                    }
+                }
+            }
+
+
+            IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath, tailPath);
 
             var sw = new Stopwatch();
 

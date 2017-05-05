@@ -17,7 +17,7 @@ namespace AutoComplete.Core.Builders
         private Stream _tailStream;
         private HashSet<string> _keywords;
         private Dictionary<string, uint> _keywordDictionary;
-        static readonly byte[] newLine = Encoding.UTF8.GetBytes("\n");
+        static readonly byte[] newLine = Encoding.UTF8.GetBytes(Environment.NewLine);
 
         public IndexBuilder(Stream headerStream, Stream indexStream) : this(headerStream, indexStream, null)
         { }

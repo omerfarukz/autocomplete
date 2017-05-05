@@ -2,6 +2,7 @@
 using AutoComplete.Core.Helpers;
 using AutoComplete.Core.Readers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace AutoComplete.Core
                 using (JsonTextWriter jsonWriter = new JsonTextWriter(streamWriter))
                 {
                     JsonSerializer serializer = new JsonSerializer();
+                    serializer.Converters.Add(new CharConverter());
+
                     serializer.Serialize(jsonWriter, trieIndexHeader);
                     jsonWriter.Flush();
                 }
@@ -147,6 +150,8 @@ namespace AutoComplete.Core
                 using (JsonTextReader jsonReader = new JsonTextReader(streamReader))
                 {
                     JsonSerializer serializer = new JsonSerializer();
+                    serializer.Converters.Add(new CharConverter());
+
                     var trieIndexHeader = serializer.Deserialize<TrieIndexHeader>(jsonReader);
 
                     if (!dontAutoInitializeCache)
@@ -158,5 +163,25 @@ namespace AutoComplete.Core
         }
 
         #endregion
+
+        public class CharConverter : JsonConverter
+        {
+            public override bool CanConvert(Type objectType)
+            {
+                return objectType.Equals(typeof(char));
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                var token = JToken.Load(reader);
+                return (char)token.Value<UInt16>();
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                char character = (char)value;
+                writer.WriteValue(((UInt16)character));
+            }
+        }
     }
 }

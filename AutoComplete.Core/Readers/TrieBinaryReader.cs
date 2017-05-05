@@ -20,8 +20,8 @@ namespace AutoComplete.Core.Readers
         }
 
         public List<string> GetAutoCompleteNodes(
-                long position, 
-                string prefix, 
+                long position,
+                string prefix,
                 int maxItemsCount,
                 List<string> result,
                 Stream tailStream = null
@@ -43,9 +43,12 @@ namespace AutoComplete.Core.Readers
                     {
                         streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
                         int count = maxItemsCount - result.Count;
+                        string line = null;
                         for (int i = 0; i < count; i++)
                         {
-                            var line = streamReader.ReadLine();
+                            if ((line = streamReader.ReadLine()) == null)
+                                break;
+
                             if (!line.StartsWith(prefix)) // TODO: optimize
                                 break;
 
