@@ -17,7 +17,7 @@ namespace AutoComplete.Clients.Console
         {
             string headerPath = "header.json";
             string indexPath = "index.bin";
-            string tailPath = "tail.bin";
+            string tailPath = "tail.txt";
 
             if (File.Exists(headerPath))
                 File.Delete(headerPath);

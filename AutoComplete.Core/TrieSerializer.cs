@@ -171,6 +171,8 @@ namespace AutoComplete.Core
                 return objectType.Equals(typeof(char));
             }
 
+            public override bool CanRead => base.CanRead;
+
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
                 var token = JToken.Load(reader);
