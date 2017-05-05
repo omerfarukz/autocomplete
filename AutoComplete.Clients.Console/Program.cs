@@ -35,9 +35,6 @@ namespace AutoComplete.Clients.Console
                     using (var tail = new FileStream(tailPath, FileMode.Create))
                     {
                         var builder = new IndexBuilder(header, index, tail);
-
-                        builder.Add("airplane");
-                        builder.Add("bus");
                         builder.Add("car");
 
                         builder.Build();

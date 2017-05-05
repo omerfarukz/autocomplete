@@ -1,3 +1,0 @@
-airplane
-bus
-car
