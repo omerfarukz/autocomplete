@@ -17,4 +17,9 @@
     <ProjectReference Include="..\AutoComplete.Core\AutoComplete.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="header.json" />
+    <None Remove="index.bin" />
+    <None Remove="tail.txt" />
+  </ItemGroup>
 </Project>

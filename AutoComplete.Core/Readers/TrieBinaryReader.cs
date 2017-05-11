@@ -36,24 +36,21 @@ namespace AutoComplete.Core.Readers
             if (tailStream != null)
             {
                 var positionOnTextFile = ReadPositionOnTextFile(position);
-                if (positionOnTextFile > 0)
+                int bufferSize = 8;// 2 * prefix.Length; // magic?
+                using (var streamReader = new StreamReader(tailStream, Encoding.UTF8, false, bufferSize, true))
                 {
-                    int bufferSize = 8;// 2 * prefix.Length; // magic?
-                    using (var streamReader = new StreamReader(tailStream, Encoding.UTF8, false, bufferSize, true))
+                    streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
+                    int count = maxItemsCount - result.Count;
+                    string line = null;
+                    for (int i = 0; i < count; i++)
                     {
-                        streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
-                        int count = maxItemsCount - result.Count;
-                        string line = null;
-                        for (int i = 0; i < count; i++)
-                        {
-                            if ((line = streamReader.ReadLine()) == null)
-                                break;
+                        if ((line = streamReader.ReadLine()) == null)
+                            break;
 
-                            if (!line.StartsWith(prefix)) // TODO: optimize
-                                break;
+                        if (!line.StartsWith(prefix, StringComparison.Ordinal)) // TODO: optimize
+                            break;
 
-                            result.Add(line);
-                        }
+                        result.Add(line);
                     }
                 }
             }
@@ -159,11 +156,10 @@ namespace AutoComplete.Core.Readers
         }
 
         /// <summary>
-        /// Gets the node position from children.
+        /// Gets the node offset from children.
         /// </summary>
-        /// <returns>The node position from children.</returns>
-        /// <param name="_binaryReader">Binary reader.</param>
-        /// <param name="parentStartPosition">Parent start position.</param>
+        /// <returns>The node offset from children.</returns>
+        /// <param name="parentPosition">Parent position.</param>
         /// <param name="character">Character.</param>
         internal long? GetNodeOffsetFromChildren(long parentPosition, char character)
         {
@@ -192,12 +188,11 @@ namespace AutoComplete.Core.Readers
         }
 
         /// <summary>
-        /// Its like a GetNodeOffsetFromChildren but faster then 4 times
+        /// Gets the child position from node.
         /// </summary>
-        /// <param name="_binaryReader"></param>
-        /// <param name="position"></param>
-        /// <param name="character"></param>
-        /// <returns></returns>
+        /// <returns>The child position from node.</returns>
+        /// <param name="position">Position.</param>
+        /// <param name="character">Character.</param>
         internal long? GetChildPositionFromNode(long position, char character)
         {
             UInt16? childIndex = TrieIndexHeaderCharacterReader.Instance.GetCharacterIndex(_header, character);

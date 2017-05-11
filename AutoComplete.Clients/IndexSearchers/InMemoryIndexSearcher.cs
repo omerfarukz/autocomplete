@@ -3,6 +3,7 @@ using AutoComplete.Core.Domain;
 using AutoComplete.Core.Searchers;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace AutoComplete.Clients.IndexSearchers
 {
@@ -104,29 +105,34 @@ namespace AutoComplete.Clients.IndexSearchers
                 {
                     if (!_tailData.ContainsKey(_tailFileName))
                     {
-                        Stream stream = new FileStream(
-                                                _tailFileName,
-                                                FileMode.Open,
-                                                FileAccess.Read,
-                                                FileShare.Read,
-                                                FirstReadBufferSize,
-                                                FileOptions.RandomAccess
-                                           );
+                        var streamBytes = GetBytesFromFile(_tailFileName);
 
-                        stream.Position = 0;
-
-                        byte[] streamBytes = new byte[stream.Length];
-                        stream.Read(streamBytes, 0, streamBytes.Length);
-
-                        stream.Dispose();
-                        stream = null;
-
+                        if (streamBytes == null || streamBytes.Length == 0)
+                            throw new InvalidProgramException("Tail file can not be null or empty");
+                        
                         _tailData.Add(_tailFileName, streamBytes);
                     }
                 }
             }
 
             return new ManagedInMemoryStream(_tailData[_tailFileName]);
+        }
+
+        private byte[] GetBytesFromFile(string path)
+        {
+            using (Stream stream = new FileStream(
+                                                path,
+                                                FileMode.Open,
+                                                FileAccess.Read,
+                                                FileShare.Read,
+                                                FirstReadBufferSize,
+                                                FileOptions.RandomAccess
+            ))
+            {
+                byte[] streamBytes = new byte[stream.Length];
+                stream.Read(streamBytes, 0, streamBytes.Length);
+                return streamBytes;
+            }
         }
     }
 }

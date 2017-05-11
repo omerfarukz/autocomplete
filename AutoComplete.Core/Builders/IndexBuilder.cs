@@ -168,12 +168,12 @@ namespace AutoComplete.Core.Builders
                             )
                         )
                         {
-                            if (!nodeResult.Node.PositionOnTextFile.HasValue)
-                            {
+                            //if (!nodeResult.Node.PositionOnTextFile.HasValue)
+                            //{
                                 var positionOnTextFile = _keywordDictionary[nodeResult.Node.GetString()];
                                 nodeResult.Node.PositionOnTextFile = positionOnTextFile;
                                 currentNode.PositionOnTextFile = positionOnTextFile;
-                            }
+                            //}
                         }
                         else
                         {

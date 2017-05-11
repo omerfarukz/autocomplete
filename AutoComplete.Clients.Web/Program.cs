@@ -10,7 +10,7 @@ namespace AutoComplete.Clients.Web
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseKestrel(kestrelActions)
+                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
@@ -23,7 +23,7 @@ namespace AutoComplete.Clients.Web
         {
             obj.AddServerHeader = false;
             obj.NoDelay = true;
-            obj.MaxRequestBufferSize = 255;
+            obj.Limits.MaxRequestBufferSize = 255;
             obj.ThreadCount = 4;
         }
     }

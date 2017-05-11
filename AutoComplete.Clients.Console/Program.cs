@@ -18,6 +18,7 @@ namespace AutoComplete.Clients.Console
             string headerPath = "header.json";
             string indexPath = "index.bin";
             string tailPath = "tail.txt";
+            bool useTailFile = true;
 
             if (File.Exists(headerPath))
                 File.Delete(headerPath);
@@ -34,8 +35,17 @@ namespace AutoComplete.Clients.Console
                 {
                     using (var tail = new FileStream(tailPath, FileMode.Create))
                     {
-                        var builder = new IndexBuilder(header, index, tail);
+                        IndexBuilder builder = null;
+                        if (useTailFile)
+                            builder = new IndexBuilder(header, index, tail);
+                        else
+                            builder = new IndexBuilder(header, index);
+
+
+                        builder.Add("ade");
                         builder.Add("car");
+                        builder.Add("folk");
+                        builder.Add("xyz");
 
                         builder.Build();
                     }
@@ -43,7 +53,11 @@ namespace AutoComplete.Clients.Console
             }
 
 
-            IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath, tailPath);
+            IIndexSearcher searcher = null;
+            if (useTailFile)
+                searcher = new InMemoryIndexSearcher(headerPath, indexPath, tailPath);
+            else
+                searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 
             var sw = new Stopwatch();
 

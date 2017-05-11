@@ -1,9 +1,9 @@
-﻿<Properties StartupConfiguration="{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}|Default">
+﻿<Properties StartupConfiguration="{E3037928-C4AB-4A51-BAED-3129163B4B91}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="autocomplete Status">
     <Files>
-      <File FileName="AutoComplete.Core/DataStructure/TrieNode.cs" Line="164" Column="45" />
-      <File FileName="AutoComplete.Core/DataStructure/Trie.cs" Line="87" Column="1" />
-      <File FileName="AutoComplete.Core/project.json" Line="10" Column="4" />
+      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="25" Column="13" />
+      <File FileName="AutoComplete.Clients.Web/Search/SearchMiddleware.cs" Line="80" Column="58" />
+      <File FileName="AutoComplete.Core/Readers/TrieBinaryReader.cs" Line="31" Column="53" />
       <File FileName="autocomplete Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -14,4 +14,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.clients.AutoComplete.Clients.Console PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.clients.AutoComplete.Clients.Web PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
