@@ -48,7 +48,6 @@
     <Compile Include="Domain\SearchResult.cs" />
     <Compile Include="Helpers\BitArrayHelper.cs" />
     <Compile Include="Readers\TrieIndexHeaderCharacterReader.cs" />
-    <Compile Include="TrieSerializer.cs" />
     <Compile Include="Builders\IIndexBuilder.cs" />
     <Compile Include="Searchers\IIndexSearcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,10 +55,15 @@
     <Compile Include="Readers\TrieBinaryReader.cs" />
     <Compile Include="Builders\IndexBuilder.cs" />
     <Compile Include="Searchers\IndexSearcher.cs" />
+    <Compile Include="Serializers\TrieIndexHeaderSerializer.cs" />
+    <Compile Include="Serializers\TrieIndexSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
     <None Include="project.lock.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Serializers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

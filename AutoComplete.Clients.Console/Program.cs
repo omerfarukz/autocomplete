@@ -8,6 +8,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text;
+using AutoComplete.Core;
+using System.Reflection;
+using System.Collections;
 
 namespace AutoComplete.Clients.Console
 {
@@ -15,10 +19,16 @@ namespace AutoComplete.Clients.Console
     {
         public static void Main(string[] args)
         {
-            string headerPath = "header.json";
+            GetReadyForSearch();
+        }
+
+        private static void GetReadyForSearch()
+        {
+            bool useTailFile = true;
+
+            string headerPath = "header.txt";
             string indexPath = "index.bin";
             string tailPath = "tail.txt";
-            bool useTailFile = true;
 
             if (File.Exists(headerPath))
                 File.Delete(headerPath);

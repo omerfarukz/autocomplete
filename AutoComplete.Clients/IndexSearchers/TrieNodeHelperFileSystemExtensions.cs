@@ -2,6 +2,7 @@
 using AutoComplete.Core.DataStructure;
 using AutoComplete.Core.Readers;
 using System.IO;
+using AutoComplete.Core.Serializers;
 
 namespace AutoComplete.Clients.IndexSearchers
 {
@@ -9,30 +10,31 @@ namespace AutoComplete.Clients.IndexSearchers
     {
         public static TrieIndexHeader ReadHeaderFile(string path)
         {
-            Stream stream = new FileStream(
+            var serializer = new TrieIndexHeaderSerializer();
+
+            using (Stream stream = new FileStream(
                                 path,
                                 FileMode.Open,
                                 FileAccess.Read,
                                 FileShare.Read
-                            );
-
-            return TrieSerializer.DeserializeHeaderWithXmlSerializer(stream, false);
+            ))
+            {
+                return serializer.Deserialize(stream);
+            }
         }
 
         public static void CreateHeaderFile(this TrieIndexHeader header, string path)
         {
-            Stream stream = new FileStream(
+            var serializer = new TrieIndexHeaderSerializer();
+            using (Stream stream = new FileStream(
                                 path,
                                 FileMode.OpenOrCreate,
                                 FileAccess.Write,
                                 FileShare.None
-                            );
-
-            TrieSerializer.SerializeHeaderWithJsonSerializer(stream, header);
-
-            //stream.Close();
-            stream.Dispose();
-            stream = null;
+            ))
+            {
+                serializer.Serialize(stream, header);
+            }
         }
 
         public static int CreateIndexFile(this TrieBinaryReader instance, TrieIndexHeader header, TrieNode node, string path, int readBufferSizeInBytes)
@@ -46,7 +48,7 @@ namespace AutoComplete.Clients.IndexSearchers
                                 FileOptions.RandomAccess
                             );
 
-            return TrieSerializer.SerializeIndexWithBinaryWriter(node, header, stream);
+            return TrieIndexSerializer.Serialize(node, header, stream);
         }
     }
 }

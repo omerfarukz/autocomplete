@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using AutoComplete.Core.Serializers;
 
 namespace AutoComplete.Core.Builders
 {
@@ -69,9 +70,10 @@ namespace AutoComplete.Core.Builders
         {
             PrepareForBuild();
 
-            TrieSerializer.SerializeHeaderWithJsonSerializer(_headerStream, _header);
+            var serializer = new TrieIndexHeaderSerializer();
+            serializer.Serialize(_headerStream, _header);
 
-            var processedNodeCount = TrieSerializer.SerializeIndexWithBinaryWriter(_trie.Root, _header, _indexStream);
+            var processedNodeCount = TrieIndexSerializer.Serialize(_trie.Root, _header, _indexStream);
             return processedNodeCount;
         }
 

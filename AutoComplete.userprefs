@@ -1,15 +1,16 @@
-﻿<Properties StartupConfiguration="{E3037928-C4AB-4A51-BAED-3129163B4B91}|Default">
+﻿<Properties StartupConfiguration="{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="autocomplete Status">
     <Files>
-      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="25" Column="13" />
-      <File FileName="AutoComplete.Clients.Web/Search/SearchMiddleware.cs" Line="80" Column="58" />
-      <File FileName="AutoComplete.Core/Readers/TrieBinaryReader.cs" Line="31" Column="53" />
+      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="31" Column="42" />
+      <File FileName="AutoComplete.Core/Serializers/TrieIndexSerializer.cs" Line="52" Column="18" />
       <File FileName="autocomplete Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/omr/Desktop/autocomplete/AutoComplete.Clients/IndexSearchers/TrieNodeHelperFileSystemExtensions.cs" relfile="AutoComplete.Clients/IndexSearchers/TrieNodeHelperFileSystemExtensions.cs" line="51" column="40" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.clients.AutoComplete.Clients.Console PreferredExecutionTarget="MonoDevelop.Default" />

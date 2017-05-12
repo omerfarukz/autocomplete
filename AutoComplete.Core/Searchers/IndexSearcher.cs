@@ -4,6 +4,7 @@ using AutoComplete.Core.Readers;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AutoComplete.Core.Serializers;
 
 namespace AutoComplete.Core.Searchers
 {
@@ -105,7 +106,8 @@ namespace AutoComplete.Core.Searchers
 
         internal virtual TrieIndexHeader GetHeader()
         {
-            var header = TrieSerializer.DeserializeHeaderWithXmlSerializer(_headerStream);
+            var serializer = new TrieIndexHeaderSerializer();
+            var header = serializer.Deserialize(_headerStream);
             return header;
         }
 
