@@ -2,34 +2,60 @@
 using AutoComplete.Core.Builders;
 using AutoComplete.Core.Domain;
 using AutoComplete.Core.Searchers;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text;
-using AutoComplete.Core;
-using System.Reflection;
-using System.Collections;
+using System.Linq;
 
 namespace AutoComplete.Clients.Console
 {
     public class Program
     {
+        static bool useTailFile = true;
+        static string headerPath = "header.txt";
+        static string indexPath = "index.bin";
+        static string tailPath = "tail.txt";
+
         public static void Main(string[] args)
         {
             GetReadyForSearch();
         }
 
         private static void GetReadyForSearch()
+		{
+			BuildIndex();
+
+            var searcher = CreateSearcher();
+
+            while (true)
+            {
+                System.Console.WriteLine("Type any term");
+                string term = System.Console.ReadLine();
+
+                var searchResult = searcher.Search(term, 5, false);
+
+                if (searchResult != null && searchResult.Items != null)
+                {
+                    foreach (var item in searchResult.Items)
+                    {
+                        System.Console.WriteLine(item);
+                    }
+                }
+
+            }
+        }
+
+        private static IIndexSearcher CreateSearcher()
         {
-            bool useTailFile = true;
+            IIndexSearcher searcher = null;
+            if (useTailFile)
+                searcher = new InMemoryIndexSearcher(headerPath, indexPath, tailPath);
+            else
+                searcher = new InMemoryIndexSearcher(headerPath, indexPath);
+            return searcher;
+        }
 
-            string headerPath = "header.txt";
-            string indexPath = "index.bin";
-            string tailPath = "tail.txt";
-
+        private static void BuildIndex()
+        {
             if (File.Exists(headerPath))
                 File.Delete(headerPath);
 
@@ -51,45 +77,15 @@ namespace AutoComplete.Clients.Console
                         else
                             builder = new IndexBuilder(header, index);
 
-
-                        builder.Add("ade");
-                        builder.Add("car");
-                        builder.Add("folk");
-                        builder.Add("xyz");
+                        foreach (var item in File.ReadLines("Words350k.txt"))
+                        {
+                            if (!string.IsNullOrWhiteSpace((item)))
+                                builder.Add(item);
+                        }
 
                         builder.Build();
                     }
                 }
-            }
-
-
-            IIndexSearcher searcher = null;
-            if (useTailFile)
-                searcher = new InMemoryIndexSearcher(headerPath, indexPath, tailPath);
-            else
-                searcher = new InMemoryIndexSearcher(headerPath, indexPath);
-
-            var sw = new Stopwatch();
-
-            while (true)
-            {
-                System.Console.WriteLine("Type any term");
-                string term = System.Console.ReadLine();
-
-                sw.Restart();
-
-                SearchResult searchResult = searcher.Search(term, 5, false);
-                sw.Stop();
-
-                if (searchResult != null && searchResult.Items != null)
-                {
-                    foreach (var item in searchResult.Items)
-                    {
-                        System.Console.WriteLine(item);
-                    }
-                }
-
-                System.Console.WriteLine("Elapsed ms: " + sw.Elapsed.TotalMilliseconds);
             }
         }
     }

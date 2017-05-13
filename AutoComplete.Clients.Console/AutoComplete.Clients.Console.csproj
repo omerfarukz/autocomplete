@@ -22,4 +22,15 @@
     <None Remove="index.bin" />
     <None Remove="tail.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="MostUsedWords3000.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="MostUsedWords350k.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Words350k.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

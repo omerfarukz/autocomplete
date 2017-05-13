@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="autocomplete Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AutoComplete.Core/DataStructure/Trie.cs">
     <Files>
-      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="31" Column="42" />
-      <File FileName="AutoComplete.Core/Serializers/TrieIndexSerializer.cs" Line="52" Column="18" />
+      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="87" Column="75" />
+      <File FileName="AutoComplete.Core/Serializers/TrieIndexHeaderSerializer.cs" Line="15" Column="69" />
       <File FileName="autocomplete Status" />
+      <File FileName="AutoComplete.Core/DataStructure/Trie.cs" Line="56" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

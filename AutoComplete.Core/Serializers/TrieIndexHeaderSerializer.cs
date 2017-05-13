@@ -15,38 +15,20 @@ namespace AutoComplete.Core.Serializers
         public void Serialize(Stream stream, TrieIndexHeader header)
         {
             var properties = GetProperties(header);
-            using (var streamWriter = new StreamWriter(stream, Encoding.UTF8))
+            using (var writer = new StreamWriter(stream, Encoding.UTF8))
             {
-                string propertySeperator = string.Empty;
                 foreach (var property in properties)
                 {
-                    streamWriter.Write(propertySeperator);
-                    streamWriter.Write(property.Name);
-                    streamWriter.Write(KeyValueSeperator);
+                    writer.Write(property.Name);
+                    writer.Write(KeyValueSeperator);
 
                     var propertyValue = property.GetValue(header);
-                    if (propertyValue != null)
-                    {
-                        if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(property.PropertyType.GetTypeInfo()))
-                        {
-                            var list = propertyValue as List<char>;
-                            char itemSeperator = ' ';
-                            foreach (var item in list)
-                            {
-                                streamWriter.Write(itemSeperator);
-                                streamWriter.Write((int)item);
-                                itemSeperator = TrieIndexHeaderSerializer.ItemSeperator;
-                            }
-                        }
-                        else
-                        {
-                            streamWriter.Write(property.GetValue(header)?.ToString());
-                        }
-                    }
-                    streamWriter.Write(Environment.NewLine);
+
+                    SerializePropertyValue(propertyValue, property.PropertyType, writer);
+
+                    writer.Write(Environment.NewLine);
                 }
             }
-
         }
 
         public TrieIndexHeader Deserialize(Stream stream)
@@ -60,7 +42,6 @@ namespace AutoComplete.Core.Serializers
                 {
                     string[] keyValue = reader.ReadLine().Split(KeyValueSeperator);
                     string key = keyValue[0];
-                    string valueAsString = keyValue[1];
 
                     var property = properties.SingleOrDefault(f => f.Name == key);
                     if (property == null)
@@ -68,23 +49,52 @@ namespace AutoComplete.Core.Serializers
                         throw new Exception("Property not found");
                     }
 
-                    object propertyValue = null;
-                    if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(property.PropertyType.GetTypeInfo()))
-                    {
-                        propertyValue = valueAsString.Split(ItemSeperator)
-                                                     .Select(f => Convert.ToChar(int.Parse(f)))
-                                                     .ToList();
-                    }
-                    else
-                    {
-                        propertyValue = Convert.ChangeType(valueAsString, property.PropertyType);
-                    }
-
+                    object propertyValue = DeserializeValue(keyValue[1], property.PropertyType);
                     property.SetValue(header, propertyValue);
                 }
             }
 
             return header;
+        }
+
+        private void SerializePropertyValue(object propertyValue, Type propertyType, StreamWriter writer)
+        {
+            if (propertyValue != null)
+            {
+                if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(propertyType.GetTypeInfo()))
+                {
+                    var list = (List<char>)propertyValue;
+                    char itemSeperator = ' ';
+
+                    foreach (var item in list)
+                    {
+                        writer.Write(itemSeperator);
+                        writer.Write((int)item);
+                        itemSeperator = TrieIndexHeaderSerializer.ItemSeperator;
+                    }
+                }
+                else
+                {
+                    writer.Write(propertyValue?.ToString());
+                }
+            }
+        }
+
+        private object DeserializeValue(string valueAsString, Type propertyType)
+        {
+            object propertyValue = null;
+            if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(propertyType.GetTypeInfo()))
+            {
+                propertyValue = valueAsString.Split(ItemSeperator)
+                                             .Select(f => Convert.ToChar(int.Parse(f)))
+                                             .ToList();
+            }
+            else
+            {
+                propertyValue = Convert.ChangeType(valueAsString, propertyType);
+            }
+
+            return propertyValue;
         }
 
         private IEnumerable<PropertyInfo> GetProperties(TrieIndexHeader header)
