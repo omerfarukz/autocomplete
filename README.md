@@ -3,13 +3,13 @@
 - Ultra lightweight and powerful
 - Ready to use in web and desktop
 - Portable Class Library
-- Free commercial usage (apache 2.0 licence)
+- Free commercial usage (apache 2.0 license)
 - Fastest autocomplete algorithm. 
 - O(n) complexity for searching (n is length of input)
 
 http://tureng.com - Live on best dictionary site of Turkey!
 
-##Index Builder Sample
+## Index Builder Sample
 ```csharp
 var builder = new IndexBuilder(headerStream, indexStream);
 builder.Add("keyword");
@@ -18,7 +18,7 @@ builder.Add("keyword");
 builder.Build();
 ```
 
-##Search sample
+## Search sample
 ```csharp
 IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 SearchResult searchResult = searcher.Search(term, 5, false);
