@@ -9,7 +9,7 @@
 
 http://tureng.com - Live on best dictionary site of Turkey!
 
-##Index Builder Sample
+## Index Builder Sample
 ```csharp
 var builder = new IndexBuilder(headerStream, indexStream);
 builder.Add("keyword");
@@ -18,7 +18,7 @@ builder.Add("keyword");
 builder.Build();
 ```
 
-##Search sample
+## Search sample
 ```csharp
 IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 SearchResult searchResult = searcher.Search(term, 5, false);
