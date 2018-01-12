@@ -18,11 +18,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Local.testsettings = Local.testsettings
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autocomplete.Clients", "AutoComplete.Clients\Autocomplete.Clients.csproj", "{851F5864-6D70-46DE-BA10-21B888EDF314}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autocomplete.Clients", "AutoComplete.Clients\Autocomplete.Clients.csproj", "{851F5864-6D70-46DE-BA10-21B888EDF314}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoComplete.Clients.Console", "AutoComplete.Clients.Console\AutoComplete.Clients.Console.csproj", "{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoComplete.Clients.Console", "AutoComplete.Clients.Console\AutoComplete.Clients.Console.csproj", "{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoComplete.Clients.Web", "AutoComplete.Clients.Web\AutoComplete.Clients.Web.csproj", "{E3037928-C4AB-4A51-BAED-3129163B4B91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoComplete.Clients.Web", "AutoComplete.Clients.Web\AutoComplete.Clients.Web.csproj", "{E3037928-C4AB-4A51-BAED-3129163B4B91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

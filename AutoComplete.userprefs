@@ -1,10 +1,14 @@
-﻿<Properties StartupConfiguration="{60F8361C-2DD5-4CE7-85F1-37C21DE29F94}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="AutoComplete.Core/DataStructure/Trie.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="autocomplete Status">
     <Files>
-      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="87" Column="75" />
+      <File FileName="AutoComplete.Clients.Console/Program.cs" Line="87" Column="22" />
       <File FileName="AutoComplete.Core/Serializers/TrieIndexHeaderSerializer.cs" Line="15" Column="69" />
-      <File FileName="autocomplete Status" />
       <File FileName="AutoComplete.Core/DataStructure/Trie.cs" Line="56" Column="1" />
+      <File FileName="../../.nuget/packages/nuget.build.packaging/0.2.0/build/NuGet.Build.Packaging.targets" Line="379" Column="3" />
+      <File FileName="AutoComplete.Clients/Autocomplete.Clients.csproj" Line="1" Column="1" />
+      <File FileName="AutoComplete.Core/project.json" Line="11" Column="2" />
+      <File FileName="AutoComplete.Core/Properties/AssemblyInfo.cs" Line="30" Column="35" />
+      <File FileName="autocomplete Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -14,7 +18,9 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.clients.AutoComplete.Clients.Console PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.clients.AutoComplete.Clients.Web PreferredExecutionTarget="MonoDevelop.Default" />
+  <DisabledProjects>
+    <String>AutoComplete.Clients.Web/AutoComplete.Clients.Web.csproj</String>
+    <String>AutoComplete.Clients.Console/AutoComplete.Clients.Console.csproj</String>
+  </DisabledProjects>
 </Properties>
