@@ -24,3 +24,8 @@ IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 SearchResult searchResult = searcher.Search(term, 5, false);
 //print(searchResult)
 ```
+
+## Where can I get it?
+First, install NuGet. Then, install AutoComplete from the package manager console:
+
+PM> Install-Package AutoComplete.Clients
