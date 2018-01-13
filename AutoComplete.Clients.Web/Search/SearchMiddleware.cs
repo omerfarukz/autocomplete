@@ -1,11 +1,12 @@
-﻿using AutoComplete.Clients.IndexSearchers;
+﻿using System.IO;
+using System.Threading.Tasks;
+using AutoComplete.Clients.IndexSearchers;
+using AutoComplete.Clients.Web.Helpers;
 using AutoComplete.Core.Domain;
 using AutoComplete.Core.Searchers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace AutoComplete.Clients.Web.Search
 {
@@ -26,7 +27,7 @@ namespace AutoComplete.Clients.Web.Search
             _settings = settings?.Value;
             _hostingEnvironment = hostingEnvironment;
 
-            _headerFilePath = GetDbPath("header.json");
+            _headerFilePath = GetDbPath("header.txt");
             _indexFilePath = GetDbPath("index.bin");
             _tailFilePath = GetDbPath("tail.txt");
 

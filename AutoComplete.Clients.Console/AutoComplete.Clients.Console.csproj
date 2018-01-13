@@ -1,34 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>AutoComplete.Clients.Console</AssemblyName>
     <OutputType>Exe</OutputType>
-    <PackageId>AutoComplete.Clients.Console</PackageId>
-    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AutoComplete.Clients\Autocomplete.Clients.csproj" />
     <ProjectReference Include="..\AutoComplete.Core\AutoComplete.Core.csproj" />
   </ItemGroup>
-
   <ItemGroup>
-    <None Remove="header.json" />
-    <None Remove="index.bin" />
-    <None Remove="tail.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="MostUsedWords3000.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="MostUsedWords350k.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Words350k.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

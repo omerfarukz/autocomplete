@@ -1,9 +1,9 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "NuGet.Build.Packaging": "0.2.0",
-    "NETStandard.Library": "1.6.0",
-    "Microsoft.NETCore.Portable.Compatibility": "1.0.1"
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "NETStandard.Library": "2.0.0",
+    "NuGet.Build.Packaging": "0.2.2"
   },
   "frameworks": {
     "netstandard1.5": {}

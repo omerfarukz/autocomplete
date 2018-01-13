@@ -1,10 +1,7 @@
 ﻿using AutoComplete.Clients.IndexSearchers;
 using AutoComplete.Core.Builders;
-using AutoComplete.Core.Domain;
 using AutoComplete.Core.Searchers;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace AutoComplete.Clients.Console
 {
@@ -21,8 +18,8 @@ namespace AutoComplete.Clients.Console
         }
 
         private static void GetReadyForSearch()
-		{
-			BuildIndex();
+        {
+            BuildIndex();
 
             var searcher = CreateSearcher();
 
@@ -56,6 +53,7 @@ namespace AutoComplete.Clients.Console
 
         private static void BuildIndex()
         {
+            System.Console.WriteLine("Building...");
             if (File.Exists(headerPath))
                 File.Delete(headerPath);
 
