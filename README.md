@@ -21,7 +21,7 @@ We published this library about 3 years ago and we are using this while 4 years 
 Absolutely. All you need is provide Stream based instance for building and searching indexes. Autocomplete can be run on any Stream like a MemoryStream, FileStream, azure blobs and others.
 
 ## What is the purpose of this?
-We are using cloud services and we like these. Many cloud providers wants more money for extra memory capacity instead of extra disc capacity. Some other libraries powerful for autocomple. For example, lucene is powerful library for full text searching and also she provides autocomplete. We love it. But autocomplete and full text search things are completely different. Average autocomplete time for lucene is 0.7 ms(100x times slover then us)
+We are using cloud services and we like these. Many cloud providers wants more money for extra memory capacity instead of extra disc capacity. Some other libraries powerful for autocomple. For example, lucene is powerful library for full text searching and also she provides autocomplete. We love it. But autocomplete and full text search things are completely different. Average autocomplete time for lucene is 0.7 ms(100 times slover then us)
 
 ## What does speed is mean?
 We tested our code on persisted storage like in memory, classical hdd, ssd, azure blobs and some other storage providers.  We designed and optimized our index for linear reading. Search speed is really depends on your disk speed. Many cloud infrastructure provide larger read buffer(like a 30mb). These sounds good for linear reading. The search speed in this senario is depends some other resources like a network speed.
