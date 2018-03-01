@@ -1,11 +1,9 @@
-# Autocomplete Library for DotNetCore
-- Fully Persistent and Memory support
-- Ultra lightweight and powerful
-- Ready to use in web and desktop
-- Portable Class Library
-- Free commercial usage (apache 2.0 licence)
+# Incredible autocomplete library
 - Fastest autocomplete algorithm. 
-- O(n) complexity for searching (n is length of input)
+- **O(n)** complexity for searching (n is length of input)
+- Supports for all stream types. Including on classical disc storage for cheapest hosting.
+- Ready to use in web, desktop and **cloud**!.
+- **Free** commercial usage (apache 2.0 licence)
 
 ## Where can I get it?
 First, install NuGet. Then, install AutoComplete from the package manager console:
