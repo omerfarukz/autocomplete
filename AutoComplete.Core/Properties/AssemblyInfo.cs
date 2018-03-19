@@ -16,6 +16,7 @@ using System.Runtime.CompilerServices;
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: InternalsVisibleTo("AutoComplete.Clients")]
 [assembly: InternalsVisibleTo("AutoComplete.UnitTests")]
+[assembly: InternalsVisibleTo("AutoComplete.Tests")]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
