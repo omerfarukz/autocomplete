@@ -1,12 +1,12 @@
 # Incredible autocomplete library
 - Fastest autocomplete algorithm. 
-- **O(n)** complexity for searching (n is length of input)
+- **O(n)** complexity for searching (n is the length of input)
 - Supports for all stream types. Including on classical disc storage for cheapest hosting.
-- Ready to use in web, desktop and **cloud**!.
-- **Free** commercial usage (apache 2.0 licence)
+- Ready to use in web, desktop, and **cloud**!.
+- **Free** commercial usage (Apache 2.0 license)
 
 ## Is it cloud ready?
-Absolutely. All you need is provide Stream based instance for building and searching indexes. Autocomplete can be run on any Stream like a MemoryStream, FileStream, azure blobs and others.
+Absolutely. All you need is provide Stream-based instance for building and searching indexes. Autocomplete can be run on any Stream like a MemoryStream, FileStream, Azure blobs and others.
 
 ## Where can I get it?
 First, install NuGet. Then, install AutoComplete from the package manager console:
@@ -16,13 +16,13 @@ Install-Package AutoComplete.Clients
 ```
 
 ## Is it production ready?
-We published this library about 3 years ago and we are using this while 4 years for tureng. Tureng is best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disc). Andalso this library providing a memory storage and this makes average search speed 10 times faster. We provide autocomplete feature over millions of records and handle billions of request.
+We published this library about 3 years ago and we are using this while 4 years for tureng. Tureng is the best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disc). And also this library providing a memory storage and this makes average search speed 10 times faster. We provide autocomplete feature over millions of records and handle billions of request.
 
 ## What is the purpose of this?
-We are using cloud services and we like these. Many cloud providers wants more money for extra memory capacity instead of extra disc capacity. Some other libraries powerful for autocomple. For example, lucene is powerful library for full text searching and also she provides autocomplete. We love it. But autocomplete and full text search things are completely different. Average autocomplete time for lucene is 0.7 ms(100 times slover then us)
+We are using cloud services and we like these. Many cloud providers want more money for extra memory capacity instead of extra disc capacity. Some other libraries powerful for autocomplete. For example, Lucene is a powerful library for full-text searching and also she provides autocomplete. We love it. But autocomplete and full-text search things are completely different. Average autocomplete time for Lucene is 0.7 ms(100 times slower than us)
 
 ## What does speed is mean?
-We tested our code on persisted storage like hdd, ssd, azure blobs and some other storage providers.  We designed and optimized our index for linear reading. Search speed is really depends on your disk speed. Many cloud infrastructure provide larger read buffer(like a 30mb). These sounds good for linear reading. The search speed in this senario is depends some other resources like a network speed.
+We tested our code on persisted storage like HDD, SSD, Azure blobs and some other storage providers.  We designed and optimized our index for linear reading. Search speed really depends on your disk speed. Many cloud infrastructure provides larger read buffer(like a 30mb). These sound good for linear reading. The search speed in this scenario is depended on some other resources like a network speed.
 
 http://tureng.com - Live on best dictionary site of Turkey!
 
