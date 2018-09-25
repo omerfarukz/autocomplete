@@ -3,6 +3,7 @@
 - **O(n)** complexity for searching (n is the length of input)
 - Supports for all stream types. Including on classical disc storage for cheapest hosting.
 - Ready to use in web, desktop, and **cloud**!.
+- Support for .Net Core 2.0 and .Net Framework 4.6.1
 - **Free** commercial usage (Apache 2.0 license)
 
 ## Is it cloud ready?
