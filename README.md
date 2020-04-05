@@ -1,3 +1,5 @@
+[![Build Status](https://autocompletecore.visualstudio.com/autocomplete/_apis/build/status/omerfarukz.autocomplete?branchName=master)](https://autocompletecore.visualstudio.com/autocomplete/_build/latest?definitionId=4&branchName=master)
+
 # Incredible autocomplete library
 - Fastest autocomplete algorithm. 
 - **O(n)** complexity for searching (n is the length of input)
