@@ -19,7 +19,7 @@ Install-Package AutoComplete.Clients
 ```
 
 ## Is it production ready?
-We published this library about 3 years ago and we are using this while 4 years for tureng. Tureng is the best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disk). And also this library providing a memory storage and this makes average search speed 10 times faster. We provide autocomplete feature over millions of records and handle billions of request.
+Definitely. We published this library about 3 years ago and we are using this while 4 years for tureng. Tureng is the best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disk). And also this library providing a memory storage and this makes average search speed 10 times faster. We provide autocomplete feature over millions of records and handle billions of request.
 
 ## What is the purpose of this?
 We are using cloud services and we like these. Many cloud providers want more money for extra memory capacity instead of extra disk capacity. Some other libraries powerful for autocomplete. For example, Lucene is a powerful library for full-text searching and also she provides autocomplete. We love it. But autocomplete and full-text search things are completely different. Average autocomplete time for Lucene is 0.7 ms(100 times slower than us)
