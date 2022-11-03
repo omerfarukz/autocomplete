@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>disable</Nullable>
+        <IsPackable>true</IsPackable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>AutoComplete</RootNamespace>
+        <AssemblyName>AutoComplete</AssemblyName>
+        <PackageId>AutoCompelete.Core</PackageId>
+        <PackageVersion>1.3</PackageVersion>
+        <Authors>omerfarukz</Authors>
+        <Owners>omerfarukz</Owners>
+        <Title>AutoComplete Core Library</Title>
+        <Description>Core library for autocomplete</Description>
+        <DevelopmentDependency>true</DevelopmentDependency>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Clients" />
+    </ItemGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+</Project>
