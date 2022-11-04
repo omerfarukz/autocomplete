@@ -5,6 +5,7 @@
         <Nullable>disable</Nullable>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/omerfarukz/autocomplete</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup>
