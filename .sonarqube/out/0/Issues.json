@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.4.0.0",
+        "fileVersion": "4.4.0-3.22472.2 (7a48ae56)",
+        "semanticVersion": "4.4.0",
+        "language": "en-TR"
+      },
+      "results": [
+        {
+          "ruleId": "S3241",
+          "level": "warning",
+          "message": "Change return type to 'void'; not a single caller uses the returned value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/omr/RiderProjects/autocomplete/AutoComplete/Builders/TrieIndexHeaderBuilder.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 17,
+                  "endLine": 51,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3267",
+          "level": "warning",
+          "message": "Loop should be simplified by calling Select(childNode => childNode.Value))",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/omr/RiderProjects/autocomplete/AutoComplete/Builders/IndexBuilder.cs",
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 47,
+                  "endLine": 92,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "S3241": {
+          "id": "S3241",
+          "shortDescription": "Methods should not return values that are never used",
+          "fullDescription": "Private methods are clearly intended for use only within their own scope. When such methods return values that are never used by any of their callers, then clearly there is no need to actually make the return, and it should be removed in the interests of efficiency and clarity.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3241",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S3267": {
+          "id": "S3267",
+          "shortDescription": "Loops should be simplified with \"LINQ\" expressions",
+          "fullDescription": "When a loop is filtering, selecting or aggregating, those functions can be handled with a clearer, more concise LINQ expression instead.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3267",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

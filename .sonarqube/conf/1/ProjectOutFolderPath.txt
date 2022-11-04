@@ -1,0 +1,1 @@
+/Users/omr/RiderProjects/autocomplete/.sonarqube/out/1

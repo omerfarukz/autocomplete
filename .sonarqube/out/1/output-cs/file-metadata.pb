@@ -1,0 +1,12 @@
+X
+O/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/BitArrayHelperTests.csutf-8V
+M/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/IndexBuilderTests.csutf-8W
+N/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/IndexSearcherTests.csutf-8_
+V/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/ManagedInMemoryStreamTests.csutf-8_
+V/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/TrieCharacterComparerTests.csutf-8Y
+P/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/TrieIndexHeaderTests.csutf-8d
+[/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/TrieNodeStructSearchResultTests.csutf-8N
+E/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/TrieTests.csutf-8z
+o/Users/omr/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.csutf-8ƒ
+x/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8w
+l/Users/omr/RiderProjects/autocomplete/AutoComplete.Tests/obj/Debug/net6.0/AutoComplete.Tests.AssemblyInfo.csutf-8
