@@ -42,7 +42,6 @@ while (true)
     stopWatch.Restart();
     var results = searcher.Search(new SearchOptions() { Term = line, MaxItemCount = 1, SuggestWhenFoundStartsWith = false});
     stopWatch.Stop();
-    Console.WriteLine(results.ResultType);
     Console.WriteLine($"Elapsed {stopWatch.Elapsed.Ticks}");
     foreach (var item in results.Items)
     {
