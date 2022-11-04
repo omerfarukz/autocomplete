@@ -38,9 +38,9 @@ var stopWatch = new Stopwatch();
 while (true)
 {
     Console.WriteLine("Type a word");
-    var line = "door";//Console.ReadLine();
+    var line = Console.ReadLine();
     stopWatch.Restart();
-    var results = searcher.Search(new SearchOptions() { Term = line, MaxItemCount = 1, SuggestWhenFoundStartsWith = false});
+    var results = searcher.Search(new SearchOptions() { Term = line, MaxItemCount = 5, SuggestWhenFoundStartsWith = false});
     stopWatch.Stop();
     Console.WriteLine($"Elapsed {stopWatch.Elapsed.Ticks}");
     foreach (var item in results.Items)

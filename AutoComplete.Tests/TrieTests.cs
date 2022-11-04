@@ -27,6 +27,12 @@ public class TrieTests
         trie.Add("johnny");
         trie.Add("john");
         trie.Add("jo");
+
+        var lastNode = trie.SearchLastNodeFrom("jo");
+        Assert.NotNull(lastNode);
+        Assert.NotNull(lastNode.Node);
+        Assert.NotNull(lastNode.Node.Children);
+        Assert.Equal(1, lastNode.Node.Children.Count);
     }
 
     [Fact]
