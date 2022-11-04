@@ -15,7 +15,7 @@ Absolutely. All you need is provide Stream-based instance for building and searc
 First, install NuGet. Then, install AutoComplete from the package manager console:
 
 ```
-Install-Package AutoComplete.Clients
+Install-Package AutoComplete.Core
 ```
 
 ## Is it production ready?
