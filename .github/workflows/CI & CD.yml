@@ -31,5 +31,5 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Publish the package to nuget
-        run: dotnet nuget push autocomplete/bin/Release/*.nupkg --api-key "${{secrets.NUGET_SECRET}}" -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push bin/Release/*.nupkg --api-key "${{secrets.NUGET_SECRET}}" -s https://api.nuget.org/v3/index.json
 
