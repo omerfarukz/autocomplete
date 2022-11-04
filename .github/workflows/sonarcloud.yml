@@ -28,3 +28,8 @@ jobs:
           dotnet build
           dotnet test -p:coverletOutput=./coverage.opencover.xml -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Publish the package to nuget
+        run: dotnet nuget push autocomplete/bin/Release/*.nupkg --api-key "${{secrets.NUGET_API_KEY2}}" -s https://api.nuget.org/v3/index.json
+
