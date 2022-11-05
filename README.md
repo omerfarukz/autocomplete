@@ -1,11 +1,4 @@
-[![Build Status](https://autocompletecore.visualstudio.com/autocomplete/_apis/build/status/omerfarukz.autocomplete?branchName=master)](https://autocompletecore.visualstudio.com/autocomplete/_build/latest?definitionId=4&branchName=master)
-
-
----
-[![nuget](https://img.shields.io/nuget/dt/webben)](https://www.nuget.org/packages/webben) [![SonarCloud](https://github.com/omerfarukz/WebBen/actions/workflows/sonarqube.yml/badge.svg)](https://sonarcloud.io/summary/overall?id=omerfarukz_WebBen)
-[![CI & CD](https://github.com/omerfarukz/WebBen/actions/workflows/CI.yml/badge.svg)](https://github.com/omerfarukz/WebBen/actions/workflows/CI.yml)
----
-
+[![CI & CD](https://github.com/omerfarukz/autocomplete/actions/workflows/CI%20&%20CD.yml/badge.svg)](https://github.com/omerfarukz/autocomplete/actions/workflows/CI%20&%20CD.yml)
 [![license](https://img.shields.io/github/license/omerfarukz/autocomplete)](https://github.com/omerfarukz/autocomplete/blob/master/LICENSE.txt)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=coverage)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
