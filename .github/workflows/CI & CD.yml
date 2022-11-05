@@ -1,4 +1,4 @@
-name: SonarCloud
+name: CI & CD
 on:
   push:
     branches:
