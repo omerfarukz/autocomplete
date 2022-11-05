@@ -6,6 +6,7 @@
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RepositoryUrl>https://github.com/omerfarukz/autocomplete</RepositoryUrl>
+        <PackageLicenseUrl>https://github.com/omerfarukz/autocomplete/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,8 +15,8 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>AutoComplete</RootNamespace>
         <AssemblyName>AutoComplete</AssemblyName>
-        <PackageId>AutoCompelete.Core</PackageId>
-        <PackageVersion>1.3</PackageVersion>
+        <PackageId>AutoComplete.Core</PackageId>
+        <PackageVersion>1.5</PackageVersion>
         <Authors>omerfarukz</Authors>
         <Owners>omerfarukz</Owners>
         <Title>AutoComplete Core Library</Title>
