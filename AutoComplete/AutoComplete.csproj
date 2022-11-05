@@ -6,7 +6,6 @@
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RepositoryUrl>https://github.com/omerfarukz/autocomplete</RepositoryUrl>
-        <PackageLicenseUrl>https://github.com/omerfarukz/autocomplete/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -15,13 +14,19 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>AutoComplete</RootNamespace>
         <AssemblyName>AutoComplete</AssemblyName>
-        <PackageId>AutoComplete.Core</PackageId>
-        <PackageVersion>1.5</PackageVersion>
+        <PackageId>AutoCompelete.Core</PackageId>
         <Authors>omerfarukz</Authors>
         <Owners>omerfarukz</Owners>
         <Title>AutoComplete Core Library</Title>
         <Description>Core library for autocomplete</Description>
         <DevelopmentDependency>true</DevelopmentDependency>
+
+        <VersionSuffix>1.$([System.DateTime]::UtcNow.ToString(yy))$([System.DateTime]::UtcNow.ToString(MM)).$([System.DateTime]::UtcNow.ToString(ddHH)).$([System.DateTime]::UtcNow.ToString(mmss))</VersionSuffix>
+        <AssemblyVersion Condition=" '$(VersionSuffix)' == '' ">0.0.0.1</AssemblyVersion>
+        <AssemblyVersion Condition=" '$(VersionSuffix)' != '' ">$(VersionSuffix)</AssemblyVersion>
+        <Version Condition=" '$(VersionSuffix)' == '' ">0.0.1.0</Version>
+        <Version Condition=" '$(VersionSuffix)' != '' ">$(VersionSuffix)</Version>
+        <PackageVersion>$(VersionSuffix)</PackageVersion>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Clients" />
