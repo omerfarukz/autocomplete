@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install sonarscanner
-        run: dotnet tool install --global dotnet-sonarscanner
       - name: Install dependencies
         run: dotnet restore
+      - name: Install sonarscanner
+        run: dotnet tool install --global dotnet-sonarscanner
 #       - name: Build
 #         run: |
 #           dotnet build-server shutdown
