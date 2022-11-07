@@ -57,6 +57,15 @@ IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
 searcher.Init();
 SearchResult searchResult = searcher.Search(term, 5, false);
 //print(searchResult)
-//elapsed 0.08 milliseconds
+
+// Type a word
+// perf
+// Elapsed 0.0773
+// perf
+// perfay
+// perfect
+// perfecta
+// perfectability
+
 ```
 
