@@ -14,7 +14,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>AutoComplete</RootNamespace>
         <AssemblyName>AutoComplete</AssemblyName>
-        <PackageId>AutoCompelete.Core</PackageId>
+        <PackageId>AutoComplete.Net</PackageId>
         <Authors>omerfarukz</Authors>
         <Owners>omerfarukz</Owners>
         <Title>AutoComplete Core Library</Title>
