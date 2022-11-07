@@ -28,7 +28,7 @@ Absolutely. All you need is provide Stream-based instance for building and searc
 First, install NuGet. Then, install AutoComplete from the package manager console:
 
 ```
-Install-Package AutoComplete.Core
+Install-Package AutoComplete.Net
 ```
 
 ## Is it production ready?
@@ -54,7 +54,9 @@ builder.Build();
 ## Search sample
 ```csharp
 IIndexSearcher searcher = new InMemoryIndexSearcher(headerPath, indexPath);
+searcher.Init();
 SearchResult searchResult = searcher.Search(term, 5, false);
 //print(searchResult)
+//elapsed 0.08 milliseconds
 ```
 
