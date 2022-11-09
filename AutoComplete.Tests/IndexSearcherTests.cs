@@ -105,15 +105,15 @@ public class IndexSearcherTests
     }
 
     [Fact]
-    public void in_search__with_tail_should_return_completions()
+    public void in_search_with_tail_should_return_completions()
     {
         var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, tailFileName);
         searcher.Init();
         var result = searcher.Search(new SearchOptions()
-            {Term = "J", MaxItemCount = 3, SuggestWhenFoundStartsWith = true});
+            {Term = "Jo", MaxItemCount = 3, SuggestWhenFoundStartsWith = true});
         Assert.NotNull(result);
         Assert.NotNull(result.Items);
-        Assert.Equal(3, result.Items.Length);
+        Assert.Equal(2, result.Items.Length);
         Assert.Equal(TrieNodeSearchResultType.FoundEquals, result.ResultType);
     }
     
