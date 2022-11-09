@@ -11,15 +11,14 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=bugs)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 
-
-
 # Incredible autocomplete library
+- Get result in **μs**
 - Fastest autocomplete algorithm. 
 - **O(n)** complexity for searching (n is the length of input)
 - Supports for all stream types. Including on classical disk storage for cheapest hosting.
 - Ready to use in web, desktop, and **cloud**!.
-- Support for .Net Core 2.0 and .Net Framework 4.6.1
-- **Free** commercial usage (Apache 2.0 license)
+- Support for .Net Standard 2.1+ and .Net Framework 4.6.1
+- **Free** commercial usage
 
 ## Is it cloud ready?
 Absolutely. All you need is provide Stream-based instance for building and searching indexes. Autocomplete can be run on any Stream like a MemoryStream, FileStream, Azure blobs and others.
