@@ -51,11 +51,11 @@ namespace AutoComplete.Readers
             var children = GetChildrenPositionsFromNode(_header, position);
             if (children != null)
             {
-                for (var i = 0; i < children.Length; i++)
+                foreach (var child in children)
                 {
                     if (results.Count < maxItems)
                     {
-                        GetAutoCompleteNodesInternal(children[i], newPrefix, maxItems, results);
+                        GetAutoCompleteNodesInternal(child, newPrefix, maxItems, results);
                     }
                 }
             }
@@ -70,19 +70,15 @@ namespace AutoComplete.Readers
             using var streamReader = new StreamReader(tail, Encoding.UTF8, false, bufferSize, true);
             streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
 
-            bool firstRead = true;
+            var firstRead = true;
             for (var i = 0; i < count; i++)
             {
                 var line = streamReader.ReadLine()!;
                 if (firstRead)
                 {
-                    var occurances = int.Parse(line[..10]);
-                    count = Math.Min(count, occurances);
+                    count = Math.Min(count,  int.Parse(line[..10]));
                     firstRead = false;
                 }
-
-                // if (!line[11..]!.StartsWith(prefix, StringComparison.Ordinal))
-                //     break;
                 
                 yield return line[11..];
             }
