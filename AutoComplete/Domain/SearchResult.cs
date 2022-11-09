@@ -2,7 +2,7 @@
 
 namespace AutoComplete.Domain
 {
-    public class SearchResult
+    public record SearchResult
     {
         public string[] Items { get; set; }
 

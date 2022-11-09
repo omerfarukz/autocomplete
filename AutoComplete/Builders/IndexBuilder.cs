@@ -14,6 +14,7 @@ namespace AutoComplete.Builders
         private readonly Stream _headerStream;
         private readonly Stream _indexStream;
         private readonly Dictionary<string, uint> _keywordDictionary;
+        private readonly Dictionary<string, uint> _keyDictionary;
         private readonly Stream _tailStream;
         private readonly Trie _trie;
         private TrieIndexHeader _header;
@@ -29,6 +30,7 @@ namespace AutoComplete.Builders
             _trie = new Trie();
             _keywords = new HashSet<string>();
             _keywordDictionary = new Dictionary<string, uint>();
+            _keyDictionary = new Dictionary<string, uint>();
         }
 
         public IndexBuilder Add(string keyword)
@@ -36,7 +38,7 @@ namespace AutoComplete.Builders
             _trie.Add(keyword);
             if (keyword != null && !_keywords.Contains(keyword))
                 _keywords.Add(keyword);
-            
+
             return this;
         }
 
@@ -146,7 +148,8 @@ namespace AutoComplete.Builders
                 if (
                     nodeResult.Status == TrieNodeSearchResultType.FoundEquals ||
                     nodeResult.Status == TrieNodeSearchResultType.FoundStartsWith
-                ) {
+                )
+                {
                     var positionOnTextFile = _keywordDictionary[nodeResult.Node.GetString()];
                     nodeResult.Node.PositionOnTextFile = positionOnTextFile;
                     currentNode.PositionOnTextFile = positionOnTextFile;
@@ -184,12 +187,34 @@ namespace AutoComplete.Builders
 
         private void SerializeKeywords(Stream stream)
         {
+            var keywords = new HashSet<string>(
+                _keywords.OrderBy(f => f, new TrieStringComparer())
+            );
+
+            foreach (var item in keywords)
+            {
+                for (var i = 1; i < item.Length; i++)
+                {
+                    var substring = item[..i];
+                    if (keywords.Contains(substring))
+                    {
+                        if (!_keyDictionary.ContainsKey(substring))
+                            _keyDictionary.Add(substring, 1);
+
+                        _keyDictionary[substring]++;
+                    }
+                }
+            }
+
             stream.Position = 0;
-            foreach (var item in _keywords.OrderBy(f => f, new TrieStringComparer()))
+            foreach (var item in keywords)
             {
                 _keywordDictionary.Add(item, (uint) stream.Position);
+                uint count = 0;
+                if (_keyDictionary.TryGetValue(item, out var _count))
+                    count = _count;
 
-                var buffer = Encoding.UTF8.GetBytes(item);
+                var buffer = Encoding.UTF8.GetBytes($"{count,10},{item}");
                 stream.Write(buffer, 0, buffer.Length);
                 stream.Write(NewLine, 0, NewLine.Length);
             }

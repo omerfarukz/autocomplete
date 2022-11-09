@@ -6,6 +6,7 @@
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RepositoryUrl>https://github.com/omerfarukz/autocomplete</RepositoryUrl>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup>

@@ -70,12 +70,21 @@ namespace AutoComplete.Readers
             using var streamReader = new StreamReader(tail, Encoding.UTF8, false, bufferSize, true);
             streamReader.BaseStream.Seek(positionOnTextFile, SeekOrigin.Begin);
 
+            bool firstRead = true;
             for (var i = 0; i < count; i++)
             {
-                var line = streamReader.ReadLine();
-                if (!line!.StartsWith(prefix, StringComparison.Ordinal))
-                    break;
-                yield return line;
+                var line = streamReader.ReadLine()!;
+                if (firstRead)
+                {
+                    var occurances = int.Parse(line[..10]);
+                    count = Math.Min(count, occurances);
+                    firstRead = false;
+                }
+
+                // if (!line[11..]!.StartsWith(prefix, StringComparison.Ordinal))
+                //     break;
+                
+                yield return line[11..];
             }
         }
 
