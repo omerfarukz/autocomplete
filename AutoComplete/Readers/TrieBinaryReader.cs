@@ -36,7 +36,7 @@ namespace AutoComplete.Readers
             Stream tail
         )
         {
-            return new List<string>(GetAutoCompleteNodesWithTail(position, tail, prefix, maxItems));
+            return new List<string>(GetAutoCompleteNodesWithTail(position, tail, maxItems));
         }
 
         private List<string> GetAutoCompleteNodesInternal(long position, object prefix, int maxItems, List<string> results)
@@ -63,7 +63,7 @@ namespace AutoComplete.Readers
             return results;
         }
 
-        private IEnumerable<string> GetAutoCompleteNodesWithTail(long position, Stream tail, string prefix, int count)
+        private IEnumerable<string> GetAutoCompleteNodesWithTail(long position, Stream tail, int count)
         {
             var positionOnTextFile = ReadPositionOnTextFile(position);
             const int bufferSize = 8;
