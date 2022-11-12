@@ -80,7 +80,7 @@ namespace AutoComplete.DataStructure
         public void Add(TrieNode child)
         {
             if (child == null)
-                throw new ArgumentException("child");
+                throw new ArgumentNullException(nameof(child));
 
             Children ??= new SortedDictionary<char, TrieNode>(new TrieCharacterComparer());
 
@@ -137,7 +137,7 @@ namespace AutoComplete.DataStructure
         public static TrieNode CreateFrom(string keyword)
         {
             if (string.IsNullOrWhiteSpace(keyword) || keyword.Length == 0)
-                throw new ArgumentException(nameof(keyword));
+                throw new ArgumentNullException(nameof(keyword));
 
             var returnValue = new TrieNode(keyword[0]);
             if (keyword.Length == 1)

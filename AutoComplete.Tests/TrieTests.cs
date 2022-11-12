@@ -19,6 +19,43 @@ public class TrieTests
         var trie = new Trie();
         Assert.Throws<ArgumentNullException>(() => trie.Add(null));
     }
+    
+    [Fact]
+    public void add_null_node_to_trie_node_should_throw()
+    {
+        var trie = new TrieNode();
+        Assert.Throws<ArgumentNullException>(() => trie.Add(null));
+    }
+    
+    [Fact]
+    public void create_node_from_keyword_should_throw()
+    {
+        Assert.Throws<ArgumentNullException>(() => TrieNode.CreateFrom(null));
+        Assert.Throws<ArgumentNullException>(() => TrieNode.CreateFrom(string.Empty));
+    }
+    
+    [Fact]
+    public void add_same_character_to_trie_node_should_pass_without_exception()
+    {
+        var trie = new TrieNode();
+        var child = new TrieNode('a');
+        trie.Add(child);
+        trie.Add(child);
+        Assert.Equal(1, trie.Children.Count);
+    }
+    
+    [Fact]
+    public void add_same_character_that_have_children_to_trie_node_should_pass_without_exception()
+    {
+        var trie = new TrieNode();
+        var child_0 = new TrieNode('a');
+        var child_1 = new TrieNode('a');
+        child_1.Add(new TrieNode('1'));
+        
+        trie.Add(child_0);
+        trie.Add(child_1);
+        Assert.Equal(1, trie.Children.Count);
+    }
 
     [Fact]
     public void add_new_sub_keyword_should_pass()

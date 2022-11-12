@@ -18,7 +18,7 @@ namespace AutoComplete.Helpers
 
             if (array == null)
                 throw new ArgumentNullException(nameof(array));
-
+    
             var location = 0;
             for (var i = 0; i < bitArray.Length; i++)
             {

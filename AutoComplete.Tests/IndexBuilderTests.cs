@@ -1,5 +1,6 @@
 using System.IO;
 using AutoComplete.Builders;
+using AutoComplete.Clients.IndexSearchers;
 using Xunit;
 
 namespace AutoComplete.Tests;

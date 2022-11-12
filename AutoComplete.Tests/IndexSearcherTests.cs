@@ -43,6 +43,18 @@ public class IndexSearcherTests
     }
 
     [Fact]
+    public void search_on_empty_index_should_return_not_found()
+    {
+        var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName);
+        searcher.Init();
+
+        var result = searcher.Search(new SearchOptions()
+            {Term = "notexist", MaxItemCount = 1, SuggestWhenFoundStartsWith = true});
+
+        Assert.Equal(TrieNodeSearchResultType.NotFound, result.ResultType);
+    }
+
+    [Fact]
     public void in_memory_search_should_return_found_starts_with()
     {
         var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName);
@@ -77,7 +89,7 @@ public class IndexSearcherTests
         Assert.Null(result.Items);
         Assert.Equal(TrieNodeSearchResultType.NotFound, result.ResultType);
     }
-    
+
     [Fact]
     public void in_search_should_return_completions()
     {
@@ -90,7 +102,7 @@ public class IndexSearcherTests
         Assert.Equal(3, result.Items.Length);
         Assert.Equal(TrieNodeSearchResultType.FoundEquals, result.ResultType);
     }
-    
+
     [Fact]
     public void in_search_should_return_not_enough_completions()
     {
@@ -116,7 +128,7 @@ public class IndexSearcherTests
         Assert.Equal(2, result.Items.Length);
         Assert.Equal(TrieNodeSearchResultType.FoundEquals, result.ResultType);
     }
-    
+
     [Fact]
     public void filesystem_memory_search_should_return_found_starts_with()
     {
