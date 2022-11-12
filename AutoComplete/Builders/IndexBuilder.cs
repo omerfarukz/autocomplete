@@ -8,7 +8,7 @@ using AutoComplete.Serializers;
 
 namespace AutoComplete.Builders
 {
-    public class IndexBuilder : IIndexBuilder, IDisposable
+    public class IndexBuilder : IIndexBuilder
     {
         private static readonly byte[] NewLine = Encoding.UTF8.GetBytes(Environment.NewLine);
         private readonly Stream _headerStream;
@@ -216,13 +216,6 @@ namespace AutoComplete.Builders
                 stream.Write(NewLine, 0, NewLine.Length);
             }
 
-        }
-
-        public void Dispose()
-        {
-            _headerStream?.Dispose();
-            _indexStream?.Dispose();
-            _tailStream?.Dispose();
             _keywords = null;
         }
     }
