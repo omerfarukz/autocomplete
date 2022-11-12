@@ -35,6 +35,13 @@ public class TrieTests
     }
     
     [Fact]
+    public void create_not_found_node_should_return_node_as_null()
+    {
+        var result = TrieNodeSearchResult.CreateNotFound();
+        Assert.Null(result.Node);
+    }
+    
+    [Fact]
     public void add_same_character_to_trie_node_should_pass_without_exception()
     {
         var trie = new TrieNode();
