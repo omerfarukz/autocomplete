@@ -52,7 +52,7 @@ namespace AutoComplete.DataStructure
             if (string.IsNullOrWhiteSpace(keyword))
                 throw new ArgumentNullException(nameof(keyword));
 
-            // Get last node from given input. Next lines we merge keywords when result status is FoundStartWith
+            // get last node from given input. Next lines we merge keywords when result status is FoundStartWith
             var result = SearchLastNodeFrom(keyword);
 
             if (result.Status == TrieNodeSearchResultType.NotFound)
@@ -60,7 +60,7 @@ namespace AutoComplete.DataStructure
 
             if (result.Status == TrieNodeSearchResultType.FoundStartsWith)
             {
-                //result found
+                // result found
                 var prefix = keyword;
 
                 // if last found node is start with? get 'word' from key|(word)
@@ -78,7 +78,7 @@ namespace AutoComplete.DataStructure
                 result.Node.Add(newTrie);
 
                 return true;
-            } //result found
+            } // result found
 
             if (result.Status == TrieNodeSearchResultType.FoundEquals && !result.Node.IsTerminal)
             {

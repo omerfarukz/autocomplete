@@ -18,11 +18,24 @@ namespace AutoComplete.Clients.IndexSearchers
 
         protected override IndexData InitializeIndexData()
         {
-            var indexData = new IndexData();
-            indexData.Header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
-            indexData.Index = GetStream(indexData.Header.LENGTH_OF_STRUCT, FileOptions.RandomAccess);
-            if (_tailFileName != null)
-                indexData.Tail = GetStream(8, FileOptions.SequentialScan);
+            IndexData indexData;
+            var header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
+            if (_tailFileName == null)
+            {
+                indexData = new IndexData(
+                    header,
+                    GetStream(header.LENGTH_OF_STRUCT, FileOptions.RandomAccess)
+                );
+            }
+            else
+            {
+                indexData = new IndexData(
+                    header,
+                    GetStream(header.LENGTH_OF_STRUCT, FileOptions.RandomAccess),
+                    GetStream(8, FileOptions.SequentialScan)
+                );
+            }
+
             return indexData;
         }
 

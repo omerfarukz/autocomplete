@@ -16,9 +16,7 @@ namespace AutoComplete.Builders
         internal TrieIndexHeaderBuilder AddChar(char character)
         {
             if (!_characterList.Contains(character))
-            {
                 _characterList.Add(character);
-            }
 
             return this;
         }
@@ -30,9 +28,7 @@ namespace AutoComplete.Builders
                 throw new ArgumentException(nameof(value));
             
             foreach (var t in value)
-            {
                 AddChar(t);
-            }
 
             return this;
         }
@@ -42,21 +38,18 @@ namespace AutoComplete.Builders
             var header = new TrieIndexHeader();
             header.CharacterList = _characterList;
 
-            SortCharacterList();
+            // SortCharacterList
+            _characterList.Sort(new TrieCharacterComparer());
+            
             CalculateMetrics(ref header);
 
             return header;
         }
 
-        private TrieIndexHeaderBuilder SortCharacterList()
-        {
-            _characterList.Sort(new TrieCharacterComparer());
-            return this;
-        }
 
         private void CalculateMetrics(ref TrieIndexHeader header)
         {
-            // Set structural based properties
+            // Set structural properties
             header.COUNT_OF_CHARSET = _characterList.Count;
 
             header.COUNT_OF_CHILDREN_FLAGS = header.COUNT_OF_CHARSET / 8 + (header.COUNT_OF_CHARSET % 8 == 0 ? 0 : 1);

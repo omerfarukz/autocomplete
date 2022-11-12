@@ -39,11 +39,11 @@ namespace AutoComplete.Readers
             return new List<string>(GetAutoCompleteNodesWithTail(position, tail, maxItems));
         }
 
-        private List<string> GetAutoCompleteNodesInternal(long position, object prefix, int maxItems, List<string> results)
+        private List<string> GetAutoCompleteNodesInternal(long position, string prefix, int maxItems, List<string> results)
         {
             var character = ReadCharacter(position);
             var isTerminal = ReadIsTerminal(position);
-
+            
             var newPrefix = string.Concat(prefix, character);
             if (isTerminal)
                 results.Add(newPrefix);
@@ -193,9 +193,8 @@ namespace AutoComplete.Readers
         internal TrieNodeStructSearchResult SearchLastNode(long parentPosition, string keyword)
         {
             var result = TrieNodeStructSearchResult.CreateNotFound();
-
             var currentPosition = parentPosition;
-
+            
             for (var i = 0; i < keyword.Length; i++)
             {
                 var childPosition = GetChildPositionFromNode(currentPosition, keyword[i]);

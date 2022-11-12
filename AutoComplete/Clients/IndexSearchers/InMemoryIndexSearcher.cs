@@ -25,15 +25,27 @@ namespace AutoComplete.Clients.IndexSearchers
         
         protected override IndexData InitializeIndexData()
         {
-            var indexData = new IndexData();
-            indexData.Index = new ManagedInMemoryStream(GetBytesFromFile(_indexFileName));
-            indexData.Header = TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName);
-            if (_tailFileName != null)
-                indexData.Tail = new ManagedInMemoryStream(GetBytesFromFile(_tailFileName));
+            IndexData indexData;
+            if (_tailFileName == null)
+            {
+                indexData = new IndexData(
+                    TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName),
+                    new ManagedInMemoryStream(GetBytesFromFile(_indexFileName))
+                );
+            }
+            else
+            {
+                indexData = new IndexData(
+                    TrieNodeHelperFileSystemExtensions.ReadHeaderFile(_headerFileName),
+                    new ManagedInMemoryStream(GetBytesFromFile(_indexFileName)),
+                    new ManagedInMemoryStream(GetBytesFromFile(_tailFileName))
+                );
+            }
+
             return indexData;
         }
 
-        private byte[] GetBytesFromFile(string path)
+        private static byte[] GetBytesFromFile(string path)
         {
             using Stream stream = new FileStream(
                 path,

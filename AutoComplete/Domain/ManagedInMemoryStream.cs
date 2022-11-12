@@ -6,8 +6,7 @@ namespace AutoComplete.Domain
     {
         public ManagedInMemoryStream(byte[] buffer)
             : base(buffer)
-        {
-        }
+        { }
 
         public override bool CanWrite => false;
     }

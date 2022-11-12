@@ -8,13 +8,13 @@ using AutoComplete.Serializers;
 
 namespace AutoComplete.Builders
 {
-    public class IndexBuilder : IIndexBuilder
+    public class IndexBuilder : IIndexBuilder, IDisposable
     {
         private static readonly byte[] NewLine = Encoding.UTF8.GetBytes(Environment.NewLine);
         private readonly Stream _headerStream;
         private readonly Stream _indexStream;
         private readonly Dictionary<string, uint> _keywordDictionary;
-        private readonly Dictionary<string, uint> _keyDictionary;
+        private readonly Dictionary<string, int> _keyDictionary;
         private readonly Stream _tailStream;
         private readonly Trie _trie;
         private TrieIndexHeader _header;
@@ -30,14 +30,16 @@ namespace AutoComplete.Builders
             _trie = new Trie();
             _keywords = new HashSet<string>();
             _keywordDictionary = new Dictionary<string, uint>();
-            _keyDictionary = new Dictionary<string, uint>();
+            _keyDictionary = new Dictionary<string, int>();
         }
 
         public IndexBuilder Add(string keyword)
         {
-            _trie.Add(keyword);
             if (keyword != null && !_keywords.Contains(keyword))
+            {
+                _trie.Add(keyword);
                 _keywords.Add(keyword);
+            }
 
             return this;
         }
@@ -62,9 +64,7 @@ namespace AutoComplete.Builders
             ReorderTrieAndLoadHeader(_trie.Root);
 
             if (_tailStream != null)
-            {
                 CreateTailAndModifyNodes(_trie.Root);
-            }
         }
 
         private void ReorderTrieAndLoadHeader(TrieNode rootNode)
@@ -210,16 +210,19 @@ namespace AutoComplete.Builders
             foreach (var item in keywords)
             {
                 _keywordDictionary.Add(item, (uint) stream.Position);
-                uint count = 0;
-                if (_keyDictionary.TryGetValue(item, out var _count))
-                    count = _count;
-
+                var count = _keyDictionary.GetValueOrDefault(item, 0);
                 var buffer = Encoding.UTF8.GetBytes($"{count,10},{item}");
                 stream.Write(buffer, 0, buffer.Length);
                 stream.Write(NewLine, 0, NewLine.Length);
             }
 
-            _keywords.Clear();
+        }
+
+        public void Dispose()
+        {
+            _headerStream?.Dispose();
+            _indexStream?.Dispose();
+            _tailStream?.Dispose();
             _keywords = null;
         }
     }

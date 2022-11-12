@@ -5,8 +5,15 @@ namespace AutoComplete.Searchers
 {
     public class IndexData
     {
-        public TrieIndexHeader Header { get; set; }
-        public Stream Index { get; set; }
-        public Stream Tail { get; set; }
+        public readonly TrieIndexHeader Header;
+        public readonly Stream Index;
+        public readonly Stream Tail;
+
+        public IndexData(TrieIndexHeader header, Stream index, Stream tail = null)
+        {
+            Index = index;
+            Tail = tail;
+            Header = header;
+        }
     }
 }
