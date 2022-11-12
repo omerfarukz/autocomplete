@@ -4,15 +4,11 @@ using AutoComplete.Domain;
 
 namespace Samples.ConsoleApp;
 
-internal class Sample
+internal static class Sample
 {
-    private const string HeaderFileName = "header.bin";
-    private const string IndexFileName = "index.bin";
-    private const string TailFileName = "tail.txt";
-    
-    public void Search()
+    public static void Search(string headerFileName, string indexFileName, string tailFileName)
     {
-        var searcher = new InMemoryIndexSearcher(HeaderFileName, IndexFileName, TailFileName);
+        var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, tailFileName);
         searcher.Init();
         while (true)
         {
@@ -32,18 +28,18 @@ internal class Sample
         }
     }
 
-    public async Task BuildIndex()
+    public static async Task BuildIndex(string headerFileName, string indexFileName, string tailFileName)
     {
-        if (File.Exists(HeaderFileName))
-            File.Delete(HeaderFileName);
-        if (File.Exists(IndexFileName))
-            File.Delete(IndexFileName);
-        if (File.Exists(TailFileName))
-            File.Delete(TailFileName);
+        if (File.Exists(headerFileName))
+            File.Delete(headerFileName);
+        if (File.Exists(indexFileName))
+            File.Delete(indexFileName);
+        if (File.Exists(tailFileName))
+            File.Delete(tailFileName);
 
-        await using var headerStream = File.OpenWrite(HeaderFileName);
-        await using var indexStream = File.OpenWrite(IndexFileName);
-        await using var tailStream = File.OpenWrite(TailFileName);
+        await using var headerStream = File.OpenWrite(headerFileName);
+        await using var indexStream = File.OpenWrite(indexFileName);
+        await using var tailStream = File.OpenWrite(tailFileName);
 
         var builder = new IndexBuilder(headerStream, indexStream, tailStream);
         foreach (var line in await File.ReadAllLinesAsync("words350k.txt"))
