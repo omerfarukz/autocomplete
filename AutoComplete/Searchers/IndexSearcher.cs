@@ -15,7 +15,7 @@ namespace AutoComplete.Searchers
         public virtual SearchResult Search(SearchOptions options)
         {
             if (options == null)
-                throw new ArgumentException(nameof(options));
+                throw new ArgumentNullException(nameof(options));
             
             var node = _reader.SearchLastNode(0, options.Term);
             return CreateResultFromNode(_reader, node, options.Term, options);

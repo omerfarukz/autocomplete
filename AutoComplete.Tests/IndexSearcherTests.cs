@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using AutoComplete.Builders;
 using AutoComplete.Clients.IndexSearchers;
@@ -52,6 +53,14 @@ public class IndexSearcherTests
             {Term = "notexist", MaxItemCount = 1, SuggestWhenFoundStartsWith = true});
 
         Assert.Equal(TrieNodeSearchResultType.NotFound, result.ResultType);
+    }
+    
+    [Fact]
+    public void search_with_null_options_should_throw_exception()
+    {
+        var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName);
+        searcher.Init();
+        Assert.Throws<ArgumentNullException>(() => searcher.Search(null));
     }
 
     [Fact]
