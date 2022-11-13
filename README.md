@@ -12,7 +12,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=bugs)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 
 # Incredible autocomplete library
-- Get result in **μs**
+- Get search result in **μs** (microseconds)
 - Fastest autocomplete algorithm. 
 - **O(n)** complexity for searching (n is the length of input)
 - Supports for all stream types. Including on classical disk storage for cheapest hosting.
@@ -31,7 +31,7 @@ Install-Package AutoComplete.Net
 ```
 
 ## Is it production ready?
-Definitely. We published this library about 3 years ago and we are using this while 4 years for tureng. Tureng is the best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disk). And also this library providing a memory storage and this makes average search speed 10 times faster. We provide autocomplete feature over millions of records and handle billions of request.
+Definitely. We published this library on 2016 and we are using this since 2015 for tureng. Tureng is the best dictionary site of Turkey. We handle billions of request about 0.05 ms(on disk). And also this library providing a memory storage and this makes average search speed 1000 times faster. We provide autocomplete feature over millions of records and handle billions of request.
 
 ## What is the purpose of this?
 We are using cloud services and we like these. Many cloud providers want more money for extra memory capacity instead of extra disk capacity. Some other libraries powerful for autocomplete. For example, Lucene is a powerful library for full-text searching and also she provides autocomplete. We love it. But autocomplete and full-text search things are completely different. Average autocomplete time for Lucene is 70 ms(1000 times slower than us)
