@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 using AutoComplete.DataStructure;
 
@@ -34,18 +33,14 @@ namespace AutoComplete.Serializers
         public TrieIndexHeader Deserialize(Stream stream)
         {
             var header = new TrieIndexHeader();
-            var properties = GetProperties(header);
+            var properties = GetProperties(header).ToArray();
 
             using var reader = new StreamReader(stream, Encoding.UTF8);
             while (reader.Peek() > -1)
             {
-                var keyValue = reader.ReadLine()!.Split(KeyValueSeparator);
-                var key = keyValue[0];
-                var property = properties.SingleOrDefault(f => f.Name == key);
-                if (property == null)
-                    throw new SerializationException("Property not found");
-
-                var propertyValue = DeserializeValue(keyValue[1], property.PropertyType);
+                var keyValuePair = reader.ReadLine()!.Split(KeyValueSeparator);
+                var property = properties.Single(f => f.Name == keyValuePair[0]);
+                var propertyValue = DeserializeValue(keyValuePair[1], property.PropertyType);
                 property.SetValue(header, propertyValue);
             }
 
@@ -54,24 +49,24 @@ namespace AutoComplete.Serializers
 
         private void SerializePropertyValue(object propertyValue, Type propertyType, StreamWriter writer)
         {
-            if (propertyValue != null)
+            if (propertyValue == null)
+                return;
+            
+            if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(propertyType.GetTypeInfo()))
             {
-                if (typeof(List<char>).GetTypeInfo().IsAssignableFrom(propertyType.GetTypeInfo()))
-                {
-                    var list = (List<char>) propertyValue;
-                    var itemSeparator = ' ';
+                var list = (List<char>) propertyValue;
+                var itemSeparator = ' ';
 
-                    foreach (var item in list)
-                    {
-                        writer.Write(itemSeparator);
-                        writer.Write((int) item);
-                        itemSeparator = ItemSeparator;
-                    }
-                }
-                else
+                foreach (var item in list)
                 {
-                    writer.Write(propertyValue?.ToString());
+                    writer.Write(itemSeparator);
+                    writer.Write((int) item);
+                    itemSeparator = ItemSeparator;
                 }
+            }
+            else
+            {
+                writer.Write(propertyValue?.ToString());
             }
         }
 
