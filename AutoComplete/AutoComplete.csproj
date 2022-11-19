@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <Nullable>disable</Nullable>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RepositoryUrl>https://github.com/omerfarukz/autocomplete</RepositoryUrl>
         <LangVersion>9</LangVersion>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup>
