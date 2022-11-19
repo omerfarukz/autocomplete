@@ -1,8 +1,41 @@
-﻿using Samples.ConsoleApp;
+﻿using AutoComplete.Domain;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
+using Samples.ConsoleApp;
 
-var headerFileName = "header.bin";
-var indexFileName = "index.bin";
-var tailFileName = "tail.txt";
+BenchmarkRunner.Run(typeof(Benchmark));
 
-await Sample.BuildIndex(headerFileName, indexFileName, tailFileName);
-Sample.Search(headerFileName, indexFileName, tailFileName);
+public class Benchmark
+{
+    private readonly Sample _sample = new Sample("header.bin", "index.bin", "tail.bin");
+    
+    [GlobalSetup]
+    public async void Build()
+    {
+        await _sample.Build();
+    }
+    
+    [Benchmark]
+    public SearchResult search_door_get_one_item()
+    {
+        return _sample.Search("door", 1, false);
+    }
+
+    [Benchmark]
+    public SearchResult search_door_get_five_items()
+    {
+        return _sample.Search("door", 5, false);
+    }
+    
+    [Benchmark]
+    public SearchResult search_car_get_one_item()
+    {
+        return _sample.Search("car", 1, false);
+    }
+
+    [Benchmark]
+    public SearchResult search_car_get_five_items()
+    {
+        return _sample.Search("car", 5, false);
+    }
+}

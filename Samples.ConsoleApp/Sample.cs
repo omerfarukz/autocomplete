@@ -1,57 +1,60 @@
 using AutoComplete.Builders;
 using AutoComplete.Clients.IndexSearchers;
 using AutoComplete.Domain;
+using BenchmarkDotNet.Attributes;
 
 namespace Samples.ConsoleApp;
 
-internal static class Sample
+internal class Sample
 {
-    public static void Search(string headerFileName, string indexFileName, string tailFileName)
+    private readonly string _headerFileName;
+    private readonly string _indexFileName;
+    private readonly string _tailFileName;
+    private InMemoryIndexSearcher _searcher;
+
+    public Sample(string headerFileName, string indexFileName, string tailFileName)
     {
-        var searcher = new InMemoryIndexSearcher(headerFileName, indexFileName, tailFileName);
-        searcher.Init();
-        while (true)
-        {
-            Console.WriteLine("Type a word. (exit for termination)");
-            var word = Console.ReadLine();
-            if (word == "exit")
-                break;
-            
-            var results = searcher.Search(new SearchOptions() { Term = word, MaxItemCount = 5, SuggestWhenFoundStartsWith = false});
-            if (results.Items == null)
-                continue;
-        
-            foreach (var item in results.Items)
-            {
-                Console.WriteLine(item);
-            }
-        }
+        _headerFileName = headerFileName;
+        _indexFileName = indexFileName;
+        _tailFileName = tailFileName;
     }
 
-    public static async Task BuildIndex(string headerFileName, string indexFileName, string tailFileName)
+    [Benchmark]
+    public SearchResult Search(string searchTerm, int itemsCount, bool suggest)
     {
-        if (File.Exists(headerFileName))
-            File.Delete(headerFileName);
-        if (File.Exists(indexFileName))
-            File.Delete(indexFileName);
-        if (File.Exists(tailFileName))
-            File.Delete(tailFileName);
+        var searchOptions = new SearchOptions()
+            {Term = searchTerm, MaxItemCount = itemsCount, SuggestWhenFoundStartsWith = suggest};
 
-        await using var headerStream = File.OpenWrite(headerFileName);
-        await using var indexStream = File.OpenWrite(indexFileName);
-        await using var tailStream = File.OpenWrite(tailFileName);
+        return _searcher.Search(searchOptions);
+    }
+
+    public async Task Build()
+    {
+        if (File.Exists(_headerFileName))
+            File.Delete(_headerFileName);
+        if (File.Exists(_indexFileName))
+            File.Delete(_indexFileName);
+        if (File.Exists(_tailFileName))
+            File.Delete(_tailFileName);
+
+        await using var headerStream = File.OpenWrite(_headerFileName);
+        await using var indexStream = File.OpenWrite(_indexFileName);
+        await using var tailStream = File.OpenWrite(_tailFileName);
 
         var builder = new IndexBuilder(headerStream, indexStream, tailStream);
         foreach (var line in await File.ReadAllLinesAsync("words350k.txt"))
         {
-            if(!string.IsNullOrWhiteSpace(line))
+            if (!string.IsNullOrWhiteSpace(line))
                 builder.Add(line);
         }
 
         builder.Build();
-    
+
         headerStream.Close();
         indexStream.Close();
         tailStream.Close();
+
+        _searcher = new InMemoryIndexSearcher(_headerFileName, _indexFileName, _tailFileName);
+        _searcher.Init();
     }
 }
