@@ -14,6 +14,18 @@ public class Benchmark
     }
     
     [Benchmark]
+    public SearchResult search_x_get_one_item()
+    {
+        return _sample.Search("x", 1, false);
+    }
+    
+    [Benchmark]
+    public SearchResult search_do_get_one_item()
+    {
+        return _sample.Search("do", 1, false);
+    }
+    
+    [Benchmark]
     public SearchResult search_door_get_one_item()
     {
         return _sample.Search("door", 1, false);
