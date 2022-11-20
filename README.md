@@ -20,6 +20,13 @@
 - Support for .Net Standard 2.1+ and .Net Framework 4.6.1
 - **Free** commercial usage
 
+```
+BenchmarkDotNet=v0.13.2, OS=macOS 13.0.1 (22A400) [Darwin 22.1.0]
+Apple M1 Pro, 1 CPU, 8 logical and 8 physical cores
+.NET SDK=7.0.100-rc.2.22477.23
+  [Host]     : .NET 6.0.2 (6.0.222.6406), Arm64 RyuJIT AdvSIMD
+  DefaultJob : .NET 6.0.2 (6.0.222.6406), Arm64 RyuJIT AdvSIMD
+```
 |                     Method |       Mean |    Error |   StdDev |
 |--------------------------- |-----------:|---------:|---------:|
 |   search_door_get_one_item |   711.1 ns |  9.46 ns |  8.85 ns |
