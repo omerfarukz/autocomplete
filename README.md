@@ -1,7 +1,5 @@
-[![CI & CD](https://github.com/omerfarukz/autocomplete/actions/workflows/CI%20&%20CD.yml/badge.svg)](https://github.com/omerfarukz/autocomplete/actions/workflows/CI%20&%20CD.yml)
 [![license](https://img.shields.io/github/license/omerfarukz/autocomplete)](https://github.com/omerfarukz/autocomplete/blob/master/LICENSE.txt)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=coverage)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
