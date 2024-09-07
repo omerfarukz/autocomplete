@@ -10,7 +10,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=bugs)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
 
 # Incredible autocomplete library
-- Get search result in **μs** (microseconds) or nanoseconds
+- Get search result in **μs** (microseconds)
 - Fastest autocomplete algorithm. 
 - **O(n)** complexity for searching (n is the length of input)
 - Supports for all stream types. Including on classical disk storage for cheapest hosting.
