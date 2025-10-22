@@ -1,13 +1,4 @@
-[![license](https://img.shields.io/github/license/omerfarukz/autocomplete)](https://github.com/omerfarukz/autocomplete/blob/master/LICENSE.txt)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=omerfarukz_autocomplete&metric=bugs)](https://sonarcloud.io/summary/new_code?id=omerfarukz_autocomplete)
+[![license](https://img.shields.io/github/license/omerfarukz/autocomplete)](https://github.com/omerfarukz/autocomplete/blob/master/LICENSE.txt
 
 # Incredible autocomplete library
 - Get search result in **μs** (microseconds)
